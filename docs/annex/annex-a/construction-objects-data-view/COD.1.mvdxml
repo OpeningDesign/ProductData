@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="147d5671-5047-4f82-bb18-2dc3fb023ef2" name="" xsi:schemaLocation="http://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="http://buildingsmart-tech.org/mvd/XML/1.1">
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="5e3bfa58-52c0-424f-bd7a-8eb4a657691d" name="" xsi:schemaLocation="http://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="http://buildingsmart-tech.org/mvd/XML/1.1">
   <Templates>
     <ConceptTemplate uuid="bf7206d4-80c6-469d-93a5-336283a2a935" name="Classification" status="draft" applicableSchema="IFC4" applicableEntity="IfcContext">
       <Definitions>
@@ -186,7 +186,7 @@ Construction object data shall be related to specific data templates. It can be 
         </Definition>
       </Definitions>
       <SubTemplates>
-        <ConceptTemplate uuid="c0b45389-7ad7-4abd-9264-f3dfcd37b81f" name="Complex data sheet [Complex data sheet]" applicableSchema="IFC4" applicableEntity="IfcPropertySet">
+        <ConceptTemplate uuid="c0b45389-7ad7-4abd-9264-f3dfcd37b81f" name="Complex data" applicableSchema="IFC4" applicableEntity="IfcPropertySet">
           <Rules>
             <AttributeRule AttributeName="HasProperties">
               <EntityRules>
@@ -274,7 +274,7 @@ Construction object data shall be related to specific data templates. It can be 
             </AttributeRule>
           </Rules>
         </ConceptTemplate>
-        <ConceptTemplate uuid="503c555c-215d-41c5-8fd0-1bd4f1933c6f" name="Simple data sheet [Simple data sheet]" applicableSchema="IFC4" applicableEntity="IfcObject">
+        <ConceptTemplate uuid="503c555c-215d-41c5-8fd0-1bd4f1933c6f" name="Simple data" applicableSchema="IFC4" applicableEntity="IfcObject">
           <Rules>
             <AttributeRule AttributeName="HasProperties">
               <EntityRules>
@@ -732,7 +732,7 @@ This ensures that the data sheets stay interpretable over a long time, even if t
             </AttributeRule>
           </Rules>
         </ConceptTemplate>
-        <ConceptTemplate uuid="b3ca6650-0d9e-4679-8b31-080c3b82f9a1" name="Document classification" status="draft" applicableSchema="IFC4">
+        <ConceptTemplate uuid="b3ca6650-0d9e-4679-8b31-080c3b82f9a1" name="Document classification" status="draft" applicableSchema="IFC4" applicableEntity="IfcDocumentInformation">
           <Definitions>
             <Definition>
               <Body><![CDATA[In case of necessity of classification assignment to documents, the document defined in IfcDocumentInformation can be classified through the entity IfcRelAssociatesClassification and its attribute RelatingObjects (type of IfcDefinitionSelect). 
@@ -1638,8 +1638,8 @@ The property values assigned to an object type apply equally to all occurrences 
         <Definition>
           <Body><![CDATA[All project data sets shall contain a single _IfcProject_ instance indicating overall context and a directory of objects contained within. The context definition may include:
 
-\X\X\\\\\\\\* the geometric representation context for the shape representations
-\X\X\\\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
+\X\X\\\\\\\\\\* the geometric representation context for the shape representations
+\X\X\\\\\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
         </Definition>
       </Definitions>
       <Rules>
@@ -1888,54 +1888,34 @@ The following table defines, how the entities shall be mapped. The table shows a
 <figure>
   <img src="../../figures/dict_illustration03.png" width="650" alt="Illustration 3: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 3: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration04.png" width="650" alt="Illustration 4: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 4: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration05.png" width="650" alt="Illustration 5: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 5: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration06.png" width="650" alt="Illustration 6: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 6: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration07.png" width="650" alt="Illustration 7: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 7: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration08.png" width="650" alt="Illustration 8: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 8: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration09.png" width="650" alt="Illustration 9: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 9: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration10.png" width="650" alt="Illustration 10: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 10: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration11.png" width="650" alt="Illustration 11: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 11: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-<figure>
+</figure><figure>
   <img src="../../figures/dict_illustration12.png" width="650" alt="Illustration 12: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 12: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>
-
-]]></Body>
+</figure>]]></Body>
             </Definition>
           </Definitions>
         </ConceptTemplate>
@@ -1983,7 +1963,6 @@ The specification of the ifcZIP format allows one model file in the root folder 
     </ConceptTemplate>
     <ConceptTemplate uuid="678fe87d-6f4f-44d4-bf7f-33819709c5a1" name="_Construction Objects Data View" applicableSchema="IFC4">
       <SubTemplates>
-        <ConceptTemplate uuid="dcffecbd-a68f-4ad9-a144-ea1bfef097cb" name="Material object association" applicableSchema="IFC4" applicableEntity="IfcContext" />
         <ConceptTemplate uuid="f21cd56e-777d-4142-9ff0-352b743cd6be" name="NOTDEFINED" applicableSchema="IFC4" applicableEntity="IfcContext" />
         <ConceptTemplate uuid="8fa32805-1d56-4030-959a-316e4fb4660b" name="Classification of documents" applicableSchema="IFC4" applicableEntity="IfcContext">
           <Rules>
@@ -2098,85 +2077,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
         </ExchangeRequirement>
       </ExchangeRequirements>
       <Roots>
-        <ConceptRoot uuid="47814901-57bf-4831-83e8-e510e3142d6a" name="Material" applicableRootEntity="IfcContext">
-          <Applicability>
-            <Template ref="dcffecbd-a68f-4ad9-a144-ea1bfef097cb" />
-            <TemplateRules operator="and" />
-          </Applicability>
-          <Concepts>
-            <Concept uuid="c7703053-da7f-4010-95c9-f26fa0c2b29d" name="Material constituent definition" status="draft" override="false">
-              <Template ref="a1b77971-e1dd-4bed-8a15-f92485e2c7b6" />
-              <Requirements>
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-              </Requirements>
-              <TemplateRules operator="and">
-                <TemplateRule />
-              </TemplateRules>
-            </Concept>
-            <Concept uuid="a68042c6-c2b6-4718-8426-a6d8615cc980" name="Material layer definition" override="false">
-              <Template ref="94e9cae4-5d06-40cc-be8a-4a9cddd79325" />
-              <Requirements>
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-              </Requirements>
-              <TemplateRules operator="and">
-                <TemplateRule />
-              </TemplateRules>
-            </Concept>
-            <Concept uuid="fb030e0c-987f-4f4a-9e74-24ce75c58966" name="Material of construction object types" override="false">
-              <Template ref="509461ca-f24f-41ff-8cc8-cc98c52c3c18" />
-              <Requirements>
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-              </Requirements>
-              <TemplateRules operator="and">
-                <TemplateRule />
-              </TemplateRules>
-            </Concept>
-            <Concept uuid="eff5d768-abfb-4054-930d-9a47a1fc6ea0" name="Material of construction objects" status="draft" override="false">
-              <Template ref="252580ef-fa1c-420d-97cf-c81c3be33e94" />
-              <Requirements>
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-              </Requirements>
-              <TemplateRules operator="and">
-                <TemplateRule />
-              </TemplateRules>
-            </Concept>
-            <Concept uuid="2dd69a28-c69c-4438-9d16-72a673f43118" name="Material profile definition" override="false">
-              <Template ref="44f330b4-61fe-4927-98a9-850e03d63f7d" />
-              <Requirements>
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-              </Requirements>
-              <TemplateRules operator="and">
-                <TemplateRule />
-              </TemplateRules>
-            </Concept>
-          </Concepts>
-        </ConceptRoot>
-        <ConceptRoot uuid="8f963b24-99b3-4f58-be4e-34d01046f112" name="Declarations" status="draft" applicableRootEntity="IfcContext">
+        <ConceptRoot uuid="8f963b24-99b3-4f58-be4e-34d01046f112" name="Declarations" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcContext">
           <Applicability>
             <Template ref="94cfa683-4321-4216-b540-287923b7e28a" />
             <TemplateRules operator="and" />
@@ -2241,7 +2142,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="aef7baa9-99f6-4e48-8653-23007cdc2d41" name="Classification" applicableRootEntity="IfcContext">
+        <ConceptRoot uuid="aef7baa9-99f6-4e48-8653-23007cdc2d41" name="Classification" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcContext">
           <Applicability>
             <Template ref="f21cd56e-777d-4142-9ff0-352b743cd6be" />
             <TemplateRules operator="and" />
@@ -2336,7 +2237,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="dcdc70e7-54b8-4103-9456-2085078c9c66" name="Construction objects" applicableRootEntity="IfcContext">
+        <ConceptRoot uuid="dcdc70e7-54b8-4103-9456-2085078c9c66" name="Construction objects" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcContext">
           <Applicability>
             <Template ref="35e8b4b3-cd50-4db4-825f-5c1ad22a0491" />
             <TemplateRules operator="and" />
@@ -2375,7 +2276,85 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="717d7093-a400-440d-ab87-9a50510c6405" name="Documents" applicableRootEntity="IfcDocumentInformation">
+        <ConceptRoot uuid="47814901-57bf-4831-83e8-e510e3142d6a" name="Material" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcDocumentInformation">
+          <Applicability>
+            <Template ref="b3ca6650-0d9e-4679-8b31-080c3b82f9a1" />
+            <TemplateRules operator="and" />
+          </Applicability>
+          <Concepts>
+            <Concept uuid="c7703053-da7f-4010-95c9-f26fa0c2b29d" name="Material constituent definition" status="draft" override="false">
+              <Template ref="a1b77971-e1dd-4bed-8a15-f92485e2c7b6" />
+              <Requirements>
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+              </Requirements>
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="a68042c6-c2b6-4718-8426-a6d8615cc980" name="Material layer definition" override="false">
+              <Template ref="94e9cae4-5d06-40cc-be8a-4a9cddd79325" />
+              <Requirements>
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+              </Requirements>
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="fb030e0c-987f-4f4a-9e74-24ce75c58966" name="Material of construction object types" override="false">
+              <Template ref="509461ca-f24f-41ff-8cc8-cc98c52c3c18" />
+              <Requirements>
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+              </Requirements>
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="eff5d768-abfb-4054-930d-9a47a1fc6ea0" name="Material of construction objects" status="draft" override="false">
+              <Template ref="252580ef-fa1c-420d-97cf-c81c3be33e94" />
+              <Requirements>
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+              </Requirements>
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="2dd69a28-c69c-4438-9d16-72a673f43118" name="Material profile definition" override="false">
+              <Template ref="44f330b4-61fe-4927-98a9-850e03d63f7d" />
+              <Requirements>
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+              </Requirements>
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+          </Concepts>
+        </ConceptRoot>
+        <ConceptRoot uuid="717d7093-a400-440d-ab87-9a50510c6405" name="Documents" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcDocumentInformation">
           <Applicability>
             <Template ref="514113f3-ba4b-4c3f-a18e-0250b612b84d" />
             <TemplateRules operator="and" />
@@ -2441,13 +2420,13 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="eb89b35c-958e-42cb-8788-0fc2640a40a6" name="Construction objects data [IfcPropertySet]" applicableRootEntity="IfcObject">
+        <ConceptRoot uuid="eb89b35c-958e-42cb-8788-0fc2640a40a6" name="Construction objects data" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcObject">
           <Applicability>
             <Template ref="0790a05d-73f8-4525-a3f6-fb6f3378fc00" />
             <TemplateRules operator="and" />
           </Applicability>
           <Concepts>
-            <Concept uuid="daf4523e-40b7-4bbe-b081-caecafd6fa1d" name="Simple data sheet [Simple data sheet]" override="false">
+            <Concept uuid="daf4523e-40b7-4bbe-b081-caecafd6fa1d" name="Simple data" override="false">
               <Template ref="503c555c-215d-41c5-8fd0-1bd4f1933c6f" />
               <Requirements>
                 <Requirement applicability="import" requirement="excluded" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
@@ -2463,7 +2442,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
                 <TemplateRule />
               </TemplateRules>
             </Concept>
-            <Concept uuid="9ce154f8-8006-4c78-869f-e4d47088b961" name="Complex data sheet [Complex data sheet]" override="false">
+            <Concept uuid="9ce154f8-8006-4c78-869f-e4d47088b961" name="Complex data" override="false">
               <Template ref="c0b45389-7ad7-4abd-9264-f3dfcd37b81f" />
               <Requirements>
                 <Requirement applicability="import" requirement="excluded" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
@@ -2519,7 +2498,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="418f0d53-decf-4422-8a25-108cd9b46d96" name="Data templates" applicableRootEntity="IfcPropertySetTemplate">
+        <ConceptRoot uuid="418f0d53-decf-4422-8a25-108cd9b46d96" name="Data templates" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcPropertySetTemplate">
           <Applicability>
             <Template ref="e9fee12d-eb64-48bc-9636-b8048b4b4e34" />
             <TemplateRules operator="and" />
@@ -2577,7 +2556,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="1bfdc424-f661-4593-a028-a5de3d1139d4" name="Root concepts" applicableRootEntity="IfcRoot">
+        <ConceptRoot uuid="1bfdc424-f661-4593-a028-a5de3d1139d4" name="Root concepts" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcRoot">
           <Applicability>
             <Template ref="e9b01ba8-e050-4d74-b517-21e680fea9f6" />
             <TemplateRules operator="and" />
@@ -2641,7 +2620,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="e2866201-342f-44c4-bfff-ef0742f4eeff" name="Construction object types data" applicableRootEntity="IfcTypeObject">
+        <ConceptRoot uuid="e2866201-342f-44c4-bfff-ef0742f4eeff" name="Construction object types data" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcTypeObject">
           <Applicability>
             <Template ref="42c674b5-8eef-4559-82cd-9689e3bb2605" />
             <TemplateRules operator="and" />
