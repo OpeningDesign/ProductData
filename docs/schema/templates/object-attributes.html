@@ -29,8 +29,8 @@
 <p>Resource-level instances (not deriving from <a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a>) do not have any identity, such that two instances having identical state are considered equal. For example, if an object has coordinates described by an <i>IfcCartesianPoint</i> instance, another object with the same coordinates may have a separate instance of <i>IfcCartesianPoint</i> or share the same instance; such difference is a matter of data storage optimization and does not imply any semantic relationship. This also implies that non-rooted instances may only exist if referenced by at least one rooted instance through either a direct attribute or inverse attribute, or following a chain of attribute references on instances.</p>
 <p>The distinction between rooted and non-rooted (resource-level) entities achieves several goals:</p>
 <p class="ref">
-\X\X\\\* Database retrieval may be more efficient by storing non-rooted data local to rooted data instances;
-Ø\X\\\* Comparisons of differences may be done at a higher level where the context of such change is apparent;</p>
+\X\X\\\\* Database retrieval may be more efficient by storing non-rooted data local to rooted data instances;
+Ø\X\\\\* Comparisons of differences may be done at a higher level where the context of such change is apparent;</p>
 <details><summary>mvdXML Specification</summary><div class="xsd"><code class="xsd">
 &lt;?xml version=&quot;1.0&quot;?&gt;<br/>
 &lt;ConceptTemplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; uuid=&quot;ccb45aa2-74e1-46e8-8e35-ca5e5d7cc9dd&quot; name=&quot;Object Attributes&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a>&quot;&gt;<br/>

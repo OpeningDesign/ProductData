@@ -28,13 +28,13 @@
 <h3 class="std">5.1.1 Schema Definition</h3>
 <p>The schema <i>IfcKernel</i> defines the most abstract part or core part of the specification. It captures general constructs, that are basically founded by their different semantic meaning in common understanding of an object model, like object, property and relationship. Those are then specialized into non-AEC/FM specific constructs, like product, process, control and resource, which form the main entry points for the next level within the schema architecture, the Core Extension layer.</p>
 <p>The <i>IfcKernel</i> also specifies the basic attributes and relationships, such as relative location of products in space, sequence of processes in time, or general purpose grouping and nesting mechanism. It also lays the foundation of extensibility of specification by providing:</p>
-<p>\X\X\\\* type object definitions;
-\X\X\\\* property set template definitions.</p>
+<p>\X\X\\\\* type object definitions;
+\X\X\\\\* property set template definitions.</p>
 <h4>5.1.1.1 Root definition</h4>
 <p>Each entity defined outside of the Resource layer of the schema architecture inherits directly or indirectly from the <a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a> entity. <a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a> provides for the fundamental capabilities of:</p>
-<p>\X\X\\\* optional ownership and change information
-\X\X\X\X\X\X\X\X\\\* object definitions are the generalization of any semantically treated thing (or item) within the IFC model.
-\X\X\\\* property definitions are the generalization of all characteristics that may be assigned to object definitions.</p>
+<p>\X\X\\\\* optional ownership and change information
+\X\X\X\X\X\X\X\X\\\\* object definitions are the generalization of any semantically treated thing (or item) within the IFC model.
+\X\X\\\\* property definitions are the generalization of all characteristics that may be assigned to object definitions.</p>
 <h4>5.1.1.2 Object definitions</h4>
 <p>An object definition is the abstract supertype, <a href="../ifckernel/lexical/ifcobjectdefinition.html">IfcObjectDefinition</a>, and stands for all physically tangible items, such as wall, beam or covering, physically existing items, such as spaces, or conceptual items, such as grids or virtual boundaries. It also stands for processes such as work tasks, for controls such as cost items, for resources such as labor resource, or for actors such as persons involved in the design process.</p>
 <p>Object definitions are specialized into object occurrences, <a href="../ifckernel/lexical/ifcobject.html">IfcObject</a>, indicating any individual object in space, time or another representation context, into object types, <a href="../ifckernel/lexical/ifctypeobject.html">IfcTypeObject</a> indicating the common definitions as a type, or article that are identical for all object occurrences, and basic project or library context, <a href="../ifckernel/lexical/ifccontext.html">IfcContext</a>.</p>

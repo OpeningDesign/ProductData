@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="83790bc1-610c-434f-8285-f7068dae8fc8" name="" xsi:schemaLocation="http://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="http://buildingsmart-tech.org/mvd/XML/1.1">
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="147d5671-5047-4f82-bb18-2dc3fb023ef2" name="" xsi:schemaLocation="http://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="http://buildingsmart-tech.org/mvd/XML/1.1">
   <Templates>
     <ConceptTemplate uuid="bf7206d4-80c6-469d-93a5-336283a2a935" name="Classification" status="draft" applicableSchema="IFC4" applicableEntity="IfcContext">
       <Definitions>
@@ -660,113 +660,6 @@ This ensures that the data sheets stay interpretable over a long time, even if t
         </ConceptTemplate>
       </SubTemplates>
     </ConceptTemplate>
-    <ConceptTemplate uuid="7556808d-2437-46b6-85a3-7090cbd84381" name="Dictionaries" status="draft" applicableSchema="IFC4" applicableEntity="IfcRoot">
-      <Definitions>
-        <Definition>
-          <Body><![CDATA[The EN ISO 23387 defines a standardized way to express construction data with the concept of data templates. Such data templates can be used to structure the information, based on external standards. Data templates include well defined properties according to EN ISO 23386.
-The definitions for propertiesc and data template can be stored in central dictionaries according to data structure, defined in ISO 12006-3, from where they can be retrieved and used in projects.
-
-
-<figure>
-<img src="../../figures/illustration2_datatemplates.png" width="650" alt="Use data templates and data to create combinded construction objects data">
-  <figcaption>Illustration 2: Use data templates and data to create combinded construction objects data
-  </figcaption>
-</figure>
-
-
-To use the properties and data templates from Dictionaries in the construction objects data view, the properties and data templates shall be mapped from the structure of the prEN ISO 23387 (Figure 3) to the structure of this standard.
-The following table defines, how the entities shall be mapped. The table shows a simplified mapping structure, based on the follwing remarks:
-
-1. The referenced classes in the second column (“WI 442018”) are based on the structures that are described in the other parts of the chapter “Fundamental concepts and assumptions”. The listed classes always reference to the top class in the class structure. All inherited classes from the top class are always allowed.
-
-2. The dot symbol “.” indicates that the following reference is a property of the class based on the definition in this standard. 
-E.g. “IfcProjectLibrary.Name” references the property “Name”, that is part of the class “IfcProjectLibrary”.
-
-3. The greater symbol “>” indicates the path to the following from the classe to the referenced class based on the definition in this standard. 
-E.g “IfcProjectLibrary>IfcRelAssociatesDocument” references the class IfcRelAssociatesDocument, that has a reference to IfcProjectLibrary. The paths are written in _italic_.
-
-
-
-
-{ .gridtable}
-Data template<br>xtdBag | Project Library<br>IfcProjectLibrary
-------------- | ------------- 
-Template name | IfcProjectLibrary.Name
-Template Guid | IfcProjectLibrary.GlobalId
-Template technical specification<br>xtdBag<br>>xtdRelDocuments<br>>xtdExternalDocument (Reference document) | IfcProjectLibrary.HasAssociations<br>>IfcRelAssociatesDocument.RelatedObjects<br>>RelatingDocument<br>>IfcDocumentInformation
-Template classification<br>xtdBag<br>>xtdRelClassifies<br>xtdClass (Classification level) | IfcProjectLibrary.HasAssociations<br>>IfcRelAssociatesClassification.RelatingClassification<br>>IfcClassificationReference
-Construction objects assignment<br>xtdBag<br>>xtdRealAssignsCollections<br>>xtdSubject (Construction object) | IfcProjectLibrary.Declares<br>>IfcRelDeclares.RelatedDefinitions<br>>IfcTypeObject
-Collection of Group of Properties<br>xtdBag<br>>xtdRelCollects<br>>xtdNest (Group of properties) | IfcProjectLibrary.Declares<br>>IfcRelDeclares.RelatedDefinitions<br>>IfcPropertySetTemplate
-Composition of data templates<br>xtdBag<br>>xtdRelComposes<br>>xtdBag (Data template) | IfcProjectLibrary.HasAssignments<br>>IfcRelAssigns. RelatedObjects<br>>IfcProjectLibrary
-
-{ .gridtable}
-Reference document<br>xtdExternalDocument | Document Information<br>IfcDocumentInformation
-------------- | -------------
-Details according to EN ISO 12006-3 | Details according to EN ISO 16739-1:2018
-
-{ .gridtable}
-Classification level<br>xtdClass | Classification Reference<br>IfcClassificationReference
-------------- | -------------
-Details according to EN ISO 12006-3 | Details according to EN ISO 16739-1:2018
-
-{ .gridtable}
-Construction object<br>xtdSubject | Construction object type<br>IfcTypeObject
-------------- | -------------
-Construction object technical specification<br>xtdSubject<br>>xtdRelDocuments<br>>xtdExternalDocument (Reference document) | IfcTypeObject.HasAssociations<br>>IfcRelAssociatesDocument.RelatedObjects<br>>RelatingDocument<br>>IfcDocumentInformation
-Construction object classification<br>xtdSubject<br>>xtdRelClassifies<br>>xtdClass (Classification level) | IfcTypeObject.HasAssociations<br>>IfcRelAssociatesClassification. RelatingClassification<br>>IfcClassificationReference>br>xtdSubject<br>>xtdRelComposes<br>xtdSubject (Construction object) | IfcTypeObject.IsDecomposedBy<br>>IfcRelAggregates.RelatedObjects<br>>IfcTypeObject
-
-{ .gridtable}
-Group of properties<br>xtdNest | Property Set Template<br>IfcPropertySetTemplate
-------------- | -------------
-Name | IfcPropertySetTemplate.Name
-Definition | IfcPropertySetTemplate.Description
-GUID | IfcPropertySetTemplate.GlobalId
-Collection of Generic Properties<br>xtdNest<br>>xtdRelCollects<br>>xtdProperty (Generic property) | IfcPropertySetTemplate.HasPropertyTemplates<br>> IfcComplexPropertyTemplate
-Collection of Specific Properties<br>xtdNest<br>>xtdRelCollects<br>>xtdProperty (Specific property) | IfcPropertySetTemplate.HasPropertyTemplates<br>> IfcSimplePropertyTemplate
-
-{ .gridtable}
-Generic Property<br>xtdProperty<br>“Essential Characteristic” | Complex data template<br>IfcComplexPropertyTemplate
-------------- | -------------
-Name | IfcComplexPropertyTemplate.Name
-Definition | IfcComplexPropertyTemplate.Description
-GUID | IfcComplexPropertyTemplate.GlobalId
-Specialize property<br>xtdProperty<br>>xtdRelSpecializesProperty<br>>xtdProperty (Specific property) | IfcComplexPropertyTemplate.HasPropertyTemplates<br>>IfcSimplePropertyTemplate
-Measure assignment<br>xtdProperty<br>>xtdRelAssignsMeasures<br>>xtdMeasureWithUnit (Quantity) | IfcComplexPropertyTemplate.PrimaryMeasureType<br>>IfcValue<br>>>IfcMeasureValue<br>>>IfcSimpleValue<br>>>IfcDerivedMeasureValue<br>IfcMeasureResource
-Unit assignment<br>xtdProperty<br>>xtdRelAssignsMeasures<br>>xtdMeasureWithUnit (Quantity)<br>>xtdRelAssignsUnits<br>>xdtUnit (Unit) | IfcSimplePropertyTemplate.PrimaryUnit<br>>IfcUnit<br>>>IfcDerivedUnit<br>>>IfcNamedUnit<br>>>IfcMonetaryUnit
-Value assignment<br>xtdProperty<br>>xtdRelAssignsPropertyWithValue<br>>xdtValue (Value) | IfcSimplePropertyTemplate<br>[@TemplateType="p_enumeratedvalue"]<br>.Enumerators<br>>IfcPropertyEnumeration<br>>EnumerationValues
-
-{ .gridtable}
-Specific Property<br>xtdProperty | Simple data template<br>IfcSimplePropertyTemplate
-------------- | -------------
-Name | IfcSimplePropertyTemplate.Name
-Definition | IfcSimplePropertyTemplate.Description
-GUID | IfcSimplePropertyTemplate.GlobalId
-Measure assignment<br>xtdProperty<br>>xtdRelAssignsMeasures<br>>xtdMeasureWithUnit (Quantity) | IfcSimplePropertyTemplate.PrimaryMeasureType<br>>IfcValue<br>>>IfcMeasureValue<br>>>IfcSimpleValue<br>>>IfcDerivedMeasureValue<br>IfcMeasureResource
-Unit assignment<br>xtdProperty<br>>xtdRelAssignsMeasures<br>>xtdMeasureWithUnit (Quantity)<br>>xtdRelAssignsUnits<br>>xdtUnit (Unit) | IfcSimplePropertyTemplate.PrimaryUnit<br>>IfcUnit<br>>>IfcDerivedUnit<br>>>IfcNamedUnit<br>>>IfcMonetaryUnit
-Value assignment<br>xtdProperty<br>>xtdRelAssignsPropertyWithValue<br>>xdtValue (Value) | IfcSimplePropertyTemplate<br>[@TemplateType="p_enumeratedvalue"]<br>.Enumerators<br>>IfcPropertyEnumeration<br>>EnumerationValues
-
-
-{ .gridtable}
-Quantity<br>(xtdMeasureWithUnit) | Measure<br>(IfcMeasureResource)
-------------- | -------------
-Details according to EN ISO 12006-3 | Measures according to appendix A2<br>“Table of Measures and Units.xlsx
-
-{ .gridtable}
-Unit<br>(xtdUnit) | Measure<br>(IfcUnit)<br>Units according to appendix A2 “Table of Measures and Units.xlsx
-------------- | -------------
-Details according to EN ISO 12006-3 | Measures according to appendix A2<br>“Table of Measures and Units.xlsx
-
-{ .gridtable}
-Value<br>(xtdValue) | Enumeration values<br>(IfcSimplePropertyTemplate <br>TemplateType="p_enumeratedvalue")
-------------- | -------------
-Full name | 
-Short name | 
-Definition | 
-GUID | 
-]]></Body>
-        </Definition>
-      </Definitions>
-    </ConceptTemplate>
     <ConceptTemplate uuid="514113f3-ba4b-4c3f-a18e-0250b612b84d" name="Documents" status="draft" applicableSchema="IFC4" applicableEntity="IfcDocumentInformation">
       <Rules>
         <AttributeRule RuleID="Location" Description="*" AttributeName="Location">
@@ -1365,39 +1258,6 @@ The table below resume IfcDocumentInformation’s attributes and their optional/
         </ConceptTemplate>
       </SubTemplates>
     </ConceptTemplate>
-    <ConceptTemplate uuid="ccb45aa2-74e1-46e8-8e35-ca5e5d7cc9dd" name="Object Attributes" applicableSchema="IFC4" applicableEntity="IfcRoot">
-      <Definitions>
-        <Definition>
-          <Body><![CDATA[All entities having semantic significance derive from _IfcRoot_, where instances are identifiable within a data set using a compressed globally unique identifier (IFC-GUID). This identifier must never change during the lifetime of an object, which allows data to be merged, versioned, or referenced from other locations.
-
-Resource-level instances (not deriving from _IfcRoot_) do not have any identity, such that two instances having identical state are considered equal. For example, if an object has coordinates described by an _IfcCartesianPoint_ instance, another object with the same coordinates may have a separate instance of _IfcCartesianPoint_ or share the same instance; such difference is a matter of data storage optimization and does not imply any semantic relationship. This also implies that non-rooted instances may only exist if referenced by at least one rooted instance through either a direct attribute or inverse attribute, or following a chain of attribute references on instances.
-
-The distinction between rooted and non-rooted (resource-level) entities achieves several goals:
-
-{ .ref}
-\X\X\\\\\\* Database retrieval may be more efficient by storing non-rooted data local to rooted data instances; 
-Ø\X\\\\\\* Comparisons of differences may be done at a higher level where the context of such change is apparent;]]></Body>
-        </Definition>
-      </Definitions>
-      <SubTemplates>
-        <ConceptTemplate uuid="f7cb0a08-fee7-4cc0-85fe-43f6a6a0bce1" name="Software Identity" applicableSchema="IFC4" applicableEntity="IfcRoot">
-          <Definitions>
-            <Definition>
-              <Body><![CDATA[An object needs to be identifiable for accurate processing by both human and automated processes. Identification may be through several attributes such as Identifcation, Name, Description or GUID. The GUID is compressed for the purpose of being exchanged within an IFC data set - the compressed GUID is refered to as "IFC-GUID". While the IFC-GUID is normally generated automatically and has to be persistent, the Identification may relate to other informal registers but should be unique within the set of objects of the same type. The Name and Description should allow any object to be identified in the context of the project or facility being modelled.
-
-Various objects may have additional identifications that may be human-readable and/or may be structured through classification association. Various file formats may use additional identifications of instances for serialization purposes, however there is no requirement or guarantee for such identifications to remain the same between revisions or across applications. For example, the IFC-SPF file format lists each instance with a 64-bit integer that is unique within the particular file.]]></Body>
-            </Definition>
-          </Definitions>
-          <Rules>
-            <AttributeRule RuleID="GUID" AttributeName="GlobalId">
-              <EntityRules>
-                <EntityRule EntityName="IfcGloballyUniqueId" />
-              </EntityRules>
-            </AttributeRule>
-          </Rules>
-        </ConceptTemplate>
-      </SubTemplates>
-    </ConceptTemplate>
     <ConceptTemplate uuid="33e0be15-e301-4858-9f4b-18b2eb5488ba" name="Object Definition" status="candidate" applicableSchema="IFC4" applicableEntity="IfcObjectDefinition">
       <Definitions>
         <Definition>
@@ -1778,8 +1638,8 @@ The property values assigned to an object type apply equally to all occurrences 
         <Definition>
           <Body><![CDATA[All project data sets shall contain a single _IfcProject_ instance indicating overall context and a directory of objects contained within. The context definition may include:
 
-\X\X\\\\\\* the geometric representation context for the shape representations
-\X\X\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
+\X\X\\\\\\\\* the geometric representation context for the shape representations
+\X\X\\\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
         </Definition>
       </Definitions>
       <Rules>
@@ -2006,31 +1866,120 @@ The property values assigned to an object type apply equally to all occurrences 
         </ConceptTemplate>
       </SubTemplates>
     </ConceptTemplate>
-    <ConceptTemplate uuid="1af4c019-32bb-4c4f-a328-16ae062660a8" name="Shapes" status="draft" applicableSchema="IFC4" applicableEntity="IfcContext">
-      <Definitions>
-        <Definition>
-          <Body><![CDATA[The visual description of the construction object shape is according to ISO 16739-1:2018. If it is needed to add a visual representation of construction object data we recommend to insert shape representation according to the existing Model View Definitions "Design Transfer View" or "Coordination View".]]></Body>
-        </Definition>
-      </Definitions>
-    </ConceptTemplate>
-    <ConceptTemplate uuid="9f63432b-cdc8-4438-8bbf-035ee92c5842" name="Transport" status="candidate" applicableSchema="IFC4" applicableEntity="IfcRoot">
-      <Definitions>
-        <Definition>
-          <Body><![CDATA[All exchanges can be transported over these protocols:
+    <ConceptTemplate uuid="5a87d95e-4be6-4b53-a5fc-1a2ea1356527" name="Root concepts" status="candidate" applicableSchema="IFC4" applicableEntity="IfcRoot">
+      <SubTemplates>
+        <ConceptTemplate uuid="9ae07d72-0ea7-414e-91e0-57afed5a0d89" name="Dictionaries" status="candidate" applicableSchema="IFC4" applicableEntity="IfcRoot">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[The EN ISO 23387 defines a standardized way to express construction data with the concept of data templates. Such data templates can be used to structure the information, based on external standards. Data templates include well defined properties according to EN ISO 23386.
+The definitions for propertiesc and data template can be stored in central dictionaries according to data structure, defined in ISO 12006-3, from where they can be retrieved and used in projects.
+
+
+<figure>
+  <img src="../../figures/illustration2_datatemplates.png" width="650" alt="Illustration 2: Use data templates and data to create combinded construction objects data">
+  <figcaption>Illustration 2: Use data templates and data to create combinded construction objects data</figcaption>
+</figure>
+
+
+To use the properties and data templates from Dictionaries in the construction objects data view, the properties and data templates shall be mapped from the structure of the prEN ISO 23387 (Figure 3) to the structure of this standard.
+The following table defines, how the entities shall be mapped. The table shows a simplified mapping structure, based on the follwing remarks. The referenced classes in the second column (“WI 442018”) are based on the structures that are described in the other parts of the chapter “Fundamental concepts and assumptions”. The listed classes always reference to the top class in the class structure. All inherited classes from the top class are always allowed.
+
+
+<figure>
+  <img src="../../figures/dict_illustration03.png" width="650" alt="Illustration 3: Mapping xtdBag to IfcProjectLibrary">
+  <figcaption>Illustration 3: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration04.png" width="650" alt="Illustration 4: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <figcaption>Illustration 4: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration05.png" width="650" alt="Illustration 5: Mapping xtdBag to IfcProjectLibrary">
+  <figcaption>Illustration 5: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration06.png" width="650" alt="Illustration 6: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <figcaption>Illustration 6: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration07.png" width="650" alt="Illustration 7: Mapping xtdBag to IfcProjectLibrary">
+  <figcaption>Illustration 7: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration08.png" width="650" alt="Illustration 8: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <figcaption>Illustration 8: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration09.png" width="650" alt="Illustration 9: Mapping xtdBag to IfcProjectLibrary">
+  <figcaption>Illustration 9: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration10.png" width="650" alt="Illustration 10: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <figcaption>Illustration 10: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration11.png" width="650" alt="Illustration 11: Mapping xtdBag to IfcProjectLibrary">
+  <figcaption>Illustration 11: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+<figure>
+  <img src="../../figures/dict_illustration12.png" width="650" alt="Illustration 12: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <figcaption>Illustration 12: Mapping xtdBag to IfcProjectLibrary</figcaption>
+</figure>
+
+]]></Body>
+            </Definition>
+          </Definitions>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="db3da0a6-5628-470a-9c7c-869ca678bf21" name="Shapes" status="draft" applicableSchema="IFC4" applicableEntity="IfcRoot">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[The visual description of the construction object shape is according to ISO 16739-1:2018. If it is needed to add a visual representation of construction object data we recommend to insert shape representation according to the existing Model View Definitions "Design Transfer View" or "Coordination View".]]></Body>
+            </Definition>
+          </Definitions>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="45b8511a-081e-442c-bfc9-f84c1195e0dd" name="Software Identity" status="candidate" applicableSchema="IFC4" applicableEntity="IfcRoot">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[An object needs to be identifiable for accurate processing by both human and automated processes. Identification may be through several attributes such as Identifcation, Name, Description or GUID. The GUID is compressed for the purpose of being exchanged within an IFC data set - the compressed GUID is refered to as "IFC-GUID". While the IFC-GUID is normally generated automatically and has to be persistent, the Identification may relate to other informal registers but should be unique within the set of objects of the same type. The Name and Description should allow any object to be identified in the context of the project or facility being modelled.
+
+Various objects may have additional identifications that may be human-readable and/or may be structured through classification association. Various file formats may use additional identifications of instances for serialization purposes, however there is no requirement or guarantee for such identifications to remain the same between revisions or across applications. For example, the IFC-SPF file format lists each instance with a 64-bit integer that is unique within the particular file.]]></Body>
+            </Definition>
+          </Definitions>
+          <Rules>
+            <AttributeRule AttributeName="GlobalId">
+              <EntityRules>
+                <EntityRule EntityName="IfcGloballyUniqueId" />
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="1991cde3-11a9-4cc4-aa31-6b1e3883ca26" name="Transport" status="candidate" applicableSchema="IFC4" applicableEntity="IfcRoot">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[All exchanges can be transported over these protocols:
 
 1. As a physical file with manual exchange via eMail, Harddrives, CDE's or similar
 2. As a data structure in the payload of an online exchange, eg. an API, a BCF message, a messaging system or similar.
 
-This standard does not define how exactly the exchange is done. It defines the standard for the structure of the file or the payload. The file or the payload can be stored in a compressd format according to the specification. The file extension is then .ifczip. The specifications for ifczip can be found here:
+This standard does not define how exactly the exchange is done. It defines the standard for the structure of the file or the payload. The file or the payload can be stored in a compressd format according to the specification. It is allowed to embed an IFC file in Step format (.ifc) or in XML format Format (.ifcXML) in an ifcZIP file.The specification contains the following principles:
 
-- https://technical.buildingsmart.org/standards/ifc
-- https://technical.buildingsmart.org/standards/ifc/ifc-formats/
+1. The ifcZIP file contains exactly one model file (.ifc or .ifcxml). The file extension is ifcZIP
+2. According to this rule, it is allowed to embed additional other files in an ifcZIP file. Therefore, an ifcZIP file can be a container, which can transport many additional files in itself. This container can transport related photo documentations, plant documentation, permits and notifications, operating documents, maintenance reports and other model related documents.
 
-It is explicitly allowed to embed an IFC file in Step format (.ifc) or in XML format Format (.ifcxml) in an ifczip file.The specification contains the following principles:
-
-1. The ifczip file contains exactly one model file (.ifc or .ifcxml). The file extension is \X\X\X\XØ\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X]]></Body>
-        </Definition>
-      </Definitions>
+The specification of the ifcZIP format allows one model file in the root folder of the ifcZIP file. The documents can be stored relative to the root folder and references with the entity IfcDocumentInformation to the model. For each file transported in the container, an element of type IfcDocumentInformation is written.]]></Body>
+            </Definition>
+          </Definitions>
+        </ConceptTemplate>
+      </SubTemplates>
     </ConceptTemplate>
     <ConceptTemplate uuid="678fe87d-6f4f-44d4-bf7f-33819709c5a1" name="_Construction Objects Data View" applicableSchema="IFC4">
       <SubTemplates>
@@ -2634,75 +2583,65 @@ In this scenario the adopted Model View Definition enables complete data exchang
             <TemplateRules operator="and" />
           </Applicability>
           <Concepts>
-            <Concept uuid="1c94eca0-f015-4490-be0d-a7cb9acb15a2" name="Software Identity" status="candidate" override="false">
-              <Template ref="f7cb0a08-fee7-4cc0-85fe-43f6a6a0bce1" />
+            <Concept uuid="957070d5-19ae-4fa8-85b7-c12b24f927f1" name="Software Identity" override="false">
+              <Template ref="45b8511a-081e-442c-bfc9-f84c1195e0dd" />
               <Requirements>
                 <Requirement applicability="import" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
                 <Requirement applicability="import" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
                 <Requirement applicability="import" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
                 <Requirement applicability="export" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
               </Requirements>
               <TemplateRules operator="and">
                 <TemplateRule />
               </TemplateRules>
             </Concept>
-            <Concept uuid="8c628a3b-eeec-4743-a1d5-d2b657e9b19a" name="Transport" override="false">
-              <Template ref="9f63432b-cdc8-4438-8bbf-035ee92c5842" />
+            <Concept uuid="baf4bac9-e67a-4d44-8349-8be5f2bdc99f" name="Transport" override="false">
+              <Template ref="1991cde3-11a9-4cc4-aa31-6b1e3883ca26" />
               <Requirements>
                 <Requirement applicability="import" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
                 <Requirement applicability="import" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
                 <Requirement applicability="import" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
                 <Requirement applicability="export" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-              </Requirements>
-              <TemplateRules operator="and">
-                <TemplateRule />
-                <TemplateRule />
-              </TemplateRules>
-            </Concept>
-            <Concept uuid="6317e310-f031-4a6a-aabb-5f32aea2338a" name="Dictionaries" override="false">
-              <Template ref="7556808d-2437-46b6-85a3-7090cbd84381" />
-              <Requirements>
-                <Requirement applicability="import" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
-                <Requirement applicability="import" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="import" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
                 <Requirement applicability="export" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
               </Requirements>
               <TemplateRules operator="and">
                 <TemplateRule />
               </TemplateRules>
             </Concept>
-          </Concepts>
-        </ConceptRoot>
-        <ConceptRoot uuid="80126443-5c3c-4008-9bb6-aa17c9631e5d" name="Shapes" applicableRootEntity="IfcRoot">
-          <Applicability>
-            <Template ref="7556808d-2437-46b6-85a3-7090cbd84381" />
-            <TemplateRules operator="and" />
-          </Applicability>
-          <Concepts>
-            <Concept uuid="731ce40b-bd1d-40b4-98a1-2fe6daef5f0f" name="Shapes" override="false">
-              <Template ref="1af4c019-32bb-4c4f-a328-16ae062660a8" />
+            <Concept uuid="97dd10a9-4462-4cdf-8862-440959ba06a8" name="Shapes" override="false">
+              <Template ref="db3da0a6-5628-470a-9c7c-869ca678bf21" />
               <Requirements>
-                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
-                <Requirement applicability="import" requirement="excluded" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
-                <Requirement applicability="export" requirement="excluded" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
                 <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="recommended" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
                 <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
               </Requirements>
               <TemplateRules operator="and">
                 <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="b81619cc-7e32-49cd-835c-5b5591695f6c" name="Dictionaries" override="false">
+              <Template ref="9ae07d72-0ea7-414e-91e0-57afed5a0d89" />
+              <Requirements>
+                <Requirement applicability="import" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+                <Requirement applicability="import" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="import" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
+                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
+                <Requirement applicability="export" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
+              </Requirements>
+              <TemplateRules operator="and">
                 <TemplateRule />
               </TemplateRules>
             </Concept>
           </Concepts>
         </ConceptRoot>
-        <ConceptRoot uuid="e2866201-342f-44c4-bfff-ef0742f4eeff" name="Contruction object types data" applicableRootEntity="IfcTypeObject">
+        <ConceptRoot uuid="e2866201-342f-44c4-bfff-ef0742f4eeff" name="Construction object types data" applicableRootEntity="IfcTypeObject">
           <Applicability>
             <Template ref="42c674b5-8eef-4559-82cd-9689e3bb2605" />
             <TemplateRules operator="and" />

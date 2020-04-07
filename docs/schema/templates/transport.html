@@ -20,25 +20,22 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../toc-4.html#4.14");
+    parent.index.location.replace("../toc-4.html#4.11.4");
 //-->
 </script>
 
-<h2 class="std">4.14 Transport</h2>
+<h3 class="std">4.11.4 Transport</h3>
 <p>All exchanges can be transported over these protocols:</p>
 <ol>
 <li>As a physical file with manual exchange via eMail, Harddrives, CDE's or similar</li>
 <li>As a data structure in the payload of an online exchange, eg. an API, a BCF message, a messaging system or similar.</li>
 </ol>
-<p>This standard does not define how exactly the exchange is done. It defines the standard for the structure of the file or the payload. The file or the payload can be stored in a compressd format according to the specification. The file extension is then .ifczip. The specifications for ifczip can be found here:</p>
-<ul>
-<li>https://technical.buildingsmart.org/standards/ifc</li>
-<li>https://technical.buildingsmart.org/standards/ifc/ifc-formats/</li>
-</ul>
-<p>It is explicitly allowed to embed an IFC file in Step format (.ifc) or in XML format Format (.ifcxml) in an ifczip file.The specification contains the following principles:</p>
+<p>This standard does not define how exactly the exchange is done. It defines the standard for the structure of the file or the payload. The file or the payload can be stored in a compressd format according to the specification. It is allowed to embed an IFC file in Step format (.ifc) or in XML format Format (.ifcXML) in an ifcZIP file.The specification contains the following principles:</p>
 <ol>
-<li>The ifczip file contains exactly one model file (.ifc or .ifcxml). The file extension is \X\X\X\XØ\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X\X</li>
+<li>The ifcZIP file contains exactly one model file (.ifc or .ifcxml). The file extension is ifcZIP</li>
+<li>According to this rule, it is allowed to embed additional other files in an ifcZIP file. Therefore, an ifcZIP file can be a container, which can transport many additional files in itself. This container can transport related photo documentations, plant documentation, permits and notifications, operating documents, maintenance reports and other model related documents.</li>
 </ol>
+<p>The specification of the ifcZIP format allows one model file in the root folder of the ifcZIP file. The documents can be stored relative to the root folder and references with the entity IfcDocumentInformation to the model. For each file transported in the container, an element of type IfcDocumentInformation is written.</p>
 <hr/>
 <h4>Construction Objects Data View</h4>
 <table class="exchange">
@@ -52,7 +49,7 @@
 </table>
 <details><summary>mvdXML Specification</summary><div class="xsd"><code class="xsd">
 &lt;?xml version=&quot;1.0&quot;?&gt;<br/>
-&lt;ConceptTemplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; uuid=&quot;9f63432b-cdc8-4438-8bbf-035ee92c5842&quot; name=&quot;Transport&quot; status=&quot;candidate&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a>&quot; /&gt;<br/>
+&lt;ConceptTemplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; uuid=&quot;1991cde3-11a9-4cc4-aa31-6b1e3883ca26&quot; name=&quot;Transport&quot; status=&quot;candidate&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a>&quot; /&gt;<br/>
 </code></div>
 </details>
 </p>
