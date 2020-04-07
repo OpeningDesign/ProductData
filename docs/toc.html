@@ -67,10 +67,25 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/material-of-construction-object-types.html">4.8.3 Material of construction object types</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/material-of-construction-objects.html">4.8.4 Material of construction objects</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/material-profile-definition.html">4.8.5 Material profile definition</a><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/project-context.html">4.9 Project Context</a><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/measures-and-units.html">4.9.1 Measures and units</a><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/shapes.html">4.10 Shapes</a><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/transport.html">4.11 Transport</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/object-attributes.html">4.9 Object Attributes</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/software-identity.html">4.9.1 Software Identity</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/object-definition.html">4.10 Object Definition</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/property-sets.html">4.10.1 Property Sets</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/property-sets-for-objects.html">4.10.1.1 Property Sets for Objects</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/property-sets-with-override.html">4.10.1.1.1 Property Sets with Override</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/property-sets-for-types.html">4.10.1.2 Property Sets for Types</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/partial-templates.html">4.11 Partial Templates</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/values.html">4.11.1 Values</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/bounded-value.html">4.11.1.1 Bounded Value</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/enumerated-value.html">4.11.1.2 Enumerated Value</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/list-value.html">4.11.1.3 List Value</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/single-value.html">4.11.1.4 Single Value</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/table-value.html">4.11.1.5 Table Value</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/project-context.html">4.12 Project Context</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/measures-and-units.html">4.12.1 Measures and units</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/project-document-information.html">4.12.2 Project Document Information</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/shapes.html">4.13 Shapes</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="schema/templates/transport.html">4.14 Transport</a><br />
 <a class="listing-link" href="schema/chapter-5.html">5. Core data schemas</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="schema/ifckernel/content.html">5.1 IfcKernel</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.1.1 Schema Definition<br />
@@ -244,6 +259,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="schema/ifcpropertyresource/content.html">8.10 IfcPropertyResource</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.10.1 Schema Definition<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.10.2 Types<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="schema/ifcpropertyresource/lexical/ifccurveinterpolationenum.html">8.10.2.1 IfcCurveInterpolationEnum</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8.10.3 Entities<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="schema/ifcpropertyresource/lexical/ifccomplexproperty.html">8.10.3.1 IfcComplexProperty</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="schema/ifcpropertyresource/lexical/ifcextendedproperties.html">8.10.3.2 IfcExtendedProperties</a><br />
@@ -347,9 +363,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D.2.1 Construction Objects Data View<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifccontext.html" >D.2.1.1 IfcContext</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifcdocumentinformation.html" >D.2.1.2 IfcDocumentInformation</a><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifcprojectlibrary.html" >D.2.1.3 IfcProjectLibrary</a><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifcpropertyset.html" >D.2.1.4 IfcPropertySet</a><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifcpropertysettemplate.html" >D.2.1.5 IfcPropertySetTemplate</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifcobject.html" >D.2.1.3 IfcObject</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifcpropertysettemplate.html" >D.2.1.4 IfcPropertySetTemplate</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifcroot.html" >D.2.1.5 IfcRoot</a><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-d/construction-objects-data-view/ifctypeobject.html" >D.2.1.6 IfcTypeObject</a><br />
 <a class="listing-link" href="annex/annex-e.html">Annex E. Examples</a><br />
 <a class="listing-link" href="annex/annex-f.html">Annex F. Change logs</a><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="listing-link" href="annex/annex-f/ifc2x3-to-ifc4/index.html" >F.1 IFC2x3 to IFC4</a><br />
@@ -394,10 +411,21 @@
 <a class="listing-link" href="schema/templates/material-of-construction-object-types.html">Figure 22 &mdash; Material of construction object types instance diagram</a><br />
 <a class="listing-link" href="schema/templates/material-of-construction-objects.html">Figure 23 &mdash; Material of construction objects instance diagram</a><br />
 <a class="listing-link" href="schema/templates/material-profile-definition.html">Figure 24 &mdash; Material profile definition instance diagram</a><br />
-<a class="listing-link" href="schema/templates/project-context.html">Figure 25 &mdash; Project Context instance diagram</a><br />
-<a class="listing-link" href="schema/templates/measures-and-units.html">Figure 26 &mdash; Measures and units instance diagram</a><br />
-<a class="listing-link" href="schema/ifckernel/lexical/ifcreldefinesbytype.html">Figure 27 &mdash; Type definition relationships</a><br />
-<a class="listing-link" href="schema/ifcmaterialresource/lexical/ifcmateriallayerset.html">Figure 28 &mdash; Material layer set</a><br />
+<a class="listing-link" href="schema/templates/software-identity.html">Figure 25 &mdash; Software Identity instance diagram</a><br />
+<a class="listing-link" href="schema/templates/property-sets-for-objects.html">Figure 26 &mdash; Property Sets for Objects instance diagram</a><br />
+<a class="listing-link" href="schema/templates/property-sets-with-override.html">Figure 27 &mdash; Property Sets with Override instance diagram</a><br />
+<a class="listing-link" href="schema/templates/property-sets-for-types.html">Figure 28 &mdash; Property Sets for Types instance diagram</a><br />
+<a class="listing-link" href="schema/templates/values.html">Figure 29 &mdash; Values instance diagram</a><br />
+<a class="listing-link" href="schema/templates/bounded-value.html">Figure 30 &mdash; Bounded Value instance diagram</a><br />
+<a class="listing-link" href="schema/templates/enumerated-value.html">Figure 31 &mdash; Enumerated Value instance diagram</a><br />
+<a class="listing-link" href="schema/templates/list-value.html">Figure 32 &mdash; List Value instance diagram</a><br />
+<a class="listing-link" href="schema/templates/single-value.html">Figure 33 &mdash; Single Value instance diagram</a><br />
+<a class="listing-link" href="schema/templates/table-value.html">Figure 34 &mdash; Table Value instance diagram</a><br />
+<a class="listing-link" href="schema/templates/project-context.html">Figure 35 &mdash; Project Context instance diagram</a><br />
+<a class="listing-link" href="schema/templates/measures-and-units.html">Figure 36 &mdash; Measures and units instance diagram</a><br />
+<a class="listing-link" href="schema/templates/project-document-information.html">Figure 37 &mdash; Project Document Information instance diagram</a><br />
+<a class="listing-link" href="schema/ifckernel/lexical/ifcreldefinesbytype.html">Figure 38 &mdash; Type definition relationships</a><br />
+<a class="listing-link" href="schema/ifcmaterialresource/lexical/ifcmateriallayerset.html">Figure 39 &mdash; Material layer set</a><br />
 </p>
 <p></p>
 <h1 class="std">Tables</h1>

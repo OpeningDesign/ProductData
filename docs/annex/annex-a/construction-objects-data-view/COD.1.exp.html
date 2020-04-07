@@ -59,6 +59,10 @@ SCHEMA IFC4;
 <span class="keyword">TYPE</span> IfcConstraintEnum = <span class="keyword">ENUMERATION OF</span> (<br/>
 &nbsp;HARD, <br/>&nbsp;SOFT, <br/>&nbsp;ADVISORY, <br/>&nbsp;USERDEFINED, <br/>&nbsp;NOTDEFINED);<br/><span class="keyword">END_TYPE;</span><br/>
 <br/>
+<a name="ifccurveinterpolationenum" />
+<span class="keyword">TYPE</span> IfcCurveInterpolationEnum = <span class="keyword">ENUMERATION OF</span> (<br/>
+&nbsp;LINEAR, <br/>&nbsp;LOG_LINEAR, <br/>&nbsp;LOG_LOG, <br/>&nbsp;NOTDEFINED);<br/><span class="keyword">END_TYPE;</span><br/>
+<br/>
 <a name="ifcdataoriginenum" />
 <span class="keyword">TYPE</span> IfcDataOriginEnum = <span class="keyword">ENUMERATION OF</span> (<br/>
 &nbsp;MEASURED, <br/>&nbsp;PREDICTED, <br/>&nbsp;SIMULATED, <br/>&nbsp;USERDEFINED, <br/>&nbsp;NOTDEFINED);<br/><span class="keyword">END_TYPE;</span><br/>
@@ -663,7 +667,7 @@ SCHEMA IFC4;
 &nbsp;<span class="keyword">ABSTRACT</span> <span class="keyword">SUPERTYPE OF</span>(<span class="keyword">ONEOF</span>(<a href="#ifccomplexproperty">IfcComplexProperty</a>, <a href="#ifcsimpleproperty">IfcSimpleProperty</a>))<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="#ifcpropertyabstraction">IfcPropertyAbstraction</a>)<b>;</b><br/>
 &nbsp;&nbsp;Name : <a href="#ifcidentifier">IfcIdentifier</a>;<br/>
-&nbsp;&nbsp;Description : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;Description : <span class="keyword">OPTIONAL</span> <a href="#ifctext">IfcText</a>;<br/>
 &nbsp;<span class="keyword">INVERSE</span><br/>
 &nbsp;&nbsp;PartOfPset : <span class="keyword">SET</span> [0:?] OF <a href="#ifcpropertyset">IfcPropertySet</a> <span class="keyword">FOR</span> HasProperties;<br/>
 &nbsp;&nbsp;PartOfComplex : <span class="keyword">SET</span> [0:?] OF <a href="#ifccomplexproperty">IfcComplexProperty</a> <span class="keyword">FOR</span> HasProperties;<br/>
@@ -679,10 +683,10 @@ SCHEMA IFC4;
 <a name="ifcpropertyboundedvalue" />
 <span class="keyword">ENTITY</span> IfcPropertyBoundedValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="#ifcsimpleproperty">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;UpperBoundValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
-&nbsp;&nbsp;LowerBoundValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;UpperBoundValue : <span class="keyword">OPTIONAL</span> <a href="#ifcvalue">IfcValue</a>;<br/>
+&nbsp;&nbsp;LowerBoundValue : <span class="keyword">OPTIONAL</span> <a href="#ifcvalue">IfcValue</a>;<br/>
 &nbsp;&nbsp;Unit : <span class="keyword">OPTIONAL</span> <a href="#ifcunit">IfcUnit</a>;<br/>
-&nbsp;&nbsp;SetPointValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;SetPointValue : <span class="keyword">OPTIONAL</span> <a href="#ifcvalue">IfcValue</a>;<br/>
 &nbsp;<span class="keyword">WHERE</span><br/>
 &nbsp;&nbsp;SameUnitUpperLower : NOT(EXISTS(UpperBoundValue)) OR NOT(EXISTS(LowerBoundValue)) OR<br/>
 (TYPEOF(UpperBoundValue) = TYPEOF(LowerBoundValue));<br/>&nbsp;&nbsp;SameUnitUpperSet : NOT(EXISTS(UpperBoundValue)) OR NOT(EXISTS(SetPointValue)) OR<br/>
@@ -701,7 +705,7 @@ SCHEMA IFC4;
 <a name="ifcpropertyenumeratedvalue" />
 <span class="keyword">ENTITY</span> IfcPropertyEnumeratedValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="#ifcsimpleproperty">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;EnumerationValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;EnumerationValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <a href="#ifcvalue">IfcValue</a>;<br/>
 &nbsp;&nbsp;EnumerationReference : <span class="keyword">OPTIONAL</span> <a href="#ifcpropertyenumeration">IfcPropertyEnumeration</a>;<br/>
 &nbsp;<span class="keyword">WHERE</span><br/>
 &nbsp;&nbsp;WR21 : NOT(EXISTS(EnumerationReference)) <br/>
@@ -725,7 +729,7 @@ OR  (SIZEOF(QUERY(temp &lt;* EnumerationValues |<br/>
 <a name="ifcpropertylistvalue" />
 <span class="keyword">ENTITY</span> IfcPropertyListValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="#ifcsimpleproperty">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;ListValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;ListValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <a href="#ifcvalue">IfcValue</a>;<br/>
 &nbsp;&nbsp;Unit : <span class="keyword">OPTIONAL</span> <a href="#ifcunit">IfcUnit</a>;<br/>
 &nbsp;<span class="keyword">WHERE</span><br/>
 &nbsp;&nbsp;WR31 : SIZEOF(QUERY(temp &lt;* SELF.ListValues | <br/>
@@ -761,19 +765,19 @@ OR  (SIZEOF(QUERY(temp &lt;* EnumerationValues |<br/>
 <a name="ifcpropertysinglevalue" />
 <span class="keyword">ENTITY</span> IfcPropertySingleValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="#ifcsimpleproperty">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;NominalValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;NominalValue : <span class="keyword">OPTIONAL</span> <a href="#ifcvalue">IfcValue</a>;<br/>
 &nbsp;&nbsp;Unit : <span class="keyword">OPTIONAL</span> <a href="#ifcunit">IfcUnit</a>;<br/>
 <span class="keyword">END_ENTITY;</span><br/>
 <br/>
 <a name="ifcpropertytablevalue" />
 <span class="keyword">ENTITY</span> IfcPropertyTableValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="#ifcsimpleproperty">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;DefiningValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <span class="keyword">UNIQUE</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
-&nbsp;&nbsp;DefinedValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
-&nbsp;&nbsp;Expression : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;DefiningValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <span class="keyword">UNIQUE</span> <a href="#ifcvalue">IfcValue</a>;<br/>
+&nbsp;&nbsp;DefinedValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <a href="#ifcvalue">IfcValue</a>;<br/>
+&nbsp;&nbsp;Expression : <span class="keyword">OPTIONAL</span> <a href="#ifctext">IfcText</a>;<br/>
 &nbsp;&nbsp;DefiningUnit : <span class="keyword">OPTIONAL</span> <a href="#ifcunit">IfcUnit</a>;<br/>
 &nbsp;&nbsp;DefinedUnit : <span class="keyword">OPTIONAL</span> <a href="#ifcunit">IfcUnit</a>;<br/>
-&nbsp;&nbsp;CurveInterpolation : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;CurveInterpolation : <span class="keyword">OPTIONAL</span> <a href="#ifccurveinterpolationenum">IfcCurveInterpolationEnum</a>;<br/>
 &nbsp;<span class="keyword">WHERE</span><br/>
 &nbsp;&nbsp;WR21 : (NOT(EXISTS(DefiningValues)) AND NOT(EXISTS(DefinedValues)))<br/>
 OR (SIZEOF(DefiningValues) = SIZEOF(DefinedValues));<br/>&nbsp;&nbsp;WR22 : NOT(EXISTS(DefiningValues)) OR <br/>

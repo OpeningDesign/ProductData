@@ -52,15 +52,20 @@
 <details open="open"><summary>Attribute definitions</summary><table class="attributes">
 <tr><th>#</th><th>Attribute</th><th>Type</th><th>Cardinality</th><th>Description</th>
 <th>C</th></tr>
-<tr><td>3</td><td>UpperBoundValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
-<tr><td>4</td><td>LowerBoundValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>3</td><td>UpperBoundValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Upper bound value for the interval defining the property value. If the value is not given, it indicates an open bound (all values to be greater than or equal to <i>LowerBoundValue</i>).
+</td><td>X</td></tr>
+<tr><td>4</td><td>LowerBoundValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Lower bound value for the interval defining the property value. If the value is not given, it indicates an open bound (all values to be lower than or equal to <i>UpperBoundValue</i>).
+</td><td>X</td></tr>
 <tr><td>5</td><td>Unit</td><td><a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a></td><td>? </td><td>
 Unit for the upper and lower bound values, if not given, the default value for the measure type is used as defined by the global unit assignment at <i>IfcProject.UnitInContext</i>. The applicable unit is then selected by the underlying TYPE of the <i>UpperBoundValue</i>, <i>LowerBoundValue</i>, and <i>SetPointValue</i>)
 </td><td>X</td></tr>
-<tr><td>6</td><td>SetPointValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>6</td><td>SetPointValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Set point value as typically used for operational value setting.
+
+
+</td><td>X</td></tr>
 </table>
 </details>
 <details open="open"><summary>Formal Propositions</summary><table class="propositions">
@@ -95,8 +100,9 @@ Unit for the upper and lower bound values, if not given, the default value for t
 <tr><td>1</td><td>Name</td><td><a href="../../ifcmeasureresource/lexical/ifcidentifier.html">IfcIdentifier</a></td><td></td><td>
 Name for this property. This label is the significant name string that defines the semantic meaning for the property.
 </td><td>X</td></tr>
-<tr><td>2</td><td>Description</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>2</td><td>Description</td><td><a href="../../ifcmeasureresource/lexical/ifctext.html">IfcText</a></td><td>? </td><td>
+Informative text to explain the property.
+</td><td>X</td></tr>
 <tr><td></td><td><i>PartOfPset</i></td><td><a href="../../ifckernel/lexical/ifcpropertyset.html">IfcPropertySet</a><br/>@HasProperties</td><td>S[0:?]</td><td>Reference to the <a href="../../ifckernel/lexical/ifcpropertyset.html">IfcPropertySet</a> by which the <span class="self-ref">IfcProperty</span> is referenced.
 
 
@@ -107,15 +113,20 @@ Name for this property. This label is the significant name string that defines t
 </td><td></td></tr>
 <tr><td colspan="6"><i><a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a></i></td></tr>
 <tr><td colspan="6"><a href="../../ifcpropertyresource/lexical/ifcpropertyboundedvalue.html">IfcPropertyBoundedValue</a></td></tr>
-<tr><td>3</td><td>UpperBoundValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
-<tr><td>4</td><td>LowerBoundValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>3</td><td>UpperBoundValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Upper bound value for the interval defining the property value. If the value is not given, it indicates an open bound (all values to be greater than or equal to <i>LowerBoundValue</i>).
+</td><td>X</td></tr>
+<tr><td>4</td><td>LowerBoundValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Lower bound value for the interval defining the property value. If the value is not given, it indicates an open bound (all values to be lower than or equal to <i>UpperBoundValue</i>).
+</td><td>X</td></tr>
 <tr><td>5</td><td>Unit</td><td><a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a></td><td>? </td><td>
 Unit for the upper and lower bound values, if not given, the default value for the measure type is used as defined by the global unit assignment at <i>IfcProject.UnitInContext</i>. The applicable unit is then selected by the underlying TYPE of the <i>UpperBoundValue</i>, <i>LowerBoundValue</i>, and <i>SetPointValue</i>)
 </td><td>X</td></tr>
-<tr><td>6</td><td>SetPointValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>6</td><td>SetPointValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Set point value as typically used for operational value setting.
+
+
+</td><td>X</td></tr>
 </table>
 </details>
 </section>
@@ -126,9 +137,24 @@ Unit for the upper and lower bound values, if not given, the default value for t
 &nbsp;&nbsp;&lt;xs:complexContent&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;xs:extension base=&quot;ifc:<a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a>&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:sequence&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;UpperBoundValue&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:group ref=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:element&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;LowerBoundValue&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:group ref=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:element&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;Unit&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexType&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:group ref=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a>&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:element&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;SetPointValue&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:group ref=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>&quot;/&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:complexType&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:element&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:sequence&gt;<br/>
@@ -139,10 +165,10 @@ Unit for the upper and lower bound values, if not given, the default value for t
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcPropertyBoundedValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;UpperBoundValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
-&nbsp;&nbsp;LowerBoundValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;UpperBoundValue : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>;<br/>
+&nbsp;&nbsp;LowerBoundValue : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>;<br/>
 &nbsp;&nbsp;Unit : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a>;<br/>
-&nbsp;&nbsp;SetPointValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;SetPointValue : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>;<br/>
 &nbsp;<span class="keyword">WHERE</span><br/>
 &nbsp;&nbsp;SameUnitUpperLower : NOT(EXISTS(UpperBoundValue)) OR NOT(EXISTS(LowerBoundValue)) OR<br/>
 (TYPEOF(UpperBoundValue) = TYPEOF(LowerBoundValue));<br/>&nbsp;&nbsp;SameUnitUpperSet : NOT(EXISTS(UpperBoundValue)) OR NOT(EXISTS(SetPointValue)) OR<br/>

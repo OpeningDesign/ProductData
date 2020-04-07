@@ -31,32 +31,28 @@
 <p>The data structures contain structures, that are used to declare the content. These declarations are the IfcProjectLibrary and the IfcProject.</p>
 <p>For the declaration of templates and type objects the IfcProjectLibrary shall be used. For the declaration of sheets, the IfcProject shall be used.</p>
 <p>The cardinality  of the classes shall be as following:</p>
-<style type="text/css">
-.tg  {border-collapse:collapse;border-spacing:0;}
-.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tg .tg-w2dt{font-size:12px;text-align:center;vertical-align:middle}
-</style>{ .tg}
-<p class="tg">
-</p>
-<table class="tg">
-  <tr>
-    <th class="tg-w2dt"><br>&nbsp;&nbsp;Type of exchange<br>&nbsp;&nbsp;</th>
-    <th class="tg-w2dt"><br>&nbsp;&nbsp;IfcProjectLibrary<br>&nbsp;&nbsp;</th>
-    <th class="tg-w2dt"><br>&nbsp;&nbsp;IfcProject<br>&nbsp;&nbsp;</th>
-  </tr>
-  <tr>
-    <td class="tg-w2dt"><br>&nbsp;&nbsp;Data templates<br>&nbsp;&nbsp;</td>
-    <td class="tg-w2dt"><br>&nbsp;&nbsp;[1:?]<br>&nbsp;&nbsp;</td>
-    <td class="tg-w2dt"><br>&nbsp;&nbsp;-<br>&nbsp;&nbsp;</td>
-  </tr>
-  <tr>
-    <td class="tg-w2dt"><br>&nbsp;&nbsp;Data sheets<br>&nbsp;&nbsp;</td>
-    <td class="tg-w2dt"><br>&nbsp;&nbsp;[1:?]<br>&nbsp;&nbsp;</td>
-    <td class="tg-w2dt"><br>&nbsp;&nbsp;[1:1]<br>&nbsp;&nbsp;</td>
-  </tr>
-<caption align"bottom"="">Table 2: Cardinality of declarations</caption>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Type of exchange</th>
+<th>IfcProjectLibrary</th>
+<th>IfcProject</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data templates</td>
+<td>[1:?]</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Data sheets</td>
+<td>[1:?]</td>
+<td>[1:1]</td>
+</tr>
+</tbody>
 </table>
+<caption align"bottom"="">Table 2: Cardinality of declarations</caption>
 <p>This ensures that the data sheets stay interpretable over a long time, even if the content of the data templates have changed during this time and the external source is not available anymore (Template embedding).</p>
 <details><summary>mvdXML Specification</summary><div class="xsd"><code class="xsd">
 &lt;?xml version=&quot;1.0&quot;?&gt;<br/>

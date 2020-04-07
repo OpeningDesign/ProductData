@@ -684,6 +684,7 @@ of the material. The information contained in this document is subject to change
 		<xs:complexContent>
 			<xs:extension base="ifc:IfcPropertyAbstraction">
 				<xs:attribute name="Name" type="ifc:IfcIdentifier" use="optional"/>
+				<xs:attribute name="Description" type="ifc:IfcText" use="optional"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -698,9 +699,24 @@ of the material. The information contained in this document is subject to change
 		<xs:complexContent>
 			<xs:extension base="ifc:IfcSimpleProperty">
 				<xs:sequence>
+					<xs:element name="UpperBoundValue" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="LowerBoundValue" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue"/>
+						</xs:complexType>
+					</xs:element>
 					<xs:element name="Unit" nillable="true" minOccurs="0">
 						<xs:complexType>
 							<xs:group ref="ifc:IfcUnit"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="SetPointValue" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue"/>
 						</xs:complexType>
 					</xs:element>
 				</xs:sequence>
@@ -718,6 +734,14 @@ of the material. The information contained in this document is subject to change
 		<xs:complexContent>
 			<xs:extension base="ifc:IfcSimpleProperty">
 				<xs:sequence>
+					<xs:element name="EnumerationValues" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue" maxOccurs="unbounded"/>
+							<xs:attribute ref="ifc:itemType" fixed="ifc:IfcValue"/>
+							<xs:attribute ref="ifc:cType" fixed="list"/>
+							<xs:attribute ref="ifc:arraySize" use="optional"/>
+						</xs:complexType>
+					</xs:element>
 					<xs:element name="EnumerationReference" type="ifc:IfcPropertyEnumeration" nillable="true" minOccurs="0"/>
 				</xs:sequence>
 			</xs:extension>
@@ -751,6 +775,14 @@ of the material. The information contained in this document is subject to change
 		<xs:complexContent>
 			<xs:extension base="ifc:IfcSimpleProperty">
 				<xs:sequence>
+					<xs:element name="ListValues" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue" maxOccurs="unbounded"/>
+							<xs:attribute ref="ifc:itemType" fixed="ifc:IfcValue"/>
+							<xs:attribute ref="ifc:cType" fixed="list"/>
+							<xs:attribute ref="ifc:arraySize" use="optional"/>
+						</xs:complexType>
+					</xs:element>
 					<xs:element name="Unit" nillable="true" minOccurs="0">
 						<xs:complexType>
 							<xs:group ref="ifc:IfcUnit"/>
@@ -809,6 +841,11 @@ of the material. The information contained in this document is subject to change
 		<xs:complexContent>
 			<xs:extension base="ifc:IfcSimpleProperty">
 				<xs:sequence>
+					<xs:element name="NominalValue" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue"/>
+						</xs:complexType>
+					</xs:element>
 					<xs:element name="Unit" nillable="true" minOccurs="0">
 						<xs:complexType>
 							<xs:group ref="ifc:IfcUnit"/>
@@ -823,6 +860,22 @@ of the material. The information contained in this document is subject to change
 		<xs:complexContent>
 			<xs:extension base="ifc:IfcSimpleProperty">
 				<xs:sequence>
+					<xs:element name="DefiningValues" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue" maxOccurs="unbounded"/>
+							<xs:attribute ref="ifc:itemType" fixed="ifc:IfcValue"/>
+							<xs:attribute ref="ifc:cType" fixed="list-unique"/>
+							<xs:attribute ref="ifc:arraySize" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="DefinedValues" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:group ref="ifc:IfcValue" maxOccurs="unbounded"/>
+							<xs:attribute ref="ifc:itemType" fixed="ifc:IfcValue"/>
+							<xs:attribute ref="ifc:cType" fixed="list"/>
+							<xs:attribute ref="ifc:arraySize" use="optional"/>
+						</xs:complexType>
+					</xs:element>
 					<xs:element name="DefiningUnit" nillable="true" minOccurs="0">
 						<xs:complexType>
 							<xs:group ref="ifc:IfcUnit"/>
@@ -834,6 +887,8 @@ of the material. The information contained in this document is subject to change
 						</xs:complexType>
 					</xs:element>
 				</xs:sequence>
+				<xs:attribute name="Expression" type="ifc:IfcText" use="optional"/>
+				<xs:attribute name="CurveInterpolation" type="ifc:IfcCurveInterpolationEnum" use="optional"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -1246,6 +1301,14 @@ of the material. The information contained in this document is subject to change
 			<xs:enumeration value="soft"/>
 			<xs:enumeration value="advisory"/>
 			<xs:enumeration value="userdefined"/>
+			<xs:enumeration value="notdefined"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="IfcCurveInterpolationEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="linear"/>
+			<xs:enumeration value="log_linear"/>
+			<xs:enumeration value="log_log"/>
 			<xs:enumeration value="notdefined"/>
 		</xs:restriction>
 	</xs:simpleType>

@@ -28,8 +28,8 @@
 <p>The EN ISO 23387 defines a standardized way to express construction data with the concept of data templates. Such data templates can be used to structure the information, based on external standards. Data templates include well defined properties according to EN ISO 23386.
 The definitions for propertiesc and data template can be stored in central dictionaries according to data structure, defined in ISO 12006-3, from where they can be retrieved and used in projects.</p>
 <figure>
-  <img src="../../../../figures/figure7_datatemplates.png" width="650" alt="Use data templates and data to create combinded construction objects data">
-  <figcaption>Figure 7: Use data templates and data to create combinded construction objects data
+<img src="../../figures/illustration2_datatemplates.png" width="650" alt="Use data templates and data to create combinded construction objects data">
+  <figcaption>Illustration 2: Use data templates and data to create combinded construction objects data
   </figcaption>
 </figure>
 <p>To use the properties and data templates from Dictionaries in the construction objects data view, the properties and data templates shall be mapped from the structure of the prEN ISO 23387 (Figure 3) to the structure of this standard.
@@ -44,276 +44,263 @@ E.g. “IfcProjectLibrary.Name” references the property “Name”, that is pa
 E.g “IfcProjectLibrary&gt;IfcRelAssociatesDocument” references the class IfcRelAssociatesDocument, that has a reference to IfcProjectLibrary. The paths are written in <i>italic</i>.</p>
 </li>
 </ol>
-<p class="gridtable">
-prEN ISO 23387 (EN ISO 12006-3) | WI 442018 (EN ISO 16739-1:2018)
-Data template xtdBag | Project Library IfcProjectLibrary
-------------- | -------------
-Template name | IfcProjectLibrary.Name</p>
-<p>Template Guid | IfcProjectLibrary.GlobalId</p>
-<p>Template technical specification<br>
-xtdBag<br>
-<i>&gt;xtdRelDocuments</i></p>
-<blockquote>
-<p>xtdExternalDocument (Reference document) | IfcProjectLibrary.HasAssociations<br>
-<i>&gt;IfcRelAssociatesDocument.RelatedObjects<br>
-RelatingDocument</i><br>
-IfcDocumentInformation<br>
-Template classification<br>
-xtdBag<br>
-<i>&gt;xtdRelClassifies</i><br>
-xtdClass (Classification level)<br>
-| IfcProjectLibrary.HasAssociations<br>
-<i>&gt;IfcRelAssociatesClassification.RelatingClassification</i><br>
-IfcClassificationReference<br>
-Construction objects assignment
-xtdBag
-xtdRealAssignsCollections
-xtdSubject (Construction object)	IfcProjectLibrary.Declares
-IfcRelDeclares.RelatedDefinitions
-IfcTypeObject
-Collection of Group of Properties
-xtdBag
-xtdRelCollects
-xtdNest (Group of properties)	IfcProjectLibrary.Declares
-IfcRelDeclares.RelatedDefinitions
-IfcPropertySetTemplate
-Composition of data templates
-xtdBag
-xtdRelComposes
-xtdBag (Data template)	IfcProjectLibrary.HasAssignments
-IfcRelAssigns. RelatedObjects
-IfcProjectLibrary</p>
-</blockquote>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Data template
-xtdBag	Project Library
-IfcProjectLibrary
-Template name	IfcProjectLibrary.Name
-Template Guid	IfcProjectLibrary.GlobalId
-Template technical specification
-xtdBag</p>
-<blockquote>
-<p>xtdRelDocuments
-xtdExternalDocument (Reference document)	IfcProjectLibrary.HasAssociations
-IfcRelAssociatesDocument.RelatedObjects
-RelatingDocument
-IfcDocumentInformation
-Template classification
-xtdBag
-xtdRelClassifies
-xtdClass (Classification level)	IfcProjectLibrary.HasAssociations
-IfcRelAssociatesClassification.RelatingClassification
-IfcClassificationReference
-Construction objects assignment
-xtdBag
-xtdRealAssignsCollections
-xtdSubject (Construction object)	IfcProjectLibrary.Declares
-IfcRelDeclares.RelatedDefinitions
-IfcTypeObject
-Collection of Group of Properties
-xtdBag
-xtdRelCollects
-xtdNest (Group of properties)	IfcProjectLibrary.Declares
-IfcRelDeclares.RelatedDefinitions
-IfcPropertySetTemplate
-Composition of data templates
-xtdBag
-xtdRelComposes
-xtdBag (Data template)	IfcProjectLibrary.HasAssignments
-IfcRelAssigns. RelatedObjects
-IfcProjectLibrary</p>
-</blockquote>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Reference document
-xtdExternalDocument	Document Information
-IfcDocumentInformation
-Details according to EN ISO 12006-3	Details according to EN ISO 16739-1:2018</p>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Classification level
-xtdClass	Classification Reference
-IfcClassificationReference
-Details according to EN ISO 12006-3	Details according to EN ISO 16739-1:2018</p>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Construction object
-xtdSubject	Construction object type
-IfcTypeObject
-Construction object technical specification
-xtdSubject</p>
-<blockquote>
-<p>xtdRelDocuments
-xtdExternalDocument (Reference document)	IfcTypeObject.HasAssociations
-IfcRelAssociatesDocument.RelatedObjects
-RelatingDocument
-IfcDocumentInformation
-Construction object classification
-xtdSubject
-xtdRelClassifies
-xtdClass (Classification level)	IfcTypeObject.HasAssociations
-IfcRelAssociatesClassification. RelatingClassification
-IfcClassificationReference
-xtdSubject
-xtdRelComposes
-xtdSubject (Construction object)	IfcTypeObject.IsDecomposedBy
-IfcRelAggregates.RelatedObjects
-IfcTypeObject</p>
-</blockquote>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Group of properties
-xtdNest	Property Set Template
-IfcPropertySetTemplate
-Name	IfcPropertySetTemplate.Name
-Definition	IfcPropertySetTemplate.Description
-GUID	IfcPropertySetTemplate.GlobalId
-Collection of Generic Properties
-xtdNest</p>
-<blockquote>
-<p>xtdRelCollects
-xtdProperty (Generic property)	IfcPropertySetTemplate.HasPropertyTemplates
-IfcComplexPropertyTemplate
-Collection of Specific Properties
-xtdNest
-xtdRelCollects
-xtdProperty (Specific property)	IfcPropertySetTemplate.HasPropertyTemplates
-IfcSimplePropertyTemplate</p>
-</blockquote>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Generic Property
-xtdProperty
-“Essential Characteristic”	Complex data template
-IfcComplexPropertyTemplate
-Name	IfcComplexPropertyTemplate.Name
-Definition	IfcComplexPropertyTemplate.Description
-GUID	IfcComplexPropertyTemplate.GlobalId
-Specialize property
-xtdProperty</p>
-<blockquote>
-<p>xtdRelSpecializesProperty
-xtdProperty (Specific property)	IfcComplexPropertyTemplate.HasPropertyTemplates
-IfcSimplePropertyTemplate
-Measure assignment
-xtdProperty
-xtdRelAssignsMeasures
-xtdMeasureWithUnit (Quantity)	IfcComplexPropertyTemplate.PrimaryMeasureType
-IfcValue</p>
-<blockquote>
-<p>IfcMeasureValue
-IfcSimpleValue
-IfcDerivedMeasureValue
-IfcMeasureResource
-Unit assignment
-xtdProperty
-xtdRelAssignsMeasures
-xtdMeasureWithUnit (Quantity)
-xtdRelAssignsUnits
-xdtUnit (Unit)	IfcSimplePropertyTemplate.PrimaryUnit
-IfcUnit
-IfcDerivedUnit
-IfcNamedUnit
-IfcMonetaryUnit
-Value assignment
-xtdProperty
-xtdRelAssignsPropertyWithValue
-xdtValue (Value)	IfcSimplePropertyTemplate
-[@TemplateType=&quot;p_enumeratedvalue&quot;]
-.Enumerators
-IfcPropertyEnumeration
-EnumerationValues</p>
-</blockquote>
-</blockquote>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Specific Property
-xtdProperty	Simple data template
-IfcSimplePropertyTemplate
-Name	IfcSimplePropertyTemplate.Name
-Definition	IfcSimplePropertyTemplate.Description
-GUID	IfcSimplePropertyTemplate.GlobalId
-Measure assignment
-xtdProperty</p>
-<blockquote>
-<p>xtdRelAssignsMeasures
-xtdMeasureWithUnit (Quantity)	IfcSimplePropertyTemplate.PrimaryMeasureType
-IfcValue</p>
-<blockquote>
-<p>IfcMeasureValue
-IfcSimpleValue
-IfcDerivedMeasureValue
-IfcMeasureResource
-Unit assignment
-xtdProperty
-xtdRelAssignsMeasures
-xtdMeasureWithUnit (Quantity)
-xtdRelAssignsUnits
-xdtUnit (Unit)	IfcSimplePropertyTemplate.PrimaryUnit
-IfcUnit
-IfcDerivedUnit
-IfcNamedUnit
-IfcMonetaryUnit
-Value assignment
-xtdProperty
-xtdRelAssignsPropertyWithValue
-xdtValue (Value)	IfcSimplePropertyTemplate
-[@TemplateType=&quot;p_enumeratedvalue&quot;]
-.Enumerators
-IfcPropertyEnumeration
-EnumerationValues</p>
-</blockquote>
-</blockquote>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Quantity
-(xtdMeasureWithUnit)	Measure
-(IfcMeasureResource)
-Details according to EN ISO 12006-3	Measures according to appendix A2
-“Table of Measures and Units.xlsx</p>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Unit
-(xtdUnit)	Measure
-(IfcUnit)
-Units according to appendix A2 “Table of Measures and Units.xlsx
-Details according to EN ISO 12006-3	Units according to appendix A2
-“Table of Measures and Units.xlsx</p>
-<p>prEN ISO 23387
-(EN ISO 12006-3)	WI 442018
-(EN ISO 16739-1:2018)
-Value
-(xtdValue)	Enumeration values
-(IfcSimplePropertyTemplate
-TemplateType=&quot;p_enumeratedvalue&quot;)
-Full name	
-Short name	
-Definition	
-GUID</p>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Data template<br>xtdBag</th>
+<th>Project Library<br>IfcProjectLibrary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Template name</td>
+<td>IfcProjectLibrary.Name</td>
+</tr>
+<tr>
+<td>Template Guid</td>
+<td>IfcProjectLibrary.GlobalId</td>
+</tr>
+<tr>
+<td>Template technical specification<br>xtdBag<br>&gt;xtdRelDocuments<br>&gt;xtdExternalDocument (Reference document)</td>
+<td>IfcProjectLibrary.HasAssociations<br>&gt;IfcRelAssociatesDocument.RelatedObjects<br>&gt;RelatingDocument<br>&gt;IfcDocumentInformation</td>
+</tr>
+<tr>
+<td>Template classification<br>xtdBag<br>&gt;xtdRelClassifies<br>xtdClass (Classification level)</td>
+<td>IfcProjectLibrary.HasAssociations<br>&gt;IfcRelAssociatesClassification.RelatingClassification<br>&gt;IfcClassificationReference</td>
+</tr>
+<tr>
+<td>Construction objects assignment<br>xtdBag<br>&gt;xtdRealAssignsCollections<br>&gt;xtdSubject (Construction object)</td>
+<td>IfcProjectLibrary.Declares<br>&gt;IfcRelDeclares.RelatedDefinitions<br>&gt;IfcTypeObject</td>
+</tr>
+<tr>
+<td>Collection of Group of Properties<br>xtdBag<br>&gt;xtdRelCollects<br>&gt;xtdNest (Group of properties)</td>
+<td>IfcProjectLibrary.Declares<br>&gt;IfcRelDeclares.RelatedDefinitions<br>&gt;IfcPropertySetTemplate</td>
+</tr>
+<tr>
+<td>Composition of data templates<br>xtdBag<br>&gt;xtdRelComposes<br>&gt;xtdBag (Data template)</td>
+<td>IfcProjectLibrary.HasAssignments<br>&gt;IfcRelAssigns. RelatedObjects<br>&gt;IfcProjectLibrary</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Reference document<br>xtdExternalDocument</th>
+<th>Document Information<br>IfcDocumentInformation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Details according to EN ISO 12006-3</td>
+<td>Details according to EN ISO 16739-1:2018</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Classification level<br>xtdClass</th>
+<th>Classification Reference<br>IfcClassificationReference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Details according to EN ISO 12006-3</td>
+<td>Details according to EN ISO 16739-1:2018</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Construction object<br>xtdSubject</th>
+<th>Construction object type<br>IfcTypeObject</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Construction object technical specification<br>xtdSubject<br>&gt;xtdRelDocuments<br>&gt;xtdExternalDocument (Reference document)</td>
+<td>IfcTypeObject.HasAssociations<br>&gt;IfcRelAssociatesDocument.RelatedObjects<br>&gt;RelatingDocument<br>&gt;IfcDocumentInformation</td>
+<td></td>
+</tr>
+<tr>
+<td>Construction object classification<br>xtdSubject<br>&gt;xtdRelClassifies<br>&gt;xtdClass (Classification level)</td>
+<td>IfcTypeObject.HasAssociations<br>&gt;IfcRelAssociatesClassification. RelatingClassification<br>&gt;IfcClassificationReference&gt;br&gt;xtdSubject<br>&gt;xtdRelComposes<br>xtdSubject (Construction object)</td>
+<td>IfcTypeObject.IsDecomposedBy<br>&gt;IfcRelAggregates.RelatedObjects<br>&gt;IfcTypeObject</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Group of properties<br>xtdNest</th>
+<th>Property Set Template<br>IfcPropertySetTemplate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>IfcPropertySetTemplate.Name</td>
+</tr>
+<tr>
+<td>Definition</td>
+<td>IfcPropertySetTemplate.Description</td>
+</tr>
+<tr>
+<td>GUID</td>
+<td>IfcPropertySetTemplate.GlobalId</td>
+</tr>
+<tr>
+<td>Collection of Generic Properties<br>xtdNest<br>&gt;xtdRelCollects<br>&gt;xtdProperty (Generic property)</td>
+<td>IfcPropertySetTemplate.HasPropertyTemplates<br>&gt; IfcComplexPropertyTemplate</td>
+</tr>
+<tr>
+<td>Collection of Specific Properties<br>xtdNest<br>&gt;xtdRelCollects<br>&gt;xtdProperty (Specific property)</td>
+<td>IfcPropertySetTemplate.HasPropertyTemplates<br>&gt; IfcSimplePropertyTemplate</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Generic Property<br>xtdProperty<br>“Essential Characteristic”</th>
+<th>Complex data template<br>IfcComplexPropertyTemplate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>IfcComplexPropertyTemplate.Name</td>
+</tr>
+<tr>
+<td>Definition</td>
+<td>IfcComplexPropertyTemplate.Description</td>
+</tr>
+<tr>
+<td>GUID</td>
+<td>IfcComplexPropertyTemplate.GlobalId</td>
+</tr>
+<tr>
+<td>Specialize property<br>xtdProperty<br>&gt;xtdRelSpecializesProperty<br>&gt;xtdProperty (Specific property)</td>
+<td>IfcComplexPropertyTemplate.HasPropertyTemplates<br>&gt;IfcSimplePropertyTemplate</td>
+</tr>
+<tr>
+<td>Measure assignment<br>xtdProperty<br>&gt;xtdRelAssignsMeasures<br>&gt;xtdMeasureWithUnit (Quantity)</td>
+<td>IfcComplexPropertyTemplate.PrimaryMeasureType<br>&gt;IfcValue<br>&gt;&gt;IfcMeasureValue<br>&gt;&gt;IfcSimpleValue<br>&gt;&gt;IfcDerivedMeasureValue<br>IfcMeasureResource</td>
+</tr>
+<tr>
+<td>Unit assignment<br>xtdProperty<br>&gt;xtdRelAssignsMeasures<br>&gt;xtdMeasureWithUnit (Quantity)<br>&gt;xtdRelAssignsUnits<br>&gt;xdtUnit (Unit)</td>
+<td>IfcSimplePropertyTemplate.PrimaryUnit<br>&gt;IfcUnit<br>&gt;&gt;IfcDerivedUnit<br>&gt;&gt;IfcNamedUnit<br>&gt;&gt;IfcMonetaryUnit</td>
+</tr>
+<tr>
+<td>Value assignment<br>xtdProperty<br>&gt;xtdRelAssignsPropertyWithValue<br>&gt;xdtValue (Value)</td>
+<td>IfcSimplePropertyTemplate<br>[@TemplateType=&quot;p_enumeratedvalue&quot;]<br>.Enumerators<br>&gt;IfcPropertyEnumeration<br>&gt;EnumerationValues</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Specific Property<br>xtdProperty</th>
+<th>Simple data template<br>IfcSimplePropertyTemplate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>IfcSimplePropertyTemplate.Name</td>
+</tr>
+<tr>
+<td>Definition</td>
+<td>IfcSimplePropertyTemplate.Description</td>
+</tr>
+<tr>
+<td>GUID</td>
+<td>IfcSimplePropertyTemplate.GlobalId</td>
+</tr>
+<tr>
+<td>Measure assignment<br>xtdProperty<br>&gt;xtdRelAssignsMeasures<br>&gt;xtdMeasureWithUnit (Quantity)</td>
+<td>IfcSimplePropertyTemplate.PrimaryMeasureType<br>&gt;IfcValue<br>&gt;&gt;IfcMeasureValue<br>&gt;&gt;IfcSimpleValue<br>&gt;&gt;IfcDerivedMeasureValue<br>IfcMeasureResource</td>
+</tr>
+<tr>
+<td>Unit assignment<br>xtdProperty<br>&gt;xtdRelAssignsMeasures<br>&gt;xtdMeasureWithUnit (Quantity)<br>&gt;xtdRelAssignsUnits<br>&gt;xdtUnit (Unit)</td>
+<td>IfcSimplePropertyTemplate.PrimaryUnit<br>&gt;IfcUnit<br>&gt;&gt;IfcDerivedUnit<br>&gt;&gt;IfcNamedUnit<br>&gt;&gt;IfcMonetaryUnit</td>
+</tr>
+<tr>
+<td>Value assignment<br>xtdProperty<br>&gt;xtdRelAssignsPropertyWithValue<br>&gt;xdtValue (Value)</td>
+<td>IfcSimplePropertyTemplate<br>[@TemplateType=&quot;p_enumeratedvalue&quot;]<br>.Enumerators<br>&gt;IfcPropertyEnumeration<br>&gt;EnumerationValues</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Quantity<br>(xtdMeasureWithUnit)</th>
+<th>Measure<br>(IfcMeasureResource)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Details according to EN ISO 12006-3</td>
+<td>Measures according to appendix A2<br>“Table of Measures and Units.xlsx</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Unit<br>(xtdUnit)</th>
+<th>Measure<br>(IfcUnit)<br>Units according to appendix A2 “Table of Measures and Units.xlsx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Details according to EN ISO 12006-3</td>
+<td>Measures according to appendix A2<br>“Table of Measures and Units.xlsx</td>
+</tr>
+</tbody>
+</table>
+<table class="gridtable">
+<thead>
+<tr>
+<th>Value<br>(xtdValue)</th>
+<th>Enumeration values<br>(IfcSimplePropertyTemplate <br>TemplateType=&quot;p_enumeratedvalue&quot;)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full name</td>
+<td></td>
+</tr>
+<tr>
+<td>Short name</td>
+<td></td>
+</tr>
+<tr>
+<td>Definition</td>
+<td></td>
+</tr>
+<tr>
+<td>GUID</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <hr/>
 <h4>Construction Objects Data View</h4>
 <table class="exchange">
 <tr><th>Entity</th><th style="text-align: center"><a href="../views/construction-objects-data-view/catalogue-of-configured-construction-objects-exchange.html"><img width="16" src="../../img/mvd-catalogue-of-configured-construction-objects-exchange.png" title="Catalogue of configured construction objects exchange"/></a><br>Catalogue of configured construction objects exchange</th>
 <th style="text-align: center"><a href="../views/construction-objects-data-view/data-sheet-exchange.html"><img width="16" src="../../img/mvd-data-sheet-exchange.png" title="Data sheet exchange"/></a><br>Data sheet exchange</th>
 <th style="text-align: center"><a href="../views/construction-objects-data-view/data-template-exchange.html"><img width="16" src="../../img/mvd-data-template-exchange.png" title="Data template exchange"/></a><br>Data template exchange</th>
-</tr><tr><td><a href="../ifckernel/lexical/ifcprojectlibrary.html">IfcProjectLibrary</a></td><td style="text-align:center">required on import<br/>required on export</td>
+</tr><tr><td><a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a></td><td style="text-align:center">required on import<br/>required on export</td>
 <td style="text-align:center">required on import<br/>required on export</td>
 <td style="text-align:center">required on import<br/>required on export</td>
 </tr>
 </table>
 <details><summary>mvdXML Specification</summary><div class="xsd"><code class="xsd">
 &lt;?xml version=&quot;1.0&quot;?&gt;<br/>
-&lt;ConceptTemplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; uuid=&quot;7556808d-2437-46b6-85a3-7090cbd84381&quot; name=&quot;Dictionaries&quot; status=&quot;draft&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifckernel/lexical/ifcprojectlibrary.html">IfcProjectLibrary</a>&quot; /&gt;<br/>
+&lt;ConceptTemplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; uuid=&quot;7556808d-2437-46b6-85a3-7090cbd84381&quot; name=&quot;Dictionaries&quot; status=&quot;draft&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifckernel/lexical/ifcroot.html">IfcRoot</a>&quot; /&gt;<br/>
 </code></div>
 </details>
 </p>

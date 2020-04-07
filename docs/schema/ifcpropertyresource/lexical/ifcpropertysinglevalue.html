@@ -49,8 +49,13 @@
 <details open="open"><summary>Attribute definitions</summary><table class="attributes">
 <tr><th>#</th><th>Attribute</th><th>Type</th><th>Cardinality</th><th>Description</th>
 <th>C</th></tr>
-<tr><td>3</td><td>NominalValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>3</td><td>NominalValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Value and measure type of this property.
+<blockquote class="note">
+NOTE  By virtue of the defined data type, that is selected from the SELECT <a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>, the appropriate unit can be found within the <a href="../../ifcmeasureresource/lexical/ifcunitassignment.html">IfcUnitAssignment</a>, defined for the project if no value for the unit attribute is given.
+</blockquote>
+
+</td><td>X</td></tr>
 <tr><td>4</td><td>Unit</td><td><a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a></td><td>? </td><td>
 Unit for the nominal value, if not given, the default value for the measure type (given by the TYPE of nominal value) is used as defined by the global unit assignment at IfcProject.
 </td><td>X</td></tr>
@@ -77,8 +82,9 @@ Unit for the nominal value, if not given, the default value for the measure type
 <tr><td>1</td><td>Name</td><td><a href="../../ifcmeasureresource/lexical/ifcidentifier.html">IfcIdentifier</a></td><td></td><td>
 Name for this property. This label is the significant name string that defines the semantic meaning for the property.
 </td><td>X</td></tr>
-<tr><td>2</td><td>Description</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>2</td><td>Description</td><td><a href="../../ifcmeasureresource/lexical/ifctext.html">IfcText</a></td><td>? </td><td>
+Informative text to explain the property.
+</td><td>X</td></tr>
 <tr><td></td><td><i>PartOfPset</i></td><td><a href="../../ifckernel/lexical/ifcpropertyset.html">IfcPropertySet</a><br/>@HasProperties</td><td>S[0:?]</td><td>Reference to the <a href="../../ifckernel/lexical/ifcpropertyset.html">IfcPropertySet</a> by which the <span class="self-ref">IfcProperty</span> is referenced.
 
 
@@ -89,8 +95,13 @@ Name for this property. This label is the significant name string that defines t
 </td><td></td></tr>
 <tr><td colspan="6"><i><a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a></i></td></tr>
 <tr><td colspan="6"><a href="../../ifcpropertyresource/lexical/ifcpropertysinglevalue.html">IfcPropertySingleValue</a></td></tr>
-<tr><td>3</td><td>NominalValue</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>3</td><td>NominalValue</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? </td><td>
+Value and measure type of this property.
+<blockquote class="note">
+NOTE  By virtue of the defined data type, that is selected from the SELECT <a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>, the appropriate unit can be found within the <a href="../../ifcmeasureresource/lexical/ifcunitassignment.html">IfcUnitAssignment</a>, defined for the project if no value for the unit attribute is given.
+</blockquote>
+
+</td><td>X</td></tr>
 <tr><td>4</td><td>Unit</td><td><a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a></td><td>? </td><td>
 Unit for the nominal value, if not given, the default value for the measure type (given by the TYPE of nominal value) is used as defined by the global unit assignment at IfcProject.
 </td><td>X</td></tr>
@@ -104,6 +115,11 @@ Unit for the nominal value, if not given, the default value for the measure type
 &nbsp;&nbsp;&lt;xs:complexContent&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;xs:extension base=&quot;ifc:<a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a>&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:sequence&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;NominalValue&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:group ref=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:element&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;Unit&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexType&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:group ref=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a>&quot;/&gt;<br/>
@@ -117,7 +133,7 @@ Unit for the nominal value, if not given, the default value for the measure type
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcPropertySingleValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;NominalValue : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;NominalValue : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>;<br/>
 &nbsp;&nbsp;Unit : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifcunit.html">IfcUnit</a>;<br/>
 <span class="keyword">END_ENTITY;</span><br/>
 <p class="std"><a href="../../../annex/annex-d/ifcpropertyresource/diagram_0000.html" ><img src="../../../img/diagram.png" style="border: 0px" title="Link to EXPRESS-G diagram" alt="Link to EXPRESS-G diagram">&nbsp;EXPRESS-G diagram</a></p>

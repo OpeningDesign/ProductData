@@ -963,6 +963,15 @@
 	}
 	
 
+	public enum IfcCurveInterpolationEnum
+	{
+		LINEAR,
+		LOG_LINEAR,
+		LOG_LOG,
+		NOTDEFINED,
+	}
+	
+
 	public class IfcComplexProperty extends IfcProperty
 	{
 		private string UsageName;

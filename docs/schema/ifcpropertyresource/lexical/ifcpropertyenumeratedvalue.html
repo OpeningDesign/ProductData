@@ -55,8 +55,11 @@
 <details open="open"><summary>Attribute definitions</summary><table class="attributes">
 <tr><th>#</th><th>Attribute</th><th>Type</th><th>Cardinality</th><th>Description</th>
 <th>C</th></tr>
-<tr><td>3</td><td>EnumerationValues</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>3</td><td>EnumerationValues</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? L[1:?]</td><td>
+Enumeration values, which shall be listed in the referenced <a href="../../ifcpropertyresource/lexical/ifcpropertyenumeration.html">IfcPropertyEnumeration</a>, if such a reference is provided.
+
+
+</td><td>X</td></tr>
 <tr><td>4</td><td>EnumerationReference</td><td><a href="../../ifcpropertyresource/lexical/ifcpropertyenumeration.html">IfcPropertyEnumeration</a></td><td>? </td><td>
 Enumeration from which a enumeration value has been selected. The referenced enumeration also establishes the unit of the enumeration value.
 </td><td>X</td></tr>
@@ -90,8 +93,9 @@ Enumeration from which a enumeration value has been selected. The referenced enu
 <tr><td>1</td><td>Name</td><td><a href="../../ifcmeasureresource/lexical/ifcidentifier.html">IfcIdentifier</a></td><td></td><td>
 Name for this property. This label is the significant name string that defines the semantic meaning for the property.
 </td><td>X</td></tr>
-<tr><td>2</td><td>Description</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>2</td><td>Description</td><td><a href="../../ifcmeasureresource/lexical/ifctext.html">IfcText</a></td><td>? </td><td>
+Informative text to explain the property.
+</td><td>X</td></tr>
 <tr><td></td><td><i>PartOfPset</i></td><td><a href="../../ifckernel/lexical/ifcpropertyset.html">IfcPropertySet</a><br/>@HasProperties</td><td>S[0:?]</td><td>Reference to the <a href="../../ifckernel/lexical/ifcpropertyset.html">IfcPropertySet</a> by which the <span class="self-ref">IfcProperty</span> is referenced.
 
 
@@ -102,8 +106,11 @@ Name for this property. This label is the significant name string that defines t
 </td><td></td></tr>
 <tr><td colspan="6"><i><a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a></i></td></tr>
 <tr><td colspan="6"><a href="../../ifcpropertyresource/lexical/ifcpropertyenumeratedvalue.html">IfcPropertyEnumeratedValue</a></td></tr>
-<tr><td>3</td><td>EnumerationValues</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>3</td><td>EnumerationValues</td><td><a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a></td><td>? L[1:?]</td><td>
+Enumeration values, which shall be listed in the referenced <a href="../../ifcpropertyresource/lexical/ifcpropertyenumeration.html">IfcPropertyEnumeration</a>, if such a reference is provided.
+
+
+</td><td>X</td></tr>
 <tr><td>4</td><td>EnumerationReference</td><td><a href="../../ifcpropertyresource/lexical/ifcpropertyenumeration.html">IfcPropertyEnumeration</a></td><td>? </td><td>
 Enumeration from which a enumeration value has been selected. The referenced enumeration also establishes the unit of the enumeration value.
 </td><td>X</td></tr>
@@ -117,6 +124,14 @@ Enumeration from which a enumeration value has been selected. The referenced enu
 &nbsp;&nbsp;&lt;xs:complexContent&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;xs:extension base=&quot;ifc:<a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a>&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:sequence&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;EnumerationValues&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:group ref=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>&quot; maxOccurs=&quot;unbounded&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute ref=&quot;ifc:itemType&quot; fixed=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute ref=&quot;ifc:cType&quot; fixed=&quot;list&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute ref=&quot;ifc:arraySize&quot; use=&quot;optional&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:complexType&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:element&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;EnumerationReference&quot; type=&quot;ifc:<a href="../../ifcpropertyresource/lexical/ifcpropertyenumeration.html">IfcPropertyEnumeration</a>&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot;/&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:sequence&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;/xs:extension&gt;<br/>
@@ -126,7 +141,7 @@ Enumeration from which a enumeration value has been selected. The referenced enu
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcPropertyEnumeratedValue<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="../../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a>)<b>;</b><br/>
-&nbsp;&nbsp;EnumerationValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;EnumerationValues : <span class="keyword">OPTIONAL</span> <span class="keyword">LIST</span> [1:?] <span class="keyword">OF</span> <a href="../../ifcmeasureresource/lexical/ifcvalue.html">IfcValue</a>;<br/>
 &nbsp;&nbsp;EnumerationReference : <span class="keyword">OPTIONAL</span> <a href="../../ifcpropertyresource/lexical/ifcpropertyenumeration.html">IfcPropertyEnumeration</a>;<br/>
 &nbsp;<span class="keyword">WHERE</span><br/>
 &nbsp;&nbsp;WR21 : NOT(EXISTS(EnumerationReference)) <br/>

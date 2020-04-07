@@ -71,6 +71,13 @@ TYPE IfcConstraintEnum = ENUMERATION OF
 	,NOTDEFINED);
 END_TYPE;
 
+TYPE IfcCurveInterpolationEnum = ENUMERATION OF
+	(LINEAR
+	,LOG_LINEAR
+	,LOG_LOG
+	,NOTDEFINED);
+END_TYPE;
+
 TYPE IfcDataOriginEnum = ENUMERATION OF
 	(MEASURED
 	,PREDICTED
@@ -878,7 +885,7 @@ ENTITY IfcProperty
     ,IfcSimpleProperty))
  SUBTYPE OF (IfcPropertyAbstraction);
 	Name : IfcIdentifier;
-	Description : OPTIONAL IfcStrippedOptional;
+	Description : OPTIONAL IfcText;
  INVERSE
 	PartOfPset : SET [0:?] OF IfcPropertySet FOR HasProperties;
 	PartOfComplex : SET [0:?] OF IfcComplexProperty FOR HasProperties;
@@ -895,10 +902,10 @@ END_ENTITY;
 
 ENTITY IfcPropertyBoundedValue
  SUBTYPE OF (IfcSimpleProperty);
-	UpperBoundValue : OPTIONAL IfcStrippedOptional;
-	LowerBoundValue : OPTIONAL IfcStrippedOptional;
+	UpperBoundValue : OPTIONAL IfcValue;
+	LowerBoundValue : OPTIONAL IfcValue;
 	Unit : OPTIONAL IfcUnit;
-	SetPointValue : OPTIONAL IfcStrippedOptional;
+	SetPointValue : OPTIONAL IfcValue;
  WHERE
 	SameUnitUpperLower : NOT(EXISTS(UpperBoundValue)) OR NOT(EXISTS(LowerBoundValue)) OR
 (TYPEOF(UpperBoundValue) = TYPEOF(LowerBoundValue));
@@ -920,7 +927,7 @@ END_ENTITY;
 
 ENTITY IfcPropertyEnumeratedValue
  SUBTYPE OF (IfcSimpleProperty);
-	EnumerationValues : OPTIONAL LIST [1:?] OF IfcStrippedOptional;
+	EnumerationValues : OPTIONAL LIST [1:?] OF IfcValue;
 	EnumerationReference : OPTIONAL IfcPropertyEnumeration;
  WHERE
 	WR21 : NOT(EXISTS(EnumerationReference)) 
@@ -945,7 +952,7 @@ END_ENTITY;
 
 ENTITY IfcPropertyListValue
  SUBTYPE OF (IfcSimpleProperty);
-	ListValues : OPTIONAL LIST [1:?] OF IfcStrippedOptional;
+	ListValues : OPTIONAL LIST [1:?] OF IfcValue;
 	Unit : OPTIONAL IfcUnit;
  WHERE
 	WR31 : SIZEOF(QUERY(temp <* SELF.ListValues | 
@@ -982,18 +989,18 @@ END_ENTITY;
 
 ENTITY IfcPropertySingleValue
  SUBTYPE OF (IfcSimpleProperty);
-	NominalValue : OPTIONAL IfcStrippedOptional;
+	NominalValue : OPTIONAL IfcValue;
 	Unit : OPTIONAL IfcUnit;
 END_ENTITY;
 
 ENTITY IfcPropertyTableValue
  SUBTYPE OF (IfcSimpleProperty);
-	DefiningValues : OPTIONAL LIST [1:?] OF UNIQUE IfcStrippedOptional;
-	DefinedValues : OPTIONAL LIST [1:?] OF IfcStrippedOptional;
-	Expression : OPTIONAL IfcStrippedOptional;
+	DefiningValues : OPTIONAL LIST [1:?] OF UNIQUE IfcValue;
+	DefinedValues : OPTIONAL LIST [1:?] OF IfcValue;
+	Expression : OPTIONAL IfcText;
 	DefiningUnit : OPTIONAL IfcUnit;
 	DefinedUnit : OPTIONAL IfcUnit;
-	CurveInterpolation : OPTIONAL IfcStrippedOptional;
+	CurveInterpolation : OPTIONAL IfcCurveInterpolationEnum;
  WHERE
 	WR21 : (NOT(EXISTS(DefiningValues)) AND NOT(EXISTS(DefinedValues)))
 OR (SIZEOF(DefiningValues) = SIZEOF(DefinedValues));

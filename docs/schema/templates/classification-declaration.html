@@ -25,8 +25,11 @@
 </script>
 
 <h3 class="std">4.1.1 Classification declaration</h3>
+<p>Projects may define classification structures, which may be used to classify objects contained within the same project, or other referencing projects (incorporating the current project as IfcProjectLibrary).</p>
+<p>The classification information can either be provided as an external classification reference, only refering to an IfcClassification, that holds the classification name, edition and a resource location, or to an IfcClassification containing the IfcClassificationReference's as the classification notations, and thereby allowing to include the classification system structure within the exchange structure.</p>
+<p>A Project Library might be classified by Classification Reference directly.</p>
 <p class="fig-ref">Figure 1 illustrates an instance diagram.</p>
-<table><tr><td><img alt="Classification declaration" src="./diagrams/classification-declaration.png" usemap="#f1"><map name="f1"><area shape="rect" coords="8,8,176,236" href="../ifckernel/lexical/ifcprojectlibrary.html" alt="IfcProjectLibrary" /><area shape="rect" coords="208,8,376,92" href="../ifckernel/lexical/ifcrelassociatesclassification.html" alt="IfcRelAssociatesClassification" /><area shape="rect" coords="408,8,576,128" href="../ifcexternalreferenceresource/lexical/ifcclassification.html" alt="IfcClassification" /><area shape="rect" coords="608,8,776,128" href="../ifcexternalreferenceresource/lexical/ifcclassificationreference.html" alt="IfcClassificationReference" /></map></td></tr><tr><td><p class="figure">Figure 1 &mdash; Classification declaration</p></td></tr></table>
+<table><tr><td><img alt="Classification declaration" src="./diagrams/classification-declaration.png" usemap="#f1"><map name="f1"><area shape="rect" coords="8,8,176,236" href="../ifckernel/lexical/ifcprojectlibrary.html" alt="IfcProjectLibrary" /><area shape="rect" coords="208,8,376,92" href="../ifckernel/lexical/ifcrelassociatesclassification.html" alt="IfcRelAssociatesClassification" /><area shape="rect" coords="408,8,576,128" href="../ifcexternalreferenceresource/lexical/ifcclassification.html" alt="IfcClassification" /><area shape="rect" coords="608,8,776,128" href="../ifcexternalreferenceresource/lexical/ifcclassificationreference.html" alt="IfcClassificationReference" /><area shape="rect" coords="408,148,576,268" href="../ifcexternalreferenceresource/lexical/ifcclassificationreference.html" alt="IfcClassificationReference" /></map></td></tr><tr><td><p class="figure">Figure 1 &mdash; Classification declaration</p></td></tr></table>
 
 <hr/>
 <h4>Construction Objects Data View</h4>
@@ -58,6 +61,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRules&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRule&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcexternalreferenceresource/lexical/ifcclassificationreference.html">IfcClassificationReference</a>&quot; /&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRules&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRules&gt;<br/>
