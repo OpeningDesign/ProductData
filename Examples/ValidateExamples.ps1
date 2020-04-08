@@ -1,13 +1,10 @@
-﻿#$BaseFolder = "C:\projects\productdata"
-$BaseFolder = "C:\Development\GitHub\buildingSMART\ProductData"
+﻿$BaseFolder = "C:\projects\productdata"
+#$BaseFolder = "C:\Development\GitHub\buildingSMART\ProductData"
 $ValidatorExe="$BaseFolder\Tools\SchemaValidator\bin\Release\net48\SchemaValidator.exe"
-$Examples = Get-ChildItem -Path "$BaseFolder\Examples"  -Recurse -Include *.ifc,*.ifcXML
+$Examples = Get-ChildItem -Path "$BaseFolder\Examples\Officials"  -Recurse -Include *.ifc,*.ifcXML
 $ExitCode=0
 foreach ($file in $Examples | Sort-Object -Property FullName) 
 {
-   if     ((!$file.FullName.Contains("Examples\HC (Italy)\Bricks Catalogue")) `
-      -And (!$file.FullName.Contains("\Examples\NisbetSample")) `
-      -And (!$file.FullName.Contains("\Examples\TriluxLightingProducts\SourceDataFromPimSystem\IFCModelFile")))   
    {
        Write-Host "++++++++++++++++++++++++++++++++++++++"
        $filename = $file.FullName.Replace($BaseFolder,"")
