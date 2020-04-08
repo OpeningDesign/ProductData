@@ -1,0 +1,14 @@
+<ifcXML id="uos_1"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xmlns:xlink="http://www.w3.org/1999/xlink" 
+        xmlns:ifc="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/Add2TC1" 
+        xsi:schemaLocation="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/Add2TC1 https://standards.buildingsmart.org/IFC/RELEASE/IFC4/ADD2_TC1/XML/IFC4.xsd" 
+        xmlns="https://standards.buildingsmart.org/IFC/RELEASE/IFC4/Add2TC1">
+  <header>
+    <time_stamp>2020-04-08T14:53:52</time_stamp>
+    <preprocessor_version></preprocessor_version>
+    <originating_system></originating_system>
+  </header>
+  <IfcProjectLibrary id="i16" GlobalId="3DbshdzGD71ejurQqQcxbw" Name="DataSample" Description="DataSample" Phase="Design,Build,Operate">
+  </IfcProjectLibrary>
+</ifcXML>
