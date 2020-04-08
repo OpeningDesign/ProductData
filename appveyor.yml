@@ -27,4 +27,4 @@ artifacts:
 #    Run the SchemaValidator.exe     #
 #------------------------------------#
 on_finish:
-  - ps: '& "C:\projects\productdata\ValidateSampleFiles.ps1"'
+  - ps: '& "C:\projects\productdata\Examples\ValidateExampleFiles.ps1"'
