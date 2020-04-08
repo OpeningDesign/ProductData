@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="811145a0-7bb0-443b-974d-c3c54d85cfba" name="" xsi:schemaLocation="https://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="https://standards.buildingsmart.org/mvd/XML/1.1">
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="e3413ccb-6d2d-4373-afc6-5fe586d9997c" name="" xsi:schemaLocation="https://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="https://standards.buildingsmart.org/mvd/XML/1.1">
   <Templates>
     <ConceptTemplate uuid="555514b1-b5c2-4680-8710-8da57df52f76" name="Construction object types data" status="draft" applicableSchema="IFC4" applicableEntity="IfcTypeObject">
       <SubTemplates>
