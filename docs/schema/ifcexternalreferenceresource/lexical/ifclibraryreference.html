@@ -77,12 +77,19 @@
 <details><summary>Attribute inheritance</summary><table class="attributes">
 <tr><th>#</th><th>Attribute</th><th>Type</th><th>Cardinality</th><th>Description</th><th>C</th></tr>
 <tr><td colspan="6"><i><a href="../../ifcexternalreferenceresource/lexical/ifcexternalreference.html">IfcExternalReference</a></i></td></tr>
-<tr><td>1</td><td>Location</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
-<tr><td>2</td><td>Identification</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
-<tr><td>3</td><td>Name</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>1</td><td>Location</td><td><a href="../../ifcexternalreferenceresource/lexical/ifcurireference.html">IfcURIReference</a></td><td>? </td><td>
+Location, where the external source (classification, document or library) can be accessed by electronic means. The electronic location is provided as an URI, and would normally be given as an URL location string.
+
+
+</td><td>X</td></tr>
+<tr><td>2</td><td>Identification</td><td><a href="../../ifcmeasureresource/lexical/ifcidentifier.html">IfcIdentifier</a></td><td>? </td><td>
+The <i>Identification</i> provides a unique identifier of the referenced item within the external source (classification, document or library). It may be provided as
+\X\X\\\\\* a handle
+\X\X\X\X\X\X\X\X\X\X\X\X
+</td><td>X</td></tr>
+<tr><td>3</td><td>Name</td><td><a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a></td><td>? </td><td>
+Optional name to further specify the reference. It can provide a human readable identifier (which does not necessarily need to have a counterpart in the internal structure of the document).
+</td><td>X</td></tr>
 <tr><td></td><td><i>ExternalReferenceForResources</i></td><td><a href="../../ifcexternalreferenceresource/lexical/ifcexternalreferencerelationship.html">IfcExternalReferenceRelationship</a><br/>@RelatingReference</td><td>S[0:?]</td><td>Reference to all associations between this external reference and objects within the <a href="../../ifcexternalreferenceresource/lexical/ifcresourceobjectselect.html">IfcResourceObjectSelect</a> that are tagged by the external reference.
 
 </td><td>X</td></tr>

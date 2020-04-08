@@ -11,7 +11,7 @@
     <title>IfcRelAssociatesMaterial</title>
 
     <style type="text/css">
-      body { counter-reset: index1 5 index2 2 index3 3 index4 0 index5 0; }
+      body { counter-reset: index1 5 index2 2 index3 3 index4 4 index5 0; }
     </style>
   </head>
 
@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../../toc-5.html#5.2.3.1");
+    parent.index.location.replace("../../toc-5.html#5.2.3.5");
 //-->
 </script>
 
@@ -138,11 +138,11 @@ Material definition assigned to the elements or element types.
 &nbsp;&nbsp;RelatingMaterial : <a href="../../ifcmaterialresource/lexical/ifcmaterialselect.html">IfcMaterialSelect</a>;<br/>
 &nbsp;<span class="keyword">WHERE</span><br/>
 &nbsp;&nbsp;NoVoidElement : SIZEOF(QUERY(temp &lt;* SELF\<a href="../../ifckernel/lexical/ifcrelassociates.html">IfcRelAssociates</a>.RelatedObjects | <br/>
-  (&#39;IFCPRODUCTEXTENSION.<span class="self-ref">IfcStrippedOptional</span>&#39; IN TYPEOF(temp)) OR <br/>
+  (&#39;IFCPRODUCTEXTENSION.<a href="../../ifcproductextension/lexical/ifcfeatureelementsubtraction.html">IfcFeatureElementSubtraction</a>&#39; IN TYPEOF(temp)) OR <br/>
   (&#39;IFCPRODUCTEXTENSION.<span class="self-ref">IfcStrippedOptional</span>&#39; IN TYPEOF(temp)) <br/>
 )) = 0;<br/>&nbsp;&nbsp;AllowedElements : SIZEOF(QUERY(temp &lt;* SELF\<a href="../../ifckernel/lexical/ifcrelassociates.html">IfcRelAssociates</a>.RelatedObjects | (<br/>
   SIZEOF(TYPEOF(temp) * [   <br/>
-    &#39;IFCPRODUCTEXTENSION.<span class="self-ref">IfcStrippedOptional</span>&#39;, <br/>
+    &#39;IFCPRODUCTEXTENSION.<a href="../../ifcproductextension/lexical/ifcelement.html">IfcElement</a>&#39;, <br/>
     &#39;IFCPRODUCTEXTENSION.<span class="self-ref">IfcStrippedOptional</span>&#39;,<br/>
     &#39;IFCSHAREDBLDGELEMENTS.<span class="self-ref">IfcStrippedOptional</span>&#39;,<br/>
     &#39;IFCSHAREDBLDGELEMENTS.<span class="self-ref">IfcStrippedOptional</span>&#39;,<br/>

@@ -74,8 +74,8 @@
 &nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] Nests;<br/>
 &nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] IsNestedBy;<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a>[] HasContext;<br/>
-&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] IsDecomposedBy;<br/>
-&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] Decomposes;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a>[] IsDecomposedBy;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a>[] Decomposes;<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcrelassociates.html">IfcRelAssociates</a>[] HasAssociations;<br/>
 &nbsp;}<br/>
 &nbsp;<br/>
@@ -85,11 +85,6 @@
 &nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span> ObjectPlacement;<br/>
 &nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span> Representation;<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcrelassignstoproduct.html">IfcRelAssignsToProduct</a>[] ReferencedBy;<br/>
-&nbsp;}<br/>
-&nbsp;<br/>
-<br/>
-&nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcproject.html">IfcProject</a> extends <a href="../../../schema/ifckernel/lexical/ifccontext.html">IfcContext</a><br/>
-&nbsp;{<br/>
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
@@ -137,6 +132,13 @@
 <br/>
 &nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcpropertytemplatedefinition.html">IfcPropertyTemplateDefinition</a> extends <a href="../../../schema/ifckernel/lexical/ifcpropertydefinition.html">IfcPropertyDefinition</a><br/>
 &nbsp;{<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a> extends <a href="../../../schema/ifckernel/lexical/ifcreldecomposes.html">IfcRelDecomposes</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcobjectdefinition.html">IfcObjectDefinition</a> RelatingObject;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcobjectdefinition.html">IfcObjectDefinition</a>[] RelatedObjects;<br/>
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
@@ -188,10 +190,20 @@
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
+&nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcrelconnects.html">IfcRelConnects</a> extends <a href="../../../schema/ifckernel/lexical/ifcrelationship.html">IfcRelationship</a><br/>
+&nbsp;{<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
 &nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a> extends <a href="../../../schema/ifckernel/lexical/ifcrelationship.html">IfcRelationship</a><br/>
 &nbsp;{<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifccontext.html">IfcContext</a> RelatingContext;<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcdefinitionselect.html">IfcDefinitionSelect</a>[] RelatedDefinitions;<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcreldecomposes.html">IfcRelDecomposes</a> extends <a href="../../../schema/ifckernel/lexical/ifcrelationship.html">IfcRelationship</a><br/>
+&nbsp;{<br/>
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
@@ -252,9 +264,61 @@
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
+&nbsp;public enum <a href="../../../schema/ifcproductextension/lexical/ifcopeningelementtypeenum.html">IfcOpeningElementTypeEnum</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;OPENING,<br/>
+&nbsp;&nbsp;RECESS,<br/>
+&nbsp;&nbsp;USERDEFINED,<br/>
+&nbsp;&nbsp;NOTDEFINED,<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifcproductextension/lexical/ifcelement.html">IfcElement</a> extends <a href="../../../schema/ifckernel/lexical/ifcproduct.html">IfcProduct</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;private string Tag;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcproductextension/lexical/ifcrelfillselement.html">IfcRelFillsElement</a>[] FillsVoids;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] ConnectedTo;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] IsInterferedByElements;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] InterferesElements;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] HasProjections;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] ReferencedInStructures;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] HasOpenings;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] IsConnectionRealization;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] ProvidesBoundaries;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] ConnectedFrom;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] ContainedInStructure;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] HasCoverings;<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifcproductextension/lexical/ifcfeatureelement.html">IfcFeatureElement</a> extends <a href="../../../schema/ifcproductextension/lexical/ifcelement.html">IfcElement</a><br/>
+&nbsp;{<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifcproductextension/lexical/ifcfeatureelementsubtraction.html">IfcFeatureElementSubtraction</a> extends <a href="../../../schema/ifcproductextension/lexical/ifcfeatureelement.html">IfcFeatureElement</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span> VoidsElements;<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifcproductextension/lexical/ifcopeningelement.html">IfcOpeningElement</a> extends <a href="../../../schema/ifcproductextension/lexical/ifcfeatureelementsubtraction.html">IfcFeatureElementSubtraction</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcproductextension/lexical/ifcopeningelementtypeenum.html">IfcOpeningElementTypeEnum</a> PredefinedType;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcproductextension/lexical/ifcrelfillselement.html">IfcRelFillsElement</a>[] HasFillings;<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
 &nbsp;public class <a href="../../../schema/ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a> extends <a href="../../../schema/ifckernel/lexical/ifcrelassociates.html">IfcRelAssociates</a><br/>
 &nbsp;{<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialselect.html">IfcMaterialSelect</a> RelatingMaterial;<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifcproductextension/lexical/ifcrelfillselement.html">IfcRelFillsElement</a> extends <a href="../../../schema/ifckernel/lexical/ifcrelconnects.html">IfcRelConnects</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcproductextension/lexical/ifcopeningelement.html">IfcOpeningElement</a> RelatingOpeningElement;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcproductextension/lexical/ifcelement.html">IfcElement</a> RelatedBuildingElement;<br/>
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
@@ -469,6 +533,11 @@
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
+&nbsp;public interface <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcclassificationreferenceselect.html">IfcClassificationReferenceSelect</a><br/>
+&nbsp;{<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
 &nbsp;public interface <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcclassificationselect.html">IfcClassificationSelect</a><br/>
 &nbsp;{<br/>
 &nbsp;}<br/>
@@ -505,7 +574,7 @@
 <br/>
 &nbsp;public class <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcclassificationreference.html">IfcClassificationReference</a> extends <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcexternalreference.html">IfcExternalReference</a><br/>
 &nbsp;{<br/>
-&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span> ReferencedSource;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcclassificationreferenceselect.html">IfcClassificationReferenceSelect</a> ReferencedSource;<br/>
 &nbsp;&nbsp;private string Description;<br/>
 &nbsp;&nbsp;private string Sort;<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcrelassociatesclassification.html">IfcRelAssociatesClassification</a>[] ClassificationRefForObjects;<br/>

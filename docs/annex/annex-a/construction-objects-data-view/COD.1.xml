@@ -36,6 +36,10 @@
   <cnf:entity select="IfcDocumentReference">
     <cnf:attribute select="ReferencedDocument" exp-attribute="attribute-tag" />
   </cnf:entity>
+  <cnf:entity select="IfcElement">
+    <cnf:inverse select="HasProjections" exp-attribute="attribute-tag" />
+    <cnf:inverse select="HasOpenings" exp-attribute="attribute-tag" />
+  </cnf:entity>
   <cnf:entity select="IfcExternalReferenceRelationship">
     <cnf:attribute select="RelatingReference" exp-attribute="attribute-tag" />
   </cnf:entity>
@@ -76,6 +80,9 @@
     <cnf:inverse select="IsNestedBy" exp-attribute="double-tag" />
     <cnf:inverse select="IsDecomposedBy" exp-attribute="double-tag" />
   </cnf:entity>
+  <cnf:entity select="IfcOpeningElement">
+    <cnf:inverse select="HasFillings" exp-attribute="attribute-tag" />
+  </cnf:entity>
   <cnf:entity select="IfcOwnerHistory">
     <cnf:attribute select="OwningUser" exp-attribute="attribute-tag" />
     <cnf:attribute select="OwningApplication" exp-attribute="attribute-tag" />
@@ -101,6 +108,9 @@
   <cnf:entity select="IfcPropertyEnumeratedValue">
     <cnf:attribute select="EnumerationReference" exp-attribute="attribute-tag" />
   </cnf:entity>
+  <cnf:entity select="IfcRelAggregates">
+    <cnf:attribute select="RelatingObject" keep="false" />
+  </cnf:entity>
   <cnf:entity select="IfcRelAssignsToGroup">
     <cnf:attribute select="RelatingGroup" exp-attribute="attribute-tag" />
   </cnf:entity>
@@ -113,6 +123,10 @@
   <cnf:entity select="IfcRelDefinesByType">
     <cnf:attribute select="RelatedObjects" keep="false" />
     <cnf:attribute select="RelatingType" exp-attribute="attribute-tag" />
+  </cnf:entity>
+  <cnf:entity select="IfcRelFillsElement">
+    <cnf:attribute select="RelatingOpeningElement" keep="false" />
+    <cnf:attribute select="RelatedBuildingElement" exp-attribute="attribute-tag" />
   </cnf:entity>
   <cnf:entity select="IfcRoot">
     <cnf:attribute select="OwnerHistory" exp-attribute="attribute-tag" />

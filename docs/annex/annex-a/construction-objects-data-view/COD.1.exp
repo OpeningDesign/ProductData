@@ -159,6 +159,13 @@ TYPE IfcDocumentStatusEnum = ENUMERATION OF
 	,NOTDEFINED);
 END_TYPE;
 
+TYPE IfcOpeningElementTypeEnum = ENUMERATION OF
+	(OPENING
+	,RECESS
+	,USERDEFINED
+	,NOTDEFINED);
+END_TYPE;
+
 TYPE IfcProfileTypeEnum = ENUMERATION OF
 	(CURVE
 	,AREA);
@@ -291,6 +298,11 @@ TYPE IfcActorSelect = SELECT
 	,IfcPersonAndOrganization);
 END_TYPE;
 
+TYPE IfcClassificationReferenceSelect = SELECT
+	(IfcClassification
+	,IfcClassificationReference);
+END_TYPE;
+
 TYPE IfcClassificationSelect = SELECT
 	(IfcClassification
 	,IfcClassificationReference);
@@ -420,13 +432,13 @@ END_ENTITY;
 
 ENTITY IfcClassification
  SUBTYPE OF (IfcExternalInformation);
-	Source : OPTIONAL IfcStrippedOptional;
-	Edition : OPTIONAL IfcStrippedOptional;
-	EditionDate : OPTIONAL IfcStrippedOptional;
+	Source : OPTIONAL IfcLabel;
+	Edition : OPTIONAL IfcLabel;
+	EditionDate : OPTIONAL IfcDate;
 	Name : IfcLabel;
-	Description : OPTIONAL IfcStrippedOptional;
-	Location : OPTIONAL IfcStrippedOptional;
-	ReferenceTokens : OPTIONAL LIST [1:?] OF IfcStrippedOptional;
+	Description : OPTIONAL IfcText;
+	Location : OPTIONAL IfcURIReference;
+	ReferenceTokens : OPTIONAL LIST [1:?] OF IfcIdentifier;
  INVERSE
 	ClassificationForObjects : SET [0:?] OF IfcRelAssociatesClassification FOR RelatingClassification;
 	HasReferences : SET [0:?] OF IfcClassificationReference FOR ReferencedSource;
@@ -435,8 +447,8 @@ END_ENTITY;
 ENTITY IfcClassificationReference
  SUBTYPE OF (IfcExternalReference);
 	ReferencedSource : OPTIONAL IfcClassificationReferenceSelect;
-	Description : OPTIONAL IfcStrippedOptional;
-	Sort : OPTIONAL IfcStrippedOptional;
+	Description : OPTIONAL IfcText;
+	Sort : OPTIONAL IfcIdentifier;
  INVERSE
 	ClassificationRefForObjects : SET [0:?] OF IfcRelAssociatesClassification FOR RelatingClassification;
 	HasReferences : SET [0:?] OF IfcClassificationReference FOR ReferencedSource;
@@ -479,8 +491,7 @@ END_ENTITY;
 
 ENTITY IfcContext
  ABSTRACT SUPERTYPE OF (ONEOF
-    (IfcProject
-    ,IfcProjectLibrary))
+    (IfcProjectLibrary))
  SUBTYPE OF (IfcObjectDefinition);
 	ObjectType : OPTIONAL IfcLabel;
 	LongName : OPTIONAL IfcLabel;
@@ -568,12 +579,21 @@ END_ENTITY;
 
 ENTITY IfcDocumentReference
  SUBTYPE OF (IfcExternalReference);
-	Description : OPTIONAL IfcStrippedOptional;
+	Description : OPTIONAL IfcText;
 	ReferencedDocument : OPTIONAL IfcDocumentInformation;
  INVERSE
 	DocumentRefForObjects : SET [0:?] OF IfcRelAssociatesDocument FOR RelatingDocument;
  WHERE
 	WR1 : EXISTS(Name) XOR EXISTS(ReferencedDocument);
+END_ENTITY;
+
+ENTITY IfcElement
+ ABSTRACT SUPERTYPE OF (ONEOF
+    (IfcFeatureElement))
+ SUBTYPE OF (IfcProduct);
+	Tag : OPTIONAL IfcStrippedOptional;
+ INVERSE
+	FillsVoids : SET [0:1] OF IfcRelFillsElement FOR RelatedBuildingElement;
 END_ENTITY;
 
 ENTITY IfcExtendedProperties
@@ -597,9 +617,9 @@ ENTITY IfcExternalReference
     (IfcClassificationReference
     ,IfcDocumentReference
     ,IfcLibraryReference));
-	Location : OPTIONAL IfcStrippedOptional;
-	Identification : OPTIONAL IfcStrippedOptional;
-	Name : OPTIONAL IfcStrippedOptional;
+	Location : OPTIONAL IfcURIReference;
+	Identification : OPTIONAL IfcIdentifier;
+	Name : OPTIONAL IfcLabel;
  INVERSE
 	ExternalReferenceForResources : SET [0:?] OF IfcExternalReferenceRelationship FOR RelatingReference;
  WHERE
@@ -610,6 +630,21 @@ ENTITY IfcExternalReferenceRelationship
  SUBTYPE OF (IfcResourceLevelRelationship);
 	RelatingReference : IfcExternalReference;
 	RelatedResourceObjects : SET [1:?] OF IfcResourceObjectSelect;
+END_ENTITY;
+
+ENTITY IfcFeatureElement
+ ABSTRACT SUPERTYPE OF (ONEOF
+    (IfcFeatureElementSubtraction))
+ SUBTYPE OF (IfcElement);
+END_ENTITY;
+
+ENTITY IfcFeatureElementSubtraction
+ ABSTRACT SUPERTYPE OF (ONEOF
+    (IfcOpeningElement))
+ SUBTYPE OF (IfcFeatureElement);
+ WHERE
+	HasNoSubtraction : SIZEOF(SELF\IfcElement.HasOpenings) = 0;
+	IsNotFilling : SIZEOF(SELF\IfcElement.FillsVoids) = 0;
 END_ENTITY;
 
 ENTITY IfcGroup
@@ -785,7 +820,16 @@ ENTITY IfcObjectDefinition
  INVERSE
 	HasAssignments : SET [0:?] OF IfcRelAssigns FOR RelatedObjects;
 	HasContext : SET [0:1] OF IfcRelDeclares FOR RelatedDefinitions;
+	IsDecomposedBy : SET [0:?] OF IfcRelAggregates FOR RelatingObject;
+	Decomposes : SET [0:1] OF IfcRelAggregates FOR RelatedObjects;
 	HasAssociations : SET [0:?] OF IfcRelAssociates FOR RelatedObjects;
+END_ENTITY;
+
+ENTITY IfcOpeningElement
+ SUBTYPE OF (IfcFeatureElementSubtraction);
+	PredefinedType : OPTIONAL IfcOpeningElementTypeEnum;
+ INVERSE
+	HasFillings : SET [0:?] OF IfcRelFillsElement FOR RelatingOpeningElement;
 END_ENTITY;
 
 ENTITY IfcOrganization;
@@ -844,7 +888,8 @@ ENTITY IfcPhysicalQuantity
 END_ENTITY;
 
 ENTITY IfcProduct
- ABSTRACT
+ ABSTRACT SUPERTYPE OF (ONEOF
+    (IfcElement))
  SUBTYPE OF (IfcObject);
 	ObjectPlacement : OPTIONAL IfcStrippedOptional;
 	Representation : OPTIONAL IfcStrippedOptional;
@@ -862,17 +907,6 @@ ENTITY IfcProfileDef;
 	ProfileName : OPTIONAL IfcStrippedOptional;
  INVERSE
 	HasExternalReference : SET [0:?] OF IfcExternalReferenceRelationship FOR RelatedResourceObjects;
-END_ENTITY;
-
-ENTITY IfcProject
- SUBTYPE OF (IfcContext);
- WHERE
-	HasName : EXISTS(SELF\IfcRoot.Name);
-	CorrectContext : NOT(EXISTS(SELF\IfcContext.RepresentationContexts)) OR
-(SIZEOF(QUERY(Temp <* SELF\IfcContext.RepresentationContexts |
- 'IFC4.IFCGEOMETRICREPRESENTATIONSUBCONTEXT' IN TYPEOF(Temp)
-  )) = 0);
-	NoDecomposition : SIZEOF(SELF\IfcObjectDefinition.Decomposes) = 0;
 END_ENTITY;
 
 ENTITY IfcProjectLibrary
@@ -1029,6 +1063,14 @@ ENTITY IfcPropertyTemplateDefinition
  SUBTYPE OF (IfcPropertyDefinition);
 END_ENTITY;
 
+ENTITY IfcRelAggregates
+ SUBTYPE OF (IfcRelDecomposes);
+	RelatingObject : IfcObjectDefinition;
+	RelatedObjects : SET [1:?] OF IfcObjectDefinition;
+ WHERE
+	NoSelfReference : SIZEOF(QUERY(Temp <* RelatedObjects | RelatingObject :=: Temp)) = 0;
+END_ENTITY;
+
 ENTITY IfcRelAssigns
  ABSTRACT SUPERTYPE OF (ONEOF
     (IfcRelAssignsToGroup
@@ -1098,12 +1140,24 @@ ENTITY IfcRelAssociatesMaterial
 )) = 0;
 END_ENTITY;
 
+ENTITY IfcRelConnects
+ ABSTRACT SUPERTYPE OF (ONEOF
+    (IfcRelFillsElement))
+ SUBTYPE OF (IfcRelationship);
+END_ENTITY;
+
 ENTITY IfcRelDeclares
  SUBTYPE OF (IfcRelationship);
 	RelatingContext : IfcContext;
 	RelatedDefinitions : SET [1:?] OF IfcDefinitionSelect;
  WHERE
 	NoSelfReference : SIZEOF(QUERY(Temp <* RelatedDefinitions | RelatingContext :=: Temp)) = 0;
+END_ENTITY;
+
+ENTITY IfcRelDecomposes
+ ABSTRACT SUPERTYPE OF (ONEOF
+    (IfcRelAggregates))
+ SUBTYPE OF (IfcRelationship);
 END_ENTITY;
 
 ENTITY IfcRelDefines
@@ -1127,11 +1181,19 @@ ENTITY IfcRelDefinesByType
 	RelatingType : IfcTypeObject;
 END_ENTITY;
 
+ENTITY IfcRelFillsElement
+ SUBTYPE OF (IfcRelConnects);
+	RelatingOpeningElement : IfcOpeningElement;
+	RelatedBuildingElement : IfcElement;
+END_ENTITY;
+
 ENTITY IfcRelationship
  ABSTRACT SUPERTYPE OF (ONEOF
     (IfcRelAssigns
     ,IfcRelAssociates
+    ,IfcRelConnects
     ,IfcRelDeclares
+    ,IfcRelDecomposes
     ,IfcRelDefines))
  SUBTYPE OF (IfcRoot);
 END_ENTITY;

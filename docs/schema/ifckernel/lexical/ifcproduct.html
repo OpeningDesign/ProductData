@@ -37,13 +37,13 @@
 <h5 class="num">Semantic definitions at the entity</h5>
 <details open="open"><summary>Entity definition</summary><p>The <span class="self-ref">IfcProduct</span> is an abstract representation of any object that relates to a geometric or spatial context. An <span class="self-ref">IfcProduct</span> occurs at a specific location in space if it has a geometric representation assigned. It can be placed relatively to other products, but ultimately relative to the project coordinate system. The <i>ObjectPlacement</i> attribute establishes the coordinate system in which all points and directions used by the geometric representation items under <i>Representation</i> are founded. The <i>Representation</i> is provided by an <i>IfcProductDefinitionShape</i> being either a geometric shape representation, or a topology representation (with or without underlying geometry of the topological items).</p>
 <p>Products include manufactured, supplied or created objects (referred to as elements) for incorporation into an AEC/FM project. This also includes objects that are created indirectly by other products, as spaces are defined by bounding elements. Products can be designated for permanent use or temporary use, an example for the latter is formwork. Products are defined by their properties and representations.</p>
-<p>In addition to physical products (covered by the subtype <i>IfcElement</i>) and spatial items (covered by the subtype <i>IfcSpatialElement</i>) the <span class="self-ref">IfcProduct</span> also includes non-physical items, that relate to a geometric or spatial contexts, such as grid, port, annotation, structural actions, etc.</p>
+<p>In addition to physical products (covered by the subtype <a href="../../ifcproductextension/lexical/ifcelement.html">IfcElement</a>) and spatial items (covered by the subtype <i>IfcSpatialElement</i>) the <span class="self-ref">IfcProduct</span> also includes non-physical items, that relate to a geometric or spatial contexts, such as grid, port, annotation, structural actions, etc.</p>
 <p>Any instance of <span class="self-ref">IfcProduct</span> defines a particular occurrence of a product, the common type information, that relates to many similar (or identical) occurrences of <span class="self-ref">IfcProduct</span>, is handled by the <a href="../../ifckernel/lexical/ifctypeproduct.html">IfcTypeProduct</a> (and its subtypes), assigned to one or many occurrences of <span class="self-ref">IfcProduct</span> by using the objectified relationship <a href="../../ifckernel/lexical/ifcreldefinesbytype.html">IfcRelDefinesByType</a>. The <a href="../../ifckernel/lexical/ifctypeproduct.html">IfcTypeProduct</a> may provide, in addition to common properties, also a common geometric representation for all occurrences.</p>
 <blockquote class="note">
 <p>NOTE  See <a href="../../ifckernel/lexical/ifctypeproduct.html">IfcTypeProduct</a> for how to use a common geometric representation and <a href="../../ifckernel/lexical/ifcreldefinesbytype.html">IfcRelDefinesByType</a> for using and overriding common properties.</p>
 </blockquote>
 <p>On a generic level products can be assigned to processes, controls, resources, project by using the relationship objects that refer to the corresponding object:</p>
-<p>\\\\\<i>\\\\\</i></p>
+<p>\\\\\*\\\\\*</p>
 </details>
 <details open="open"><summary>Attribute definitions</summary><table class="attributes">
 <tr><th>#</th><th>Attribute</th><th>Type</th><th>Cardinality</th><th>Description</th>
@@ -71,9 +71,10 @@ NOTE  If the <i>Representation</i> of several subtypes of <span class="self-ref
 <h5 class="num">Inherited definitions from supertypes</h5>
 <details open="open"><summary>Entity inheritance</summary><img src="../../../diagrams/ifcproduct.png" usemap="#f"/>
 <map name="f">
-<area shape="rect" coords="30,54,242,66" href="../../../schema/ifckernel/lexical/ifcobject.html" alt="IfcObject" />
-<area shape="rect" coords="18,30,254,42" href="../../../schema/ifckernel/lexical/ifcobjectdefinition.html" alt="IfcObjectDefinition" />
-<area shape="rect" coords="6,6,266,18" href="../../../schema/ifckernel/lexical/ifcroot.html" alt="IfcRoot" />
+<area shape="rect" coords="54,102,242,114" href="../../../schema/ifcproductextension/lexical/ifcelement.html" alt="IfcElement" />
+<area shape="rect" coords="30,54,266,66" href="../../../schema/ifckernel/lexical/ifcobject.html" alt="IfcObject" />
+<area shape="rect" coords="18,30,278,42" href="../../../schema/ifckernel/lexical/ifcobjectdefinition.html" alt="IfcObjectDefinition" />
+<area shape="rect" coords="6,6,290,18" href="../../../schema/ifckernel/lexical/ifcroot.html" alt="IfcRoot" />
 </map>
 </details>
 <details><summary>Attribute inheritance</summary><table class="attributes">
@@ -99,6 +100,12 @@ Optional description, provided for exchanging informative comments.
 <tr><td></td><td><i>HasAssignments</i></td><td><a href="../../ifckernel/lexical/ifcrelassigns.html">IfcRelAssigns</a><br/>@RelatedObjects</td><td>S[0:?]</td><td>Reference to the relationship objects, that assign (by an association relationship) other subtypes of IfcObject to this object instance. Examples are the association to products, processes, controls, resources or groups.
 </td><td>X</td></tr>
 <tr><td></td><td><i>HasContext</i></td><td><a href="../../ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a><br/>@RelatedDefinitions</td><td>S[0:1]</td><td>References to the context providing context information such as project unit or representation context. It should only be asserted for the uppermost non-spatial object.
+
+</td><td></td></tr>
+<tr><td></td><td><i>IsDecomposedBy</i></td><td><a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a><br/>@RelatingObject</td><td>S[0:?]</td><td>References to the decomposition relationship being an aggregation. It determines that this object definition is whole within an unordered whole/part decomposition relationship. An object definitions can be aggregated by several other objects (occurrences or parts).
+
+</td><td>X</td></tr>
+<tr><td></td><td><i>Decomposes</i></td><td><a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a><br/>@RelatedObjects</td><td>S[0:1]</td><td>References to the decomposition relationship being an aggregation. It determines that this object definition is a part within an unordered whole/part decomposition relationship. An object definitions can only be part of a single decomposition (to allow hierarchical strutures only).
 
 </td><td></td></tr>
 <tr><td></td><td><i>HasAssociations</i></td><td><a href="../../ifckernel/lexical/ifcrelassociates.html">IfcRelAssociates</a><br/>@RelatedObjects</td><td>S[0:?]</td><td>Reference to the relationship objects, that associates external references or other resource definitions to the object.. Examples are the association to library, documentation or classification.
@@ -135,6 +142,7 @@ Optional description, provided for exchanging informative comments.
 </code></div></details>
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcProduct<br/>
+&nbsp;<span class="keyword">ABSTRACT</span> <span class="keyword">SUPERTYPE OF</span>(<a href="../../ifcproductextension/lexical/ifcelement.html">IfcElement</a>)<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="../../ifckernel/lexical/ifcobject.html">IfcObject</a>)<b>;</b><br/>
 &nbsp;&nbsp;ObjectPlacement : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
 &nbsp;&nbsp;Representation : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>

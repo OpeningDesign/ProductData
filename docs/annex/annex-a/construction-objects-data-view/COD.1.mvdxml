@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="a6457f7c-5695-4c2c-b17f-831bcd53bc8a" name="" xsi:schemaLocation="https://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="https://standards.buildingsmart.org/mvd/XML/1.1">
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="46863759-8a93-48fd-9b79-81e633dcdd20" name="" xsi:schemaLocation="https://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="https://standards.buildingsmart.org/mvd/XML/1.1">
   <Templates>
     <ConceptTemplate uuid="bf7206d4-80c6-469d-93a5-336283a2a935" name="Classification" status="draft" applicableSchema="IFC4" applicableEntity="IfcContext">
       <Definitions>
@@ -178,7 +178,45 @@ A Project Library might be classified by Classification Reference directly.]]></
         </ConceptTemplate>
       </SubTemplates>
     </ConceptTemplate>
-    <ConceptTemplate uuid="c22794e2-900f-4781-8bf6-045f78a83aae" name="Construction objects data" applicableSchema="IFC4" applicableEntity="IfcPropertySet">
+    <ConceptTemplate uuid="555514b1-b5c2-4680-8710-8da57df52f76" name="Construction object types data" status="draft" applicableSchema="IFC4" applicableEntity="IfcTypeObject">
+      <SubTemplates>
+        <ConceptTemplate uuid="e916de40-d1e4-401d-bc22-a75ebc21f6f6" name="Construction object types decomposition" status="draft" applicableSchema="IFC4" applicableEntity="IfcTypeObject">
+          <Rules>
+            <AttributeRule AttributeName="IsDecomposedBy">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelAggregates">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatedObjects">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcTypeObject" />
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="7fe09dec-7806-4f46-bba6-dffac2895750" name="Type system assignment" status="draft" applicableSchema="IFC4" applicableEntity="IfcTypeObject">
+          <Rules>
+            <AttributeRule AttributeName="HasAssignments">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelAssignsToGroup">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatingGroup">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcSystem" />
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+      </SubTemplates>
+    </ConceptTemplate>
+    <ConceptTemplate uuid="c22794e2-900f-4781-8bf6-045f78a83aae" name="Construction objects data" applicableSchema="IFC4" applicableEntity="IfcObject">
       <Definitions>
         <Definition>
           <Body><![CDATA[Construction object data represents structured, simple or complex information for any construction objects. 
@@ -195,6 +233,41 @@ Construction object data shall be related to specific data templates. It can be 
                     <AttributeRule AttributeName="HasProperties">
                       <EntityRules>
                         <EntityRule EntityName="IfcSimpleProperty" />
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="319030ab-dda4-4128-a420-583983c63a93" name="Construction object decomposition" status="draft" applicableSchema="IFC4" applicableEntity="IfcObject">
+          <Rules>
+            <AttributeRule AttributeName="IsDecomposedBy">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelAggregates">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatedObjects">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcObject" />
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="e682aac9-1f16-47d1-8433-95a72df0d205" name="Construction object filling" status="draft" applicableSchema="IFC4" applicableEntity="IfcElement">
+          <Rules>
+            <AttributeRule AttributeName="IsTypedBy" />
+            <AttributeRule AttributeName="FillsVoids">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelFillsElement">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatingOpeningElement">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcOpeningElement" />
                       </EntityRules>
                     </AttributeRule>
                   </AttributeRules>
@@ -305,172 +378,24 @@ Construction object data shall be related to specific data templates. It can be 
             </AttributeRule>
           </Rules>
         </ConceptTemplate>
-      </SubTemplates>
-    </ConceptTemplate>
-    <ConceptTemplate uuid="c1ef97fe-f47a-49a1-9e32-ce841d73ade2" name="Construction objects" status="candidate" applicableSchema="IFC4" applicableEntity="IfcContext">
-      <SubTemplates>
-        <ConceptTemplate uuid="cc9148e8-6891-449a-81f9-d17f51308fec" name="Instances" status="candidate" applicableSchema="IFC4" applicableEntity="IfcProject">
-          <Definitions>
-            <Definition>
-              <Body><![CDATA[In the case, a delivered product has an individual information (e.g. a serial number), the product shall to be stored as an instance object. Every instance object in the construction objects data structure shall be stored in a class of EN ISO 16739 that is derived from IfcObject (e.g. an IfcDoor or an IfcPump). Every instance object has to be related to its corresponding type object.
-If the EN ISO 16739 does not provide an appropriate class in IfcObjects, the product has to be stored in IfcBuildingElementProxy and shall be further classified with the concept of classification (6.6) and with the concept of the Properties (6.7).
-In addition to the documentation of IfcProduct and derived classes in the official documentation of ISO 16739, the following information shall be provided in the context of this standard for each product:
-
-
-
-
-Systems are groups of type objects or instance objects, that are connected to fulfil a specific purpose/service in the building.
-
-
-TODO
-Create an example figure that illustrates a system of construction objects (Heating system)]]></Body>
-            </Definition>
-          </Definitions>
+        <ConceptTemplate uuid="4d1c0f60-8e57-4559-ab33-bffdc436f368" name="System assignment" applicableSchema="IFC4" applicableEntity="IfcObject">
           <Rules>
-            <AttributeRule AttributeName="Name">
+            <AttributeRule AttributeName="IsGroupedBy">
               <EntityRules>
-                <EntityRule EntityName="IfcLabel" />
-              </EntityRules>
-            </AttributeRule>
-            <AttributeRule AttributeName="Description">
-              <EntityRules>
-                <EntityRule EntityName="IfcText" />
-              </EntityRules>
-            </AttributeRule>
-            <AttributeRule AttributeName="ObjectType">
-              <EntityRules>
-                <EntityRule EntityName="IfcLabel" />
-              </EntityRules>
-            </AttributeRule>
-            <AttributeRule AttributeName="ObjectPlacement">
-              <EntityRules>
-                <EntityRule EntityName="IfcObjectPlacement" />
-              </EntityRules>
-            </AttributeRule>
-            <AttributeRule AttributeName="IsDefinedBy" />
-            <AttributeRule AttributeName="IsTypedBy">
-              <EntityRules>
-                <EntityRule EntityName="IfcRelDefinesByType">
+                <EntityRule EntityName="IfcRelAssignsToGroup">
                   <AttributeRules>
-                    <AttributeRule AttributeName="RelatingType">
-                      <EntityRules>
-                        <EntityRule EntityName="IfcTypeObject" />
-                      </EntityRules>
-                    </AttributeRule>
+                    <AttributeRule AttributeName="RelatedObjects" />
                   </AttributeRules>
                 </EntityRule>
               </EntityRules>
             </AttributeRule>
-            <AttributeRule AttributeName="Declares">
+            <AttributeRule AttributeName="HasAssignments">
               <EntityRules>
-                <EntityRule EntityName="IfcRelDeclares">
+                <EntityRule EntityName="IfcRelAssignsToGroup">
                   <AttributeRules>
-                    <AttributeRule AttributeName="RelatedDefinitions">
+                    <AttributeRule AttributeName="RelatingGroup">
                       <EntityRules>
-                        <EntityRule EntityName="IfcObject">
-                          <AttributeRules>
-                            <AttributeRule AttributeName="IsTypedBy">
-                              <EntityRules>
-                                <EntityRule EntityName="IfcRelDefinesByType">
-                                  <AttributeRules>
-                                    <AttributeRule AttributeName="RelatingType">
-                                      <EntityRules>
-                                        <EntityRule EntityName="IfcTypeObject">
-                                          <AttributeRules>
-                                            <AttributeRule AttributeName="HasPropertySets" />
-                                            <AttributeRule AttributeName="Types" />
-                                          </AttributeRules>
-                                        </EntityRule>
-                                      </EntityRules>
-                                    </AttributeRule>
-                                  </AttributeRules>
-                                </EntityRule>
-                              </EntityRules>
-                            </AttributeRule>
-                            <AttributeRule AttributeName="Description">
-                              <EntityRules>
-                                <EntityRule EntityName="IfcText" />
-                              </EntityRules>
-                            </AttributeRule>
-                            <AttributeRule AttributeName="Name">
-                              <EntityRules>
-                                <EntityRule EntityName="IfcLabel" />
-                              </EntityRules>
-                            </AttributeRule>
-                            <AttributeRule AttributeName="IsDefinedBy">
-                              <EntityRules>
-                                <EntityRule EntityName="IfcRelDefinesByProperties">
-                                  <AttributeRules>
-                                    <AttributeRule AttributeName="RelatingPropertyDefinition">
-                                      <EntityRules>
-                                        <EntityRule EntityName="IfcPropertySetDefinition" />
-                                      </EntityRules>
-                                    </AttributeRule>
-                                  </AttributeRules>
-                                </EntityRule>
-                              </EntityRules>
-                            </AttributeRule>
-                          </AttributeRules>
-                        </EntityRule>
-                      </EntityRules>
-                    </AttributeRule>
-                  </AttributeRules>
-                </EntityRule>
-              </EntityRules>
-            </AttributeRule>
-          </Rules>
-        </ConceptTemplate>
-        <ConceptTemplate uuid="a0056aa3-1206-4173-be06-205b84880e46" name="Types" status="candidate" applicableSchema="IFC4" applicableEntity="IfcProjectLibrary">
-          <Definitions>
-            <Definition>
-              <Body><![CDATA[Every construction object in the file shall be stored in a class inherited from IfcTypeObject of EN ISO 16739, e.g. IfcWallType or IfcWindowType. The product shall be further specified with the concepts of classification and properties.
-If the EN ISO 16739 does not provide an appropriate derived class under IfcTypeObject, the product shall be stored in IfcBuildingElementProxyType and shall be further specified with an appropriate value in ElementType.
-In addition to the documentation of IfcTypeObject and derived classes in the official documentation of ISO 16739, the following information shall be provided in the context of this standard for each product:]]></Body>
-            </Definition>
-          </Definitions>
-          <Rules>
-            <AttributeRule AttributeName="Name">
-              <EntityRules>
-                <EntityRule EntityName="IfcLabel" />
-              </EntityRules>
-            </AttributeRule>
-            <AttributeRule AttributeName="Description">
-              <EntityRules>
-                <EntityRule EntityName="IfcText" />
-              </EntityRules>
-            </AttributeRule>
-            <AttributeRule AttributeName="HasPropertySets">
-              <EntityRules>
-                <EntityRule EntityName="IfcPropertySetDefinition" />
-              </EntityRules>
-            </AttributeRule>
-            <AttributeRule AttributeName="Types" />
-            <AttributeRule AttributeName="Declares">
-              <EntityRules>
-                <EntityRule EntityName="IfcRelDeclares">
-                  <AttributeRules>
-                    <AttributeRule AttributeName="RelatedDefinitions">
-                      <EntityRules>
-                        <EntityRule EntityName="IfcTypeObject">
-                          <AttributeRules>
-                            <AttributeRule AttributeName="HasPropertySets">
-                              <EntityRules>
-                                <EntityRule EntityName="IfcPropertySetDefinition" />
-                              </EntityRules>
-                            </AttributeRule>
-                            <AttributeRule AttributeName="Name">
-                              <EntityRules>
-                                <EntityRule EntityName="IfcLabel" />
-                              </EntityRules>
-                            </AttributeRule>
-                            <AttributeRule AttributeName="Description">
-                              <EntityRules>
-                                <EntityRule EntityName="IfcText" />
-                              </EntityRules>
-                            </AttributeRule>
-                            <AttributeRule AttributeName="Types" />
-                          </AttributeRules>
-                        </EntityRule>
+                        <EntityRule EntityName="IfcSystem" />
                       </EntityRules>
                     </AttributeRule>
                   </AttributeRules>
@@ -532,6 +457,118 @@ In addition to the documentation of IfcTypeObject and derived classes in the off
                     <AttributeRule AttributeName="SecondaryUnit">
                       <EntityRules>
                         <EntityRule EntityName="IfcUnit" />
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="717f7fd3-aa22-498a-b831-6c26044dd761" name="Property template classification association" status="candidate" applicableSchema="IFC4" applicableEntity="IfcPropertySetTemplate">
+          <Rules>
+            <AttributeRule AttributeName="HasAssociations">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelAssociatesClassification">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatingClassification">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcClassificationReference">
+                          <AttributeRules>
+                            <AttributeRule AttributeName="Name">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcLabel" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Identification">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcIdentifier" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Description">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcText" />
+                              </EntityRules>
+                            </AttributeRule>
+                          </AttributeRules>
+                        </EntityRule>
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="HasPropertyTemplates">
+              <EntityRules>
+                <EntityRule EntityName="IfcPropertyTemplate">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="HasAssociations">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcRelAssociatesClassification">
+                          <AttributeRules>
+                            <AttributeRule AttributeName="RelatingClassification">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcClassificationReference">
+                                  <AttributeRules>
+                                    <AttributeRule AttributeName="Identification">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcIdentifier" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule AttributeName="Name">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcLabel" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule AttributeName="Description">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcText" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                  </AttributeRules>
+                                </EntityRule>
+                              </EntityRules>
+                            </AttributeRule>
+                          </AttributeRules>
+                        </EntityRule>
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="12b92b03-b16c-4e2f-988e-97ce08f9a268" name="Property template document association" status="candidate" applicableSchema="IFC4" applicableEntity="IfcPropertySetTemplate">
+          <Rules>
+            <AttributeRule AttributeName="HasAssociations">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelAssociatesDocument">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatingDocument">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcDocumentInformation" />
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="HasPropertyTemplates">
+              <EntityRules>
+                <EntityRule EntityName="IfcPropertyTemplate">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="HasAssociations">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcRelAssociatesDocument">
+                          <AttributeRules>
+                            <AttributeRule AttributeName="RelatingDocument">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcDocumentInformation" />
+                              </EntityRules>
+                            </AttributeRule>
+                          </AttributeRules>
+                        </EntityRule>
                       </EntityRules>
                     </AttributeRule>
                   </AttributeRules>
@@ -858,6 +895,159 @@ The table below resume IfcDocumentInformation’s attributes and their optional/
             <AttributeRule AttributeName="Confidentiality">
               <EntityRules>
                 <EntityRule EntityName="IfcDocumentConfidentialityEnum" />
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+      </SubTemplates>
+    </ConceptTemplate>
+    <ConceptTemplate uuid="c1ef97fe-f47a-49a1-9e32-ce841d73ade2" name="Library construction objects declarations" status="candidate" applicableSchema="IFC4" applicableEntity="IfcProjectLibrary">
+      <SubTemplates>
+        <ConceptTemplate uuid="a0056aa3-1206-4173-be06-205b84880e46" name="Library construction object types" status="candidate" applicableSchema="IFC4" applicableEntity="IfcProjectLibrary">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[Every construction object in the file shall be stored in a class inherited from IfcTypeObject of EN ISO 16739, e.g. IfcWallType or IfcWindowType. The product shall be further specified with the concepts of classification and properties.
+If the EN ISO 16739 does not provide an appropriate derived class under IfcTypeObject, the product shall be stored in IfcBuildingElementProxyType and shall be further specified with an appropriate value in ElementType.
+In addition to the documentation of IfcTypeObject and derived classes in the official documentation of ISO 16739, the following information shall be provided in the context of this standard for each product:]]></Body>
+            </Definition>
+          </Definitions>
+          <Rules>
+            <AttributeRule AttributeName="Name">
+              <EntityRules>
+                <EntityRule EntityName="IfcLabel" />
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="Description">
+              <EntityRules>
+                <EntityRule EntityName="IfcText" />
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="HasPropertySets">
+              <EntityRules>
+                <EntityRule EntityName="IfcPropertySetDefinition" />
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="Types" />
+            <AttributeRule AttributeName="Declares">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelDeclares">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatedDefinitions">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcTypeObject">
+                          <AttributeRules>
+                            <AttributeRule AttributeName="HasPropertySets" />
+                            <AttributeRule AttributeName="Name">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcLabel" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Description">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcText" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Types" />
+                          </AttributeRules>
+                        </EntityRule>
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="cc9148e8-6891-449a-81f9-d17f51308fec" name="Library construction objects" status="candidate" applicableSchema="IFC4" applicableEntity="IfcProjectLibrary">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[In the case, a delivered product has an individual information (e.g. a serial number), the product shall to be stored as an instance object. Every instance object in the construction objects data structure shall be stored in a class of EN ISO 16739 that is derived from IfcObject (e.g. an IfcDoor or an IfcPump). Every instance object has to be related to its corresponding type object.
+If the EN ISO 16739 does not provide an appropriate class in IfcObjects, the product has to be stored in IfcBuildingElementProxy and shall be further classified with the concept of classification (6.6) and with the concept of the Properties (6.7).
+In addition to the documentation of IfcProduct and derived classes in the official documentation of ISO 16739, the following information shall be provided in the context of this standard for each product:
+
+
+
+
+Systems are groups of type objects or instance objects, that are connected to fulfil a specific purpose/service in the building.
+
+
+TODO
+Create an example figure that illustrates a system of construction objects (Heating system)]]></Body>
+            </Definition>
+          </Definitions>
+          <Rules>
+            <AttributeRule AttributeName="Name">
+              <EntityRules>
+                <EntityRule EntityName="IfcLabel" />
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="Description">
+              <EntityRules>
+                <EntityRule EntityName="IfcText" />
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="ObjectPlacement">
+              <EntityRules>
+                <EntityRule EntityName="IfcObjectPlacement" />
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="IsDefinedBy" />
+            <AttributeRule AttributeName="IsTypedBy">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelDefinesByType">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatingType">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcTypeObject" />
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="Declares">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelDeclares">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatedDefinitions">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcObject">
+                          <AttributeRules>
+                            <AttributeRule AttributeName="IsTypedBy">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcRelDefinesByType">
+                                  <AttributeRules>
+                                    <AttributeRule AttributeName="RelatingType">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcTypeObject">
+                                          <AttributeRules>
+                                            <AttributeRule AttributeName="HasPropertySets" />
+                                            <AttributeRule AttributeName="Types" />
+                                          </AttributeRules>
+                                        </EntityRule>
+                                      </EntityRules>
+                                    </AttributeRule>
+                                  </AttributeRules>
+                                </EntityRule>
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Description">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcText" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Name">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcLabel" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="IsDefinedBy" />
+                          </AttributeRules>
+                        </EntityRule>
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
               </EntityRules>
             </AttributeRule>
           </Rules>
@@ -1258,6 +1448,171 @@ The table below resume IfcDocumentInformation’s attributes and their optional/
         </ConceptTemplate>
       </SubTemplates>
     </ConceptTemplate>
+    <ConceptTemplate uuid="4b385464-b99a-42bc-a17a-a0a647a1ab5b" name="Object Association" status="candidate" applicableSchema="IFC4" applicableEntity="IfcObjectDefinition">
+      <Definitions>
+        <Definition>
+          <Body><![CDATA[The concept of an _Object Association_ provides the means to associate sources of information (most notably a classification, library, document, approval, contraint, or material) to objects definitions. The information associated may reside internally or externally in regard of the project data.]]></Body>
+        </Definition>
+      </Definitions>
+      <SubTemplates>
+        <ConceptTemplate uuid="4a224609-6578-4c75-afcf-8affa86e5ef2" name="Classification Association" applicableSchema="IFC4" applicableEntity="IfcObjectDefinition">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[The concept _Classification Association_ describes how objects and object types can be further described by associating references to external sources of information. The source of information can be:
+
+\X\X\\\\\\\\\\\* a dictionary server;
+\X\X\\\\\\\\\\\* any service that combine the above features.
+
+An individual item within the external source of information can be selected. It then applies the inherent meaning of the item to the _IfcObject_ or _IfcTypeObject_.
+
+> NOTE&nbsp; The classification system or dictionary server that is used within the project itself can also be indicated at the level of _IfcProject_ or _IfcProjectLibrary_ either as an external source, or copied with all relevant classification items into the project data. Use the concept _Project Classification Information_ to utilize this functionality.
+
+The main attributes to be provided for a _Classification Association_ are:
+
+\X\X\\\\\\\\\\\* _Name_: allows for a human interpretable designation of a classification notation]]></Body>
+            </Definition>
+          </Definitions>
+          <Rules>
+            <AttributeRule AttributeName="HasAssociations">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelAssociatesClassification">
+                  <AttributeRules>
+                    <AttributeRule AttributeName="RelatingClassification">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcClassificationReference">
+                          <AttributeRules>
+                            <AttributeRule RuleID="Identification" AttributeName="Identification">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcIdentifier" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule RuleID="Name" AttributeName="Name">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcLabel" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Description">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcText" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="ReferencedSource">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcClassification">
+                                  <AttributeRules>
+                                    <AttributeRule RuleID="ClassificationSource" AttributeName="Source">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcLabel" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule RuleID="ClassificationName" AttributeName="Name">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcLabel" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule RuleID="ClassificationTokens" AttributeName="ReferenceTokens">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcIdentifier" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule AttributeName="Edition">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcLabel" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule AttributeName="Description">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcText" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule AttributeName="Location">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcURIReference" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                    <AttributeRule AttributeName="EditionDate">
+                                      <EntityRules>
+                                        <EntityRule EntityName="IfcDate" />
+                                      </EntityRules>
+                                    </AttributeRule>
+                                  </AttributeRules>
+                                </EntityRule>
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Sort">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcIdentifier" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Location">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcURIReference" />
+                              </EntityRules>
+                            </AttributeRule>
+                          </AttributeRules>
+                        </EntityRule>
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+        <ConceptTemplate uuid="7dadae9c-0026-44d3-ade7-9a843fe2ef0b" name="Document Association" applicableSchema="IFC4" applicableEntity="IfcObjectDefinition">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[The concept _Document Association_ describes how objects or object types can have associated documents indicating external files. Documents may be referenced in their entirety such as to capture product brochures, data sheets, multimedia content, or thumbnail images. Contents within documents may be referenced from any object, and may be used to synchronize information in other files such as work schedules for project management applications.
+
+Typical document meta data, such as issue date, editor, and similar, can be captured with the association, the document content however remains with the external files.]]></Body>
+            </Definition>
+          </Definitions>
+          <Rules>
+            <AttributeRule AttributeName="HasAssociations">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelAssociatesDocument">
+                  <AttributeRules>
+                    <AttributeRule RuleID="Name" AttributeName="Name">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcLabel" />
+                      </EntityRules>
+                    </AttributeRule>
+                    <AttributeRule AttributeName="RelatingDocument">
+                      <EntityRules>
+                        <EntityRule EntityName="IfcDocumentReference">
+                          <AttributeRules>
+                            <AttributeRule AttributeName="Location">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcURIReference" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Identification">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcIdentifier" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Name">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcLabel" />
+                              </EntityRules>
+                            </AttributeRule>
+                            <AttributeRule AttributeName="Description">
+                              <EntityRules>
+                                <EntityRule EntityName="IfcText" />
+                              </EntityRules>
+                            </AttributeRule>
+                          </AttributeRules>
+                        </EntityRule>
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+          </Rules>
+        </ConceptTemplate>
+      </SubTemplates>
+    </ConceptTemplate>
     <ConceptTemplate uuid="33e0be15-e301-4858-9f4b-18b2eb5488ba" name="Object Definition" status="candidate" applicableSchema="IFC4" applicableEntity="IfcObjectDefinition">
       <Definitions>
         <Definition>
@@ -1265,6 +1620,48 @@ The table below resume IfcDocumentInformation’s attributes and their optional/
         </Definition>
       </Definitions>
       <SubTemplates>
+        <ConceptTemplate uuid="35a2e10e-20df-40f4-ab2f-dacf0a6744f4" name="Object Typing" applicableSchema="IFC4" applicableEntity="IfcObject">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[Object occurrences can be defined by a particular object type, using the _Object Typing_ concept. A pair of entities are defined for most semantic objects - an object occurrence entity and a corresponding object type entity.
+
+> EXAMPLE&nbsp; The _IfcTank_ is the object occurrence entity that has a corresponding _IfcTankType_ being the object type entity.
+
+On instance level, an object occurrence instance may have:
+
+\X\X\\\\\\\\\\\* overridden state for particular characteristics;
+\X\X\X\X\X\X\X\X\\\\\\\\\\\* common naming and predefined type;
+\X\X\\\\\\\\\\\* common geometry representations, applied as mapped representation to each occurences;
+\X\X\\\\\\\\\\\* common definition of a decomposition structure.
+
+Many object occurrence and object type entities have an attribute named _PredefinedType_ consisting of a specific enumeration. Such predefined type essentially provides another level of inheritance to further differentiate objects without the need for additional entities. Predefined types are not just informational; various rules apply such as applicable property sets, part composition, and distribution ports. If the object is typed by an _IfcTypeObject_, then the _PredefinedType_ at the _IfcObject_ occurrence shall only be used if the _PredefinedType_ at _IfcTypeObject_ is set to _NOTDEFINED_.
+
+> EXAMPLE&nbsp; For scenarios of object types having part compositions, such parts may be reflected at object occurrences having separate state. For example, a _wall type_ may define a particular arrangement of studs, a _wall occurrence_ may reflect the same arrangement of studs, and studs within the wall occurrence may participate in specific relationships that do not exist at the type such as being connected to an electrical junction box.
+
+> NOTE&nbsp; If the object type has aggregated elements, such objects are reflected at the object occurrence using the _IfcRelDefinesByObject_ relationship.]]></Body>
+            </Definition>
+          </Definitions>
+          <Rules>
+            <AttributeRule RuleID="HasType" AttributeName="IsTypedBy">
+              <EntityRules>
+                <EntityRule EntityName="IfcRelDefinesByType">
+                  <AttributeRules>
+                    <AttributeRule RuleID="RelatingType" AttributeName="RelatingType">
+                      <EntityRules>
+                        <EntityRule RuleID="TypeName" EntityName="IfcTypeObject">
+                          <AttributeRules>
+                            <AttributeRule RuleID="TypeName" AttributeName="Name" />
+                          </AttributeRules>
+                        </EntityRule>
+                      </EntityRules>
+                    </AttributeRule>
+                  </AttributeRules>
+                </EntityRule>
+              </EntityRules>
+            </AttributeRule>
+            <AttributeRule AttributeName="PredefinedType" />
+          </Rules>
+        </ConceptTemplate>
         <ConceptTemplate uuid="36984334-3ac8-4e59-85a6-f68d65e379c7" name="Property Sets" applicableSchema="IFC4" applicableEntity="IfcRoot">
           <Definitions>
             <Definition>
@@ -1638,8 +2035,8 @@ The property values assigned to an object type apply equally to all occurrences 
         <Definition>
           <Body><![CDATA[All project data sets shall contain a single _IfcProject_ instance indicating overall context and a directory of objects contained within. The context definition may include:
 
-\X\X\\\\\\\\\\* the geometric representation context for the shape representations
-\X\X\\\\\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
+\X\X\\\\\\\\\\\* the geometric representation context for the shape representations
+\X\X\\\\\\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
         </Definition>
       </Definitions>
       <Rules>
@@ -1661,6 +2058,36 @@ The property values assigned to an object type apply equally to all occurrences 
       </Rules>
       <SubTemplates>
         <ConceptTemplate uuid="4ccaac0c-88f8-4c1d-91fd-2214d0e513c4" name="Measures and units" applicableSchema="IFC4" applicableEntity="IfcContext">
+          <Definitions>
+            <Definition>
+              <Body><![CDATA[The definition of constructions objects need a definition of the underlying measures and units of their properties.
+
+
+
+Measure are ... [put here a good text for measure]
+
+
+
+Units are the expression of measured physical quantities and shall be associated to the IfcUnit entity. They are strictly connected to property definition and propety values of construction objects. 
+Measure and units can refer to test methods, that are defined according to harmonized Standards under the Construction Product Regulation (UE) n. 305/2011.
+
+
+
+The definition of the units of values can be stored in IfcUnitAssignment or directly in relation to each property template or property. The IfcUnitAssignment is assigned to each IfcProject and/or IfcProjectLibrary instance in the data model. The implementation of the measures and unit in the product file has to follow the rules of ISO 16739. Therefore, all unit shall be IfcSiUnit, IfcDerivedUnit and/or IfcConversionBasedUnit according to the following chapters.
+
+
+
+Every property template for a numeric value has to define its underlying measure and unit. The definition od measures and units shall follow the codes in the table according to the appendes table „Table of measures and units.xlsx” of this standard. This table provides a guide for systems and data, maintaning semistructured or no-structured data, to create structured IFC-definitions of units and measures. The content of the table is not exhaustive. In the cases, where a unit that is needed, cannot be found in the table, this unit has to be documented according to the table before using it in construction objects data.
+
+
+
+[Table of measures and units.xlsx](../../figures/Table of measures and units.xlsx)
+
+
+
+If a property in the template needs a unit, that is not includes in appendix 9.1, the unit has to be defined as an IfcSiUnit, an IfcDerivedUnits (possibly in combination with an IfcConversionBasedUnit) to express the original unit as closely as possible.]]></Body>
+            </Definition>
+          </Definitions>
           <Rules>
             <AttributeRule RuleID="HasUnits" AttributeName="UnitsInContext">
               <EntityRules>
@@ -1915,7 +2342,214 @@ The following table defines, how the entities shall be mapped. The table shows a
 </figure><figure>
   <img src="../../figures/dict_illustration12.png" width="650" alt="Illustration 12: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 12: Mapping xtdBag to IfcProjectLibrary</figcaption>
-</figure>]]></Body>
+</figure>
+
+
+
+
+
+{ .gridtable}
+Data template  
+xtdBag | Project Library  
+IfcProjectLibrary
+------------- | ------------- 
+Template name | IfcProjectLibrary.Name
+Template Guid | IfcProjectLibrary.GlobalId
+Template technical specification  
+xtdBag  
+>xtdRelDocuments  
+>xtdExternalDocument (Reference document) | IfcProjectLibrary.HasAssociations  
+>IfcRelAssociatesDocument.RelatedObjects  
+>RelatingDocument  
+>IfcDocumentInformation
+Template classification  
+xtdBag  
+>xtdRelClassifies  
+xtdClass (Classification level) | IfcProjectLibrary.HasAssociations  
+>IfcRelAssociatesClassification.RelatingClassification  
+>IfcClassificationReference
+Construction objects assignment  
+xtdBag  
+>xtdRealAssignsCollections  
+>xtdSubject (Construction object) | IfcProjectLibrary.Declares  
+>IfcRelDeclares.RelatedDefinitions  
+>IfcTypeObject
+Collection of Group of Properties  
+xtdBag  
+>xtdRelCollects  
+>xtdNest (Group of properties) | IfcProjectLibrary.Declares  
+>IfcRelDeclares.RelatedDefinitions  
+>IfcPropertySetTemplate
+Composition of data templates  
+xtdBag  
+>xtdRelComposes  
+>xtdBag (Data template) | IfcProjectLibrary.HasAssignments  
+>IfcRelAssigns. RelatedObjects  
+>IfcProjectLibrary
+
+{ .gridtable}
+Reference document  
+xtdExternalDocument | Document Information  
+IfcDocumentInformation
+------------- | -------------
+Details according to EN ISO 12006-3 | Details according to EN ISO 16739-1:2018
+
+{ .gridtable}
+Classification level  
+xtdClass | Classification Reference  
+IfcClassificationReference
+------------- | -------------
+Details according to EN ISO 12006-3 | Details according to EN ISO 16739-1:2018
+
+{ .gridtable}
+Construction object  
+xtdSubject | Construction object type  
+IfcTypeObject
+------------- | -------------
+Construction object technical specification  
+xtdSubject  
+>xtdRelDocuments  
+>xtdExternalDocument (Reference document) | IfcTypeObject.HasAssociations  
+>IfcRelAssociatesDocument.RelatedObjects  
+>RelatingDocument  
+>IfcDocumentInformation
+Construction object classification  
+xtdSubject  
+>xtdRelClassifies  
+>xtdClass (Classification level) | IfcTypeObject.HasAssociations  
+>IfcRelAssociatesClassification. RelatingClassification  
+>IfcClassificationReference
+xtdSubject  
+>xtdRelComposes  
+xtdSubject (Construction object) | IfcTypeObject.IsDecomposedBy  
+>IfcRelAggregates.RelatedObjects  
+>IfcTypeObject
+
+{ .gridtable}
+Group of properties  
+xtdNest | Property Set Template  
+IfcPropertySetTemplate
+------------- | -------------
+Name | IfcPropertySetTemplate.Name
+Definition | IfcPropertySetTemplate.Description
+GUID | IfcPropertySetTemplate.GlobalId
+Collection of Generic Properties  
+xtdNest  
+>xtdRelCollects  
+>xtdProperty (Generic property) | IfcPropertySetTemplate.HasPropertyTemplates  
+> IfcComplexPropertyTemplate
+Collection of Specific Properties  
+xtdNest  
+>xtdRelCollects  
+>xtdProperty (Specific property) | IfcPropertySetTemplate.HasPropertyTemplates  
+> IfcSimplePropertyTemplate
+
+{ .gridtable}
+Generic Property  
+xtdProperty  
+“Essential Characteristic” | Complex data template  
+IfcComplexPropertyTemplate
+------------- | -------------
+Name | IfcComplexPropertyTemplate.Name
+Definition | IfcComplexPropertyTemplate.Description
+GUID | IfcComplexPropertyTemplate.GlobalId
+Specialize property  
+xtdProperty  
+>xtdRelSpecializesProperty  
+>xtdProperty (Specific property) | IfcComplexPropertyTemplate.HasPropertyTemplates  
+>IfcSimplePropertyTemplate
+Measure assignment  
+xtdProperty  
+>xtdRelAssignsMeasures  
+>xtdMeasureWithUnit (Quantity) | IfcComplexPropertyTemplate.PrimaryMeasureType  
+>IfcValue  
+>>IfcMeasureValue  
+>>IfcSimpleValue  
+>>IfcDerivedMeasureValue  
+IfcMeasureResource
+Unit assignment  
+xtdProperty  
+>xtdRelAssignsMeasures  
+>xtdMeasureWithUnit (Quantity)  
+>xtdRelAssignsUnits  
+>xdtUnit (Unit) | IfcSimplePropertyTemplate.PrimaryUnit  
+>IfcUnit  
+>>IfcDerivedUnit  
+>>IfcNamedUnit  
+>>IfcMonetaryUnit
+Value assignment  
+xtdProperty  
+>xtdRelAssignsPropertyWithValue  
+>xdtValue (Value) | IfcSimplePropertyTemplate  
+[@TemplateType="p_enumeratedvalue"]  
+.Enumerators  
+>IfcPropertyEnumeration  
+>EnumerationValues
+
+{ .gridtable}
+Specific Property  
+xtdProperty | Simple data template  
+IfcSimplePropertyTemplate
+------------- | -------------
+Name | IfcSimplePropertyTemplate.Name
+Definition | IfcSimplePropertyTemplate.Description
+GUID | IfcSimplePropertyTemplate.GlobalId
+Measure assignment  
+xtdProperty  
+>xtdRelAssignsMeasures  
+>xtdMeasureWithUnit (Quantity) | IfcSimplePropertyTemplate.PrimaryMeasureType  
+>IfcValue  
+>>IfcMeasureValue  
+>>IfcSimpleValue  
+>>IfcDerivedMeasureValue  
+IfcMeasureResource
+Unit assignment  
+xtdProperty  
+>xtdRelAssignsMeasures  
+>xtdMeasureWithUnit (Quantity)  
+>xtdRelAssignsUnits  
+>xdtUnit (Unit) | IfcSimplePropertyTemplate.PrimaryUnit  
+>IfcUnit  
+>>IfcDerivedUnit  
+>>IfcNamedUnit  
+>>IfcMonetaryUnit
+Value assignment  
+xtdProperty  
+>xtdRelAssignsPropertyWithValue  
+>xdtValue (Value) | IfcSimplePropertyTemplate  
+[@TemplateType="p_enumeratedvalue"]  
+.Enumerators  
+>IfcPropertyEnumeration  
+>EnumerationValues
+
+
+{ .gridtable}
+Quantity  
+(xtdMeasureWithUnit) | Measure  
+(IfcMeasureResource)
+------------- | -------------
+Details according to EN ISO 12006-3 | Measures according to appendix A2  
+“Table of Measures and Units.xlsx
+
+{ .gridtable}
+Unit  
+(xtdUnit) | Measure  
+(IfcUnit)  
+Units according to appendix A2 “Table of Measures and Units.xlsx
+------------- | -------------
+Details according to EN ISO 12006-3 | Measures according to appendix A2  
+“Table of Measures and Units.xlsx
+
+{ .gridtable}
+Value  
+(xtdValue) | Enumeration values  
+(IfcSimplePropertyTemplate   
+TemplateType="p_enumeratedvalue")
+------------- | -------------
+Full name | 
+Short name | 
+Definition | 
+GUID |]]></Body>
             </Definition>
           </Definitions>
         </ConceptTemplate>
@@ -2006,10 +2640,10 @@ The specification of the ifcZIP format allows one model file in the root folder 
           </Rules>
         </ConceptTemplate>
         <ConceptTemplate uuid="35e8b4b3-cd50-4db4-825f-5c1ad22a0491" name="NOTDEFINED" applicableSchema="IFC4" applicableEntity="IfcContext" />
+        <ConceptTemplate uuid="ff332b50-9b3c-4b73-bb9c-06a3e9916e8d" name="NOTDEFINED" applicableSchema="IFC4" applicableEntity="IfcElement" />
         <ConceptTemplate uuid="0790a05d-73f8-4525-a3f6-fb6f3378fc00" name="NOTDEFINED" applicableSchema="IFC4" applicableEntity="IfcObject" />
         <ConceptTemplate uuid="e9fee12d-eb64-48bc-9636-b8048b4b4e34" name="NOTDEFINED" applicableSchema="IFC4" applicableEntity="IfcPropertySetTemplate" />
         <ConceptTemplate uuid="e9b01ba8-e050-4d74-b517-21e680fea9f6" name="NOTDEFINED" applicableSchema="IFC4" applicableEntity="IfcRoot" />
-        <ConceptTemplate uuid="42c674b5-8eef-4559-82cd-9689e3bb2605" name="NOTDEFINED" applicableSchema="IFC4" applicableEntity="IfcTypeObject" />
       </SubTemplates>
     </ConceptTemplate>
   </Templates>
@@ -2296,7 +2930,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
                 <TemplateRule />
               </TemplateRules>
             </Concept>
-            <Concept uuid="a68042c6-c2b6-4718-8426-a6d8615cc980" name="Material layer definition" override="false">
+            <Concept uuid="a68042c6-c2b6-4718-8426-a6d8615cc980" name="Material layer definition" status="candidate" override="false">
               <Template ref="94e9cae4-5d06-40cc-be8a-4a9cddd79325" />
               <Requirements>
                 <Requirement applicability="import" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
@@ -2420,6 +3054,20 @@ In this scenario the adopted Model View Definition enables complete data exchang
             </Concept>
           </Concepts>
         </ConceptRoot>
+        <ConceptRoot uuid="b195b2a9-975b-40bd-9733-8c198fc80ced" name="Construction element data" status="candidate" applicableRootEntity="IfcElement">
+          <Applicability>
+            <Template ref="ff332b50-9b3c-4b73-bb9c-06a3e9916e8d" />
+            <TemplateRules operator="and" />
+          </Applicability>
+          <Concepts>
+            <Concept uuid="f9fbb039-e68f-4954-ab05-c5476eae6547" name="Construction object filling" override="false">
+              <Template ref="e682aac9-1f16-47d1-8433-95a72df0d205" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+          </Concepts>
+        </ConceptRoot>
         <ConceptRoot uuid="eb89b35c-958e-42cb-8788-0fc2640a40a6" name="Construction objects data" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcObject">
           <Applicability>
             <Template ref="0790a05d-73f8-4525-a3f6-fb6f3378fc00" />
@@ -2482,7 +3130,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
                 <TemplateRule />
               </TemplateRules>
             </Concept>
-            <Concept uuid="252c6a9c-e793-4b8d-a238-a599263dbb9a" name="Property Sets with Override" override="false">
+            <Concept uuid="252c6a9c-e793-4b8d-a238-a599263dbb9a" name="Property Sets with Override" status="candidate" override="false">
               <Template ref="e26040e8-82e2-4f6a-bc63-ac8e6da2d0ae" />
               <Requirements>
                 <Requirement applicability="import" requirement="recommended" exchangeRequirement="e4d15dda-78aa-4713-83be-aa79730fc9a4" />
@@ -2493,6 +3141,40 @@ In this scenario the adopted Model View Definition enables complete data exchang
                 <Requirement applicability="export" requirement="recommended" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
               </Requirements>
               <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="35648ec9-8765-4794-8d74-3b4877b51d2f" name="Classification Association" override="false">
+              <Template ref="4a224609-6578-4c75-afcf-8affa86e5ef2" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="a8000c8b-bd9a-4bc1-ab48-018874978244" name="Object typing" status="candidate" override="false">
+              <Template ref="35a2e10e-20df-40f4-ab2f-dacf0a6744f4" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="d7e52514-70ab-4601-9b05-821bbdb4a6b5" name="Document Association" override="false">
+              <Template ref="7dadae9c-0026-44d3-ade7-9a843fe2ef0b" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="2a13c834-4e00-4397-93bb-2caf66af9e55" name="System assignment" override="false">
+              <Template ref="4d1c0f60-8e57-4559-ab33-bffdc436f368" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+                <TemplateRule />
+                <TemplateRule />
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="ee7ddae9-8b4c-45bc-8f1a-9a14aa4f3549" name="Construction object decomposition" status="draft" override="false">
+              <Template ref="319030ab-dda4-4128-a420-583983c63a93" />
+              <TemplateRules operator="and">
+                <TemplateRule />
                 <TemplateRule />
               </TemplateRules>
             </Concept>
@@ -2551,6 +3233,20 @@ In this scenario the adopted Model View Definition enables complete data exchang
                 <Requirement applicability="export" requirement="mandatory" exchangeRequirement="c0115c7f-1284-40d7-9644-1d2b022eb5a5" />
               </Requirements>
               <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="cf6c33d9-185d-4ab4-ba23-4d4ed7238b32" name="Property template document association" status="candidate" override="false">
+              <Template ref="12b92b03-b16c-4e2f-988e-97ce08f9a268" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="b17986fb-663d-4a6b-87d9-3cd58dcea535" name="Property template classification association" status="candidate" override="false">
+              <Template ref="717f7fd3-aa22-498a-b831-6c26044dd761" />
+              <TemplateRules operator="and">
+                <TemplateRule />
                 <TemplateRule />
               </TemplateRules>
             </Concept>
@@ -2622,7 +3318,7 @@ In this scenario the adopted Model View Definition enables complete data exchang
         </ConceptRoot>
         <ConceptRoot uuid="e2866201-342f-44c4-bfff-ef0742f4eeff" name="Construction object types data" version="0.9" status="candidate" author="CEN-TC442-WG2-TG3" owner="CEN-TC442-WG2" copyright="CEN - European Committee for Standardization" applicableRootEntity="IfcTypeObject">
           <Applicability>
-            <Template ref="42c674b5-8eef-4559-82cd-9689e3bb2605" />
+            <Template ref="7fe09dec-7806-4f46-bba6-dffac2895750" />
             <TemplateRules operator="and" />
           </Applicability>
           <Concepts>
@@ -2636,6 +3332,30 @@ In this scenario the adopted Model View Definition enables complete data exchang
                 <Requirement applicability="import" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
                 <Requirement applicability="export" requirement="mandatory" exchangeRequirement="4539261a-5a79-4274-ac72-3b6053e00cee" />
               </Requirements>
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="20094608-908a-4412-8c2a-2628f0dd31a1" name="Classification Association" override="false">
+              <Template ref="4a224609-6578-4c75-afcf-8affa86e5ef2" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="fa021b6d-de5e-4e14-bb53-5a6d194b3ae7" name="Document Association" override="false">
+              <Template ref="7dadae9c-0026-44d3-ade7-9a843fe2ef0b" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="72faefd2-e7d8-4950-9a54-768fa0f6a954" name="Type system assignment" status="candidate" override="false">
+              <Template ref="7fe09dec-7806-4f46-bba6-dffac2895750" />
+              <TemplateRules operator="and">
+                <TemplateRule />
+              </TemplateRules>
+            </Concept>
+            <Concept uuid="177c1114-fb53-4ec7-aefe-8b82bbe3a210" name="Construction object types decomposition" status="candidate" override="false">
+              <Template ref="e916de40-d1e4-401d-bc22-a75ebc21f6f6" />
               <TemplateRules operator="and">
                 <TemplateRule />
               </TemplateRules>

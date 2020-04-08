@@ -69,11 +69,6 @@
 	}
 	
 
-	public class IfcProject extends IfcContext
-	{
-	}
-	
-
 	public class IfcProjectLibrary extends IfcContext
 	{
 	}
@@ -118,6 +113,13 @@
 
 	public class IfcPropertyTemplateDefinition extends IfcPropertyDefinition
 	{
+	}
+	
+
+	public class IfcRelAggregates extends IfcRelDecomposes
+	{
+		private IfcObjectDefinition RelatingObject;
+		private IfcObjectDefinition[] RelatedObjects;
 	}
 	
 
@@ -169,10 +171,20 @@
 	}
 	
 
+	public class IfcRelConnects extends IfcRelationship
+	{
+	}
+	
+
 	public class IfcRelDeclares extends IfcRelationship
 	{
 		private IfcContext RelatingContext;
 		private IfcDefinitionSelect[] RelatedDefinitions;
+	}
+	
+
+	public class IfcRelDecomposes extends IfcRelationship
+	{
 	}
 	
 
@@ -233,9 +245,61 @@
 	}
 	
 
+	public enum IfcOpeningElementTypeEnum
+	{
+		OPENING,
+		RECESS,
+		USERDEFINED,
+		NOTDEFINED,
+	}
+	
+
+	public class IfcElement extends IfcProduct
+	{
+		private string Tag;
+		private IfcRelFillsElement[] FillsVoids;
+		private IfcRelConnectsElements[] ConnectedTo;
+		private IfcRelInterferesElements[] IsInterferedByElements;
+		private IfcRelInterferesElements[] InterferesElements;
+		private IfcRelProjectsElement[] HasProjections;
+		private IfcRelReferencedInSpatialStructure[] ReferencedInStructures;
+		private IfcRelVoidsElement[] HasOpenings;
+		private IfcRelConnectsWithRealizingElements[] IsConnectionRealization;
+		private IfcRelSpaceBoundary[] ProvidesBoundaries;
+		private IfcRelConnectsElements[] ConnectedFrom;
+		private IfcRelContainedInSpatialStructure[] ContainedInStructure;
+		private IfcRelCoversBldgElements[] HasCoverings;
+	}
+	
+
+	public class IfcFeatureElement extends IfcElement
+	{
+	}
+	
+
+	public class IfcFeatureElementSubtraction extends IfcFeatureElement
+	{
+		private IfcRelVoidsElement VoidsElements;
+	}
+	
+
+	public class IfcOpeningElement extends IfcFeatureElementSubtraction
+	{
+		private IfcOpeningElementTypeEnum PredefinedType;
+		private IfcRelFillsElement[] HasFillings;
+	}
+	
+
 	public class IfcRelAssociatesMaterial extends IfcRelAssociates
 	{
 		private IfcMaterialSelect RelatingMaterial;
+	}
+	
+
+	public class IfcRelFillsElement extends IfcRelConnects
+	{
+		private IfcOpeningElement RelatingOpeningElement;
+		private IfcElement RelatedBuildingElement;
 	}
 	
 
@@ -447,6 +511,11 @@
 		FINAL,
 		REVISION,
 		NOTDEFINED,
+	}
+	
+
+	public interface IfcClassificationReferenceSelect
+	{
 	}
 	
 

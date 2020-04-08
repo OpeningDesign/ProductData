@@ -11,7 +11,7 @@
     <title>IfcProjectLibrary</title>
 
     <style type="text/css">
-      body { counter-reset: index1 5 index2 1 index3 3 index4 7 index5 0; }
+      body { counter-reset: index1 5 index2 1 index3 3 index4 6 index5 0; }
     </style>
   </head>
 
@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../../toc-5.html#5.1.3.8");
+    parent.index.location.replace("../../toc-5.html#5.1.3.7");
 //-->
 </script>
 
@@ -86,6 +86,12 @@ Optional description, provided for exchanging informative comments.
 <tr><td></td><td><i>HasContext</i></td><td><a href="../../ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a><br/>@RelatedDefinitions</td><td>S[0:1]</td><td>References to the context providing context information such as project unit or representation context. It should only be asserted for the uppermost non-spatial object.
 
 </td><td></td></tr>
+<tr><td></td><td><i>IsDecomposedBy</i></td><td><a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a><br/>@RelatingObject</td><td>S[0:?]</td><td>References to the decomposition relationship being an aggregation. It determines that this object definition is whole within an unordered whole/part decomposition relationship. An object definitions can be aggregated by several other objects (occurrences or parts).
+
+</td><td>X</td></tr>
+<tr><td></td><td><i>Decomposes</i></td><td><a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a><br/>@RelatedObjects</td><td>S[0:1]</td><td>References to the decomposition relationship being an aggregation. It determines that this object definition is a part within an unordered whole/part decomposition relationship. An object definitions can only be part of a single decomposition (to allow hierarchical strutures only).
+
+</td><td></td></tr>
 <tr><td></td><td><i>HasAssociations</i></td><td><a href="../../ifckernel/lexical/ifcrelassociates.html">IfcRelAssociates</a><br/>@RelatedObjects</td><td>S[0:?]</td><td>Reference to the relationship objects, that associates external references or other resource definitions to the object.. Examples are the association to library, documentation or classification.
 </td><td>X</td></tr>
 <tr><td colspan="6"><i><a href="../../ifckernel/lexical/ifccontext.html">IfcContext</a></i></td></tr>
@@ -114,7 +120,7 @@ Units globally assigned to measure types used within the context.
 </td><td>X</td></tr>
 <tr><td></td><td><i>Declares</i></td><td><a href="../../ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a><br/>@RelatingContext</td><td>S[0:?]</td><td>Reference to the <a href="../../ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a> relationship that assigns the uppermost entities of includes hierarchies to this context instance.
 <blockquote class="note">
-NOTE  The spatial hiearchy is assigned to <a href="../../ifckernel/lexical/ifcproject.html">IfcProject</a> using the <i>IfcRelAggregates</i> relationship. This is a single exception due to compatibility reasons with earlier releases.
+NOTE  The spatial hiearchy is assigned to <i>IfcProject</i> using the <a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a> relationship. This is a single exception due to compatibility reasons with earlier releases.
 </blockquote>
 </td><td>X</td></tr>
 <tr><td colspan="6"><a href="../../ifckernel/lexical/ifcprojectlibrary.html">IfcProjectLibrary</a></td></tr>
