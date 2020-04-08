@@ -20,16 +20,25 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../toc-4.html#4.11");
+    parent.index.location.replace("../toc-4.html#4.9");
 //-->
 </script>
 
-<h2 class="std">4.11 Partial Templates</h2>
+<h2 class="std">4.9 Partial Templates</h2>
 <p>Partial concept templates are described herein to indicate usage of common data types, which are then incorporated into other templates.</p>
 <details><summary>mvdXML Specification</summary><div class="xsd"><code class="xsd">
 &lt;?xml version=&quot;1.0&quot;?&gt;<br/>
 &lt;ConceptTemplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; uuid=&quot;a322fdd7-cd28-4ea7-8797-f6cf124ab3d6&quot; name=&quot;Partial Templates&quot; status=&quot;draft&quot; applicableSchema=&quot;IFC4&quot;&gt;<br/>
 &nbsp;&nbsp;&lt;SubTemplates&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;ConceptTemplate uuid=&quot;f8524756-81f5-48b8-81cf-d0249af70f8a&quot; name=&quot;Material Styles&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a>&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;SubTemplates&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ConceptTemplate uuid=&quot;ad1ec73c-6f9a-4f20-8c99-093920ee9308&quot; name=&quot;Material Surface Style&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a>&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;SubTemplates&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ConceptTemplate uuid=&quot;6e4e5d36-ea3c-46d5-a490-99abffb4e317&quot; name=&quot;Material Surface Color Style&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a>&quot; /&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SubTemplates&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ConceptTemplate&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/SubTemplates&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ConceptTemplate&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;ConceptTemplate uuid=&quot;88b4aaa9-0925-447c-b009-fe357b7c754e&quot; name=&quot;Values&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifcpropertyresource/lexical/ifcsimpleproperty.html">IfcSimpleProperty</a>&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Rules&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;AttributeRule RuleID=&quot;PropertyName&quot; AttributeName=&quot;Name&quot;&gt;<br/>

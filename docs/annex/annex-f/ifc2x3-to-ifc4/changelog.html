@@ -35,7 +35,7 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcSimplePropertyTemplateTypeEnum</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifckernel/lexical/ifcdefinitionselect.html">IfcDefinitionSelect</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcProcessSelect</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifckernel/lexical/ifcproductselect.html">IfcProductSelect</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcProductSelect</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifckernel/lexical/ifcpropertysetdefinitionselect.html">IfcPropertySetDefinitionSelect</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcResourceSelect</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcActor</td><td></td><td></td><td></td><td></td></tr>
@@ -70,7 +70,7 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcRelAssignsToProcess</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OwnerHistory</td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>OPTIONAL</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RelatingProcess</td><td></td><td></td><td>MODIFIED</td><td>Type changed from <i>IfcProcess</i> to <i>IfcProcessSelect</i>. <br/></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifckernel/lexical/ifcrelassignstoproduct.html">IfcRelAssignsToProduct</a></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcRelAssignsToProduct</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OwnerHistory</td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>OPTIONAL</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RelatingProduct</td><td></td><td></td><td>MODIFIED</td><td>Type changed from <i>IfcProduct</i> to <i>IfcProductSelect</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcRelAssignsToResource</td><td></td><td></td><td></td><td></td></tr>
@@ -104,7 +104,7 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OwnerHistory</td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>OPTIONAL</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicableOccurrence</td><td></td><td></td><td>MODIFIED</td><td>Type changed from <i>IfcLabel</i> to <i>IfcIdentifier</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcTypeProcess</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifckernel/lexical/ifctypeproduct.html">IfcTypeProduct</a></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcTypeProduct</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OwnerHistory</td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>OPTIONAL</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ApplicableOccurrence</td><td></td><td></td><td>MODIFIED</td><td>Type changed from <i>IfcLabel</i> to <i>IfcIdentifier</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcTypeResource</td><td></td><td></td><td>ADDED</td><td></td></tr>
@@ -1467,7 +1467,7 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcBezierCurve</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcRationalBezierCurve</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;<b>IFCMATERIALRESOURCE</b></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcCardinalPointReference</td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifccardinalpointreference.html">IfcCardinalPointReference</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialselect.html">IfcMaterialSelect</a></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialUsageDefinition</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialDefinition</td><td></td><td></td><td>ADDED</td><td></td></tr>
@@ -1480,8 +1480,8 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialClassificationRelationship</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MaterialClassifications</td><td>X</td><td>X</td><td>MODIFIED</td><td>Type changed from <i>IfcClassificationNotationSelect</i> to <i>IfcClassificationSelect</i>. <br/></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialconstituent.html">IfcMaterialConstituent</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialconstituentset.html">IfcMaterialConstituentSet</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialConstituent</td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialConstituentSet</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialdefinition.html">IfcMaterialDefinition</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmateriallayer.html">IfcMaterialLayer</a></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LayerThickness</td><td></td><td></td><td>MODIFIED</td><td>Type changed from <i>IfcPositiveLengthMeasure</i> to <i>IfcNonNegativeLengthMeasure</i>. <br/></td></tr>
@@ -1491,15 +1491,15 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Priority</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmateriallayerset.html">IfcMaterialLayerSet</a></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialLayerSetUsage</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmateriallayersetusage.html">IfcMaterialLayerSetUsage</a></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ReferenceExtent</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialLayerWithOffsets</td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmateriallayerwithoffsets.html">IfcMaterialLayerWithOffsets</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialprofile.html">IfcMaterialProfile</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialprofileset.html">IfcMaterialProfileSet</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialProfileSetUsage</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialProfileSetUsageTapering</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialProfileWithOffsets</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialproperties.html">IfcMaterialProperties</a></td><td></td><td></td><td>MODIFIED</td><td>Schema changed from <i>IFCMATERIALPROPERTYRESOURCE</i> to <i>IFCMATERIALRESOURCE</i>. <br/>Instantiation changed from <i>ABSTRACT</i>. <br/></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialprofilesetusage.html">IfcMaterialProfileSetUsage</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialprofilesetusagetapering.html">IfcMaterialProfileSetUsageTapering</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialprofilewithoffsets.html">IfcMaterialProfileWithOffsets</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialProperties</td><td></td><td></td><td>MODIFIED</td><td>Schema changed from <i>IFCMATERIALPROPERTYRESOURCE</i> to <i>IFCMATERIALRESOURCE</i>. <br/>Instantiation changed from <i>ABSTRACT</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name</td><td>X</td><td>X</td><td>MODIFIED</td><td>Name changed from <i>Material</i> to <i>Name</i>. <br/>Type changed from <i>IfcMaterial</i> to <i>IfcIdentifier</i>. <br/>Instantiation changed to <i>OPTIONAL</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Properties</td><td></td><td></td><td>ADDED</td><td></td></tr>
@@ -1523,7 +1523,7 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcSoundPowerLevelMeasure</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcSoundPressureLevelMeasure</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcTimeStamp</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMeasureValue</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmeasureresource/lexical/ifcmeasurevalue.html">IfcMeasureValue</a></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcNonNegativeLengthMeasure</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmeasureresource/lexical/ifcsimplevalue.html">IfcSimpleValue</a></td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcDateTime</td><td></td><td></td><td>ADDED</td><td></td></tr>
@@ -1719,7 +1719,7 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcCalendarDate</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcLocalTime</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialLayer</td><td></td><td></td><td>DELETED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcpropertyresource/lexical/ifcextendedproperties.html">IfcExtendedProperties</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcExtendedProperties</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcPreDefinedProperties</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcpropertyresource/lexical/ifcpropertyabstraction.html">IfcPropertyAbstraction</a></td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcpropertyresource/lexical/ifcpropertyboundedvalue.html">IfcPropertyBoundedValue</a></td><td></td><td></td><td></td><td></td></tr>
@@ -1759,10 +1759,10 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcCoordinateOperation</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcCoordinateReferenceSystem</td><td></td><td></td><td>ADDED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMapConversion</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcProductRepresentation</td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>ABSTRACT</i>. <br/></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcrepresentationresource/lexical/ifcproductrepresentation.html">IfcProductRepresentation</a></td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>ABSTRACT</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcProjectedCRS</td><td></td><td></td><td>ADDED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcRepresentation</td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>ABSTRACT</i>. <br/></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcRepresentationContext</td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>ABSTRACT</i>. <br/></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcrepresentationresource/lexical/ifcrepresentation.html">IfcRepresentation</a></td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>ABSTRACT</i>. <br/></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcrepresentationresource/lexical/ifcrepresentationcontext.html">IfcRepresentationContext</a></td><td></td><td></td><td>MODIFIED</td><td>Instantiation changed to <i>ABSTRACT</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcShapeAspect</td><td></td><td></td><td></td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PartOfProductDefinitionShape</td><td></td><td></td><td>MODIFIED</td><td>Type changed from <i>IfcProductDefinitionShape</i> to <i>IfcProductRepresentationSelect</i>. <br/>Instantiation changed to <i>OPTIONAL</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;<b>IFCSTRUCTURALLOADRESOURCE</b></td><td></td><td></td><td></td><td></td></tr>
@@ -1827,7 +1827,7 @@
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcFuelProperties</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcGeneralMaterialProperties</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcHygroscopicMaterialProperties</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
-<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../../schema/ifcmaterialresource/lexical/ifcmaterialproperties.html">IfcMaterialProperties</a></td><td></td><td></td><td>MOVED</td><td>Schema changed from <i>IFCMATERIALPROPERTYRESOURCE</i> to <i>IfcMaterialResource</i>. <br/></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMaterialProperties</td><td></td><td></td><td>MOVED</td><td>Schema changed from <i>IFCMATERIALPROPERTYRESOURCE</i> to <i>IfcMaterialResource</i>. <br/></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMechanicalConcreteMaterialProperties</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMechanicalMaterialProperties</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>
 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;IfcMechanicalSteelMaterialProperties</td><td>X</td><td>X</td><td>DELETED</td><td></td></tr>

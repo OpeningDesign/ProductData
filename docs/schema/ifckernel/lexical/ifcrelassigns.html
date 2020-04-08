@@ -69,7 +69,6 @@ Related objects, which are assigned to a single object. The type of the single (
 <details open="open"><summary>Entity inheritance</summary><img src="../../../diagrams/ifcrelassigns.png" usemap="#f"/>
 <map name="f">
 <area shape="rect" coords="42,78,230,90" href="../../../schema/ifckernel/lexical/ifcrelassignstogroup.html" alt="IfcRelAssignsToGroup" />
-<area shape="rect" coords="42,102,230,114" href="../../../schema/ifckernel/lexical/ifcrelassignstoproduct.html" alt="IfcRelAssignsToProduct" />
 <area shape="rect" coords="18,30,254,42" href="../../../schema/ifckernel/lexical/ifcrelationship.html" alt="IfcRelationship" />
 <area shape="rect" coords="6,6,266,18" href="../../../schema/ifckernel/lexical/ifcroot.html" alt="IfcRoot" />
 </map>
@@ -127,7 +126,7 @@ Related objects, which are assigned to a single object. The type of the single (
 </code></div></details>
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcRelAssigns<br/>
-&nbsp;<span class="keyword">ABSTRACT</span> <span class="keyword">SUPERTYPE OF</span>(<span class="keyword">ONEOF</span>(<a href="../../ifckernel/lexical/ifcrelassignstogroup.html">IfcRelAssignsToGroup</a>, <a href="../../ifckernel/lexical/ifcrelassignstoproduct.html">IfcRelAssignsToProduct</a>))<br/>
+&nbsp;<span class="keyword">ABSTRACT</span> <span class="keyword">SUPERTYPE OF</span>(<a href="../../ifckernel/lexical/ifcrelassignstogroup.html">IfcRelAssignsToGroup</a>)<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="../../ifckernel/lexical/ifcrelationship.html">IfcRelationship</a>)<b>;</b><br/>
 &nbsp;&nbsp;RelatedObjects : <span class="keyword">SET</span> [1:?] <span class="keyword">OF</span> <a href="../../ifckernel/lexical/ifcobjectdefinition.html">IfcObjectDefinition</a>;<br/>
 &nbsp;&nbsp;RelatedObjectsType : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>

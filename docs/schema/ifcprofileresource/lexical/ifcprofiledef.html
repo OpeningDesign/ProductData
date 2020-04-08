@@ -11,7 +11,7 @@
     <title>IfcProfileDef</title>
 
     <style type="text/css">
-      body { counter-reset: index1 8 index2 9 index3 3 index4 0 index5 0; }
+      body { counter-reset: index1 8 index2 10 index3 3 index4 0 index5 0; }
     </style>
   </head>
 
@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../../toc-8.html#8.9.3.1");
+    parent.index.location.replace("../../toc-8.html#8.10.3.1");
 //-->
 </script>
 
@@ -49,8 +49,9 @@
 <tr><td>1</td><td>ProfileType</td><td><a href="../../ifcprofileresource/lexical/ifcprofiletypeenum.html">IfcProfileTypeEnum</a></td><td></td><td>
 Defines the type of geometry into which this profile definition shall be resolved, either a curve or a surface area. In case of curve the profile should be referenced by a swept surface, in case of area the profile should be referenced by a swept area solid.
 </td><td>X</td></tr>
-<tr><td>2</td><td>ProfileName</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>2</td><td>ProfileName</td><td><a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a></td><td>? </td><td>
+Human-readable name of the profile, for example according to a standard profile table. As noted above, machine-interpretable standardized profile designations should be provided in <i>IfcExternalReference.ItemReference</i>.
+</td><td>X</td></tr>
 <tr><td></td><td><i>HasExternalReference</i></td><td><a href="../../ifcexternalreferenceresource/lexical/ifcexternalreferencerelationship.html">IfcExternalReferenceRelationship</a><br/>@RelatedResourceObjects</td><td>S[0:?]</td><td>Reference to external information, e.g. library, classification, or document information, which is associated with the profile.
 
 
@@ -70,8 +71,9 @@ Defines the type of geometry into which this profile definition shall be resolve
 <tr><td>1</td><td>ProfileType</td><td><a href="../../ifcprofileresource/lexical/ifcprofiletypeenum.html">IfcProfileTypeEnum</a></td><td></td><td>
 Defines the type of geometry into which this profile definition shall be resolved, either a curve or a surface area. In case of curve the profile should be referenced by a swept surface, in case of area the profile should be referenced by a swept area solid.
 </td><td>X</td></tr>
-<tr><td>2</td><td>ProfileName</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>2</td><td>ProfileName</td><td><a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a></td><td>? </td><td>
+Human-readable name of the profile, for example according to a standard profile table. As noted above, machine-interpretable standardized profile designations should be provided in <i>IfcExternalReference.ItemReference</i>.
+</td><td>X</td></tr>
 <tr><td></td><td><i>HasExternalReference</i></td><td><a href="../../ifcexternalreferenceresource/lexical/ifcexternalreferencerelationship.html">IfcExternalReferenceRelationship</a><br/>@RelatedResourceObjects</td><td>S[0:?]</td><td>Reference to external information, e.g. library, classification, or document information, which is associated with the profile.
 
 
@@ -86,6 +88,7 @@ Defines the type of geometry into which this profile definition shall be resolve
 &nbsp;&nbsp;&lt;xs:complexContent&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;xs:extension base=&quot;ifc:Entity&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute name=&quot;ProfileType&quot; type=&quot;ifc:<a href="../../ifcprofileresource/lexical/ifcprofiletypeenum.html">IfcProfileTypeEnum</a>&quot; use=&quot;optional&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute name=&quot;ProfileName&quot; type=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a>&quot; use=&quot;optional&quot;/&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;/xs:extension&gt;<br/>
 &nbsp;&nbsp;&lt;/xs:complexContent&gt;<br/>
 &nbsp;&lt;/xs:complexType&gt;<br/>
@@ -93,7 +96,7 @@ Defines the type of geometry into which this profile definition shall be resolve
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcProfileDef<br/>
 &nbsp;&nbsp;ProfileType : <a href="../../ifcprofileresource/lexical/ifcprofiletypeenum.html">IfcProfileTypeEnum</a>;<br/>
-&nbsp;&nbsp;ProfileName : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;ProfileName : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a>;<br/>
 &nbsp;<span class="keyword">INVERSE</span><br/>
 &nbsp;&nbsp;HasExternalReference : <span class="keyword">SET</span> [0:?] OF <a href="../../ifcexternalreferenceresource/lexical/ifcexternalreferencerelationship.html">IfcExternalReferenceRelationship</a> <span class="keyword">FOR</span> RelatedResourceObjects;<br/>
 <span class="keyword">END_ENTITY;</span><br/>

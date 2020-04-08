@@ -11,7 +11,7 @@
     <title>IfcMaterialResource</title>
 
     <style type="text/css">
-      body { counter-reset: index1 8 index2 7 index3 0 index4 -1 index5 0; }
+      body { counter-reset: index1 8 index2 8 index3 0 index4 -1 index5 0; }
     </style>
   </head>
 
@@ -20,12 +20,12 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../toc-8.html#8.7");
+    parent.index.location.replace("../toc-8.html#8.8");
 //-->
 </script>
 
-<h2 class="std">8.7 IfcMaterialResource</h2>
-<h3 class="std">8.7.1 Schema Definition</h3>
+<h2 class="std">8.8 IfcMaterialResource</h2>
+<h3 class="std">8.8.1 Schema Definition</h3>
 <p>The schema <i>IfcMaterialResource</i> contains the types and entities that are used to define materials (substances, of which products are made of). Materials are defined generically.</p>
 <blockquote class="note">
 <p>NOTE  The references to the usage of materials is made from the relevant elements through the objectified relationship <a href="../ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a>.</p>
@@ -33,8 +33,8 @@
 <p>Material definitions are distinguished by how they apply to elements or element types and by their components (layers, profiles, parts).</p>
 <p>Material designation can be made for standard element occurrences to support a limited range of their parametric representation using</p>
 <ol>
-<li>a structured set of material layers <i>IfcMaterialLayerSetUsage</i> and how the layers relate to the reference axis or plane,</li>
-<li>a structured set of material profiles <i>IfcMaterialProfileSetUsage</i> and how the profiles relate to the reference axis.</li>
+<li>a structured set of material layers <a href="../ifcmaterialresource/lexical/ifcmateriallayersetusage.html">IfcMaterialLayerSetUsage</a> and how the layers relate to the reference axis or plane,</li>
+<li>a structured set of material profiles <a href="../ifcmaterialresource/lexical/ifcmaterialprofilesetusage.html">IfcMaterialProfileSetUsage</a> and how the profiles relate to the reference axis.</li>
 </ol>
 <blockquote class="note">
 <p>NOTE  Often specific subtypes of building elements are used to have such parametric representations associated, they use the common suffix 'StandardCase', for example <i>IfcWallStandardCase</i>, or <i>IfcBeamStandardCase</i>.</p>
@@ -43,7 +43,7 @@
 <ol>
 <li>a set of material layers (with a specified configuration by sequence and thickness of material layers) <a href="../ifcmaterialresource/lexical/ifcmateriallayerset.html">IfcMaterialLayerSet</a>, or</li>
 <li>a set of material profiles (with a specified configuration by positioning and outline profile of material profiles) <a href="../ifcmaterialresource/lexical/ifcmaterialprofileset.html">IfcMaterialProfileSet</a>, or</li>
-<li>a set of materials (without a specified configuration or structure) <a href="../ifcmaterialresource/lexical/ifcmaterialconstituentset.html">IfcMaterialConstituentSet</a>, or</li>
+<li>a set of materials (without a specified configuration or structure) <i>IfcMaterialConstituentSet</i>, or</li>
 <li>as fallback by a single material <a href="../ifcmaterialresource/lexical/ifcmaterial.html">IfcMaterial</a> (including composite materials),</li>
 </ol>
 <p>These options are exposed for association with <a href="../ifcproductextension/lexical/ifcelement.html">IfcElement</a> or <i>IfcElementType</i> and their subtypes through a select type <a href="../ifcmaterialresource/lexical/ifcmaterialselect.html">IfcMaterialSelect</a>. The association is realized by the objectified relationship <a href="../ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a>, accessible by the inverse relationship <i>AssociatedTo</i>. Some associations to specific material entities may be restricted as not being appropriate within the specialized element or element type definitions.</p>

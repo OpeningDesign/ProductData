@@ -11,7 +11,7 @@
     <title>IfcMaterial</title>
 
     <style type="text/css">
-      body { counter-reset: index1 8 index2 7 index3 3 index4 0 index5 0; }
+      body { counter-reset: index1 8 index2 8 index3 3 index4 0 index5 0; }
     </style>
   </head>
 
@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../../toc-8.html#8.7.3.1");
+    parent.index.location.replace("../../toc-8.html#8.8.3.1");
 //-->
 </script>
 
@@ -44,7 +44,7 @@
 <section>
 <h5 class="num">Semantic definitions at the entity</h5>
 <details open="open"><summary>Entity definition</summary><p><span class="self-ref">IfcMaterial</span> is a homogeneous or inhomogeneous substance that can be used to form elements (physical products or their components).</p>
-<p><span class="self-ref">IfcMaterial</span> is the basic entity for material designation and definition; this includes identification by name and classification (via reference to an external classification), as well as association of material properties (isotropic or anisotropic) defined by (subtypes of) <a href="../../ifcmaterialresource/lexical/ifcmaterialproperties.html">IfcMaterialProperties</a>. An instance of <span class="self-ref">IfcMaterial</span> may be associated to an element or element type using the <a href="../../ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a> relationship. The assignment might either be direct as a single material information, or via</p>
+<p><span class="self-ref">IfcMaterial</span> is the basic entity for material designation and definition; this includes identification by name and classification (via reference to an external classification), as well as association of material properties (isotropic or anisotropic) defined by (subtypes of) <i>IfcMaterialProperties</i>. An instance of <span class="self-ref">IfcMaterial</span> may be associated to an element or element type using the <a href="../../ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a> relationship. The assignment might either be direct as a single material information, or via</p>
 <p>\X\X\\\\\* a material profile set
 \X\X\X\XØ\X\X\XÓ\X\X\X\X\X\X\S</p>
 </details>
@@ -60,10 +60,21 @@ EXAMPLE A view definition may require <i>Material.Name</i> to uniquely specify e
 NOTE  Material grade may have different meaning in different view definitions, e.g. strength grade for structural design and analysis, or visible appearance grade in architectural application. Also, more elaborate material grade definition may be associated as classification via inverse attribute <i>HasExternalReferences</i>.
 </blockquote>
 </td><td>X</td></tr>
-<tr><td>2</td><td>Description</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
-<tr><td>3</td><td>Category</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>2</td><td>Description</td><td><a href="../../ifcmeasureresource/lexical/ifctext.html">IfcText</a></td><td>? </td><td>
+Definition of the material in more descriptive terms than given by attributes <i>Name</i> or <i>Category</i>.
+
+
+</td><td>X</td></tr>
+<tr><td>3</td><td>Category</td><td><a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a></td><td>? </td><td>
+Definition of the category (group or type) of material, in more general terms than given by attribute <i>Name</i>.
+<blockquote class="example">
+EXAMPLE A view definition may require each <i>Material.Name</i> to be unique, e.g. for each concrete or steel grade used in a project, in which case <i>Material.Category</i> could take the values 'Concrete' or 'Steel'.
+</blockquote>
+
+</td><td>X</td></tr>
+<tr><td></td><td><i>HasRepresentation</i></td><td><a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a><br/>@RepresentedMaterial</td><td>S[0:1]</td><td>Reference to the <a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a> that provides presentation information to a representation common to this material in style definitions.
+
+</td><td>X</td></tr>
 </table>
 </details>
 </section>
@@ -80,15 +91,11 @@ NOTE  Material grade may have different meaning in different view definitions, 
 <tr><td></td><td><i>AssociatedTo</i></td><td><a href="../../ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a><br/>@RelatingMaterial</td><td>S[0:?]</td><td>Use of the <span class="self-ref">IfcMaterialDefinition</span> subtypes within the material association of an element occurrence or element type. The association is established by the <a href="../../ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a> relationship.
 
 
-</td><td>X</td></tr>
+</td><td></td></tr>
 <tr><td></td><td><i>HasExternalReferences</i></td><td><a href="../../ifcexternalreferenceresource/lexical/ifcexternalreferencerelationship.html">IfcExternalReferenceRelationship</a><br/>@RelatedResourceObjects</td><td>S[0:?]</td><td>Reference to external references, e.g. library, classification, or document information, that are associated to the material.
 
 
-</td><td>X</td></tr>
-<tr><td></td><td><i>HasProperties</i></td><td><a href="../../ifcmaterialresource/lexical/ifcmaterialproperties.html">IfcMaterialProperties</a><br/>@Material</td><td>S[0:?]</td><td>Material properties assigned to instances of subtypes of <span class="self-ref">IfcMaterialDefinition</span>.
-
-
-</td><td>X</td></tr>
+</td><td></td></tr>
 <tr><td colspan="6"><a href="../../ifcmaterialresource/lexical/ifcmaterial.html">IfcMaterial</a></td></tr>
 <tr><td>1</td><td>Name</td><td><a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a></td><td></td><td>
 Name of the material.
@@ -99,10 +106,21 @@ EXAMPLE A view definition may require <i>Material.Name</i> to uniquely specify e
 NOTE  Material grade may have different meaning in different view definitions, e.g. strength grade for structural design and analysis, or visible appearance grade in architectural application. Also, more elaborate material grade definition may be associated as classification via inverse attribute <i>HasExternalReferences</i>.
 </blockquote>
 </td><td>X</td></tr>
-<tr><td>2</td><td>Description</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
-<tr><td>3</td><td>Category</td><td><span class="self-ref">-</span></td><td></td><td>
-<i>This attribute is out of scope for this model view definition and shall not be set.</i></td><td></td></tr>
+<tr><td>2</td><td>Description</td><td><a href="../../ifcmeasureresource/lexical/ifctext.html">IfcText</a></td><td>? </td><td>
+Definition of the material in more descriptive terms than given by attributes <i>Name</i> or <i>Category</i>.
+
+
+</td><td>X</td></tr>
+<tr><td>3</td><td>Category</td><td><a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a></td><td>? </td><td>
+Definition of the category (group or type) of material, in more general terms than given by attribute <i>Name</i>.
+<blockquote class="example">
+EXAMPLE A view definition may require each <i>Material.Name</i> to be unique, e.g. for each concrete or steel grade used in a project, in which case <i>Material.Category</i> could take the values 'Concrete' or 'Steel'.
+</blockquote>
+
+</td><td>X</td></tr>
+<tr><td></td><td><i>HasRepresentation</i></td><td><a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a><br/>@RepresentedMaterial</td><td>S[0:1]</td><td>Reference to the <a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a> that provides presentation information to a representation common to this material in style definitions.
+
+</td><td>X</td></tr>
 </table>
 </details>
 </section>
@@ -112,7 +130,12 @@ NOTE  Material grade may have different meaning in different view definitions, 
 &nbsp;&lt;xs:complexType name=&quot;<a href="../../ifcmaterialresource/lexical/ifcmaterial.html">IfcMaterial</a>&quot;&gt;<br/>
 &nbsp;&nbsp;&lt;xs:complexContent&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;xs:extension base=&quot;ifc:<a href="../../ifcmaterialresource/lexical/ifcmaterialdefinition.html">IfcMaterialDefinition</a>&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:sequence&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:element name=&quot;HasRepresentation&quot; type=&quot;ifc:<a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a>&quot; nillable=&quot;true&quot; minOccurs=&quot;0&quot; maxOccurs=&quot;1&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/xs:sequence&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute name=&quot;Name&quot; type=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a>&quot; use=&quot;optional&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute name=&quot;Description&quot; type=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifctext.html">IfcText</a>&quot; use=&quot;optional&quot;/&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:attribute name=&quot;Category&quot; type=&quot;ifc:<a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a>&quot; use=&quot;optional&quot;/&gt;<br/>
 &nbsp;&nbsp;&nbsp;&lt;/xs:extension&gt;<br/>
 &nbsp;&nbsp;&lt;/xs:complexContent&gt;<br/>
 &nbsp;&lt;/xs:complexType&gt;<br/>
@@ -121,9 +144,10 @@ NOTE  Material grade may have different meaning in different view definitions, 
 <span class="keyword">ENTITY</span> IfcMaterial<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="../../ifcmaterialresource/lexical/ifcmaterialdefinition.html">IfcMaterialDefinition</a>)<b>;</b><br/>
 &nbsp;&nbsp;Name : <a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a>;<br/>
-&nbsp;&nbsp;Description : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
-&nbsp;&nbsp;Category : <span class="keyword">OPTIONAL</span> <span class="self-ref">IfcStrippedOptional</span>;<br/>
+&nbsp;&nbsp;Description : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifctext.html">IfcText</a>;<br/>
+&nbsp;&nbsp;Category : <span class="keyword">OPTIONAL</span> <a href="../../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a>;<br/>
 &nbsp;<span class="keyword">INVERSE</span><br/>
+&nbsp;&nbsp;HasRepresentation : <span class="keyword">SET</span> [0:1] OF <a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a> <span class="keyword">FOR</span> RepresentedMaterial;<br/>
 <span class="keyword">END_ENTITY;</span><br/>
 <p class="std"><a href="../../../annex/annex-d/ifcmaterialresource/diagram_0000.html" ><img src="../../../img/diagram.png" style="border: 0px" title="Link to EXPRESS-G diagram" alt="Link to EXPRESS-G diagram">&nbsp;EXPRESS-G diagram</a></p>
 </code></div>
@@ -133,16 +157,16 @@ NOTE  Material grade may have different meaning in different view definitions, 
 &nbsp;private string Name;<br/>
 &nbsp;private string Description;<br/>
 &nbsp;private string Category;<br/>
-&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] HasRepresentation;<br/>
+&nbsp;private <a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a>[] HasRepresentation;<br/>
 &nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] IsRelatedWith;<br/>
 &nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] RelatesTo;<br/>
 }<br/>
 </code></div></details>
 </section>
-<p><img src="../../../img/external.png" style="border: 0px" title="References" alt="References"/>&nbsp; References: <a href="../../ifcmaterialresource/lexical/ifcmaterialconstituent.html">IfcMaterialConstituent</a>
-<a href="../../ifcmaterialresource/lexical/ifcmateriallayer.html">IfcMaterialLayer</a>
+<p><img src="../../../img/external.png" style="border: 0px" title="References" alt="References"/>&nbsp; References: <a href="../../ifcmaterialresource/lexical/ifcmateriallayer.html">IfcMaterialLayer</a>
 <a href="../../ifcmaterialresource/lexical/ifcmateriallist.html">IfcMaterialList</a>
 <a href="../../ifcmaterialresource/lexical/ifcmaterialprofile.html">IfcMaterialProfile</a>
+<a href="../../ifcrepresentationresource/lexical/ifcmaterialdefinitionrepresentation.html">IfcMaterialDefinitionRepresentation</a>
 </p>
 <p><a href="https://github.com/buildingSMART/ProductData/issues/new?&title=ifcmaterial:%22" target="_blank" ><img src="../../../img/external.png" style="border: 0px" title="Report issue" alt="Report issue"/>&nbsp; Report an issue</a></p>
 <p><a href="../../../link/ifcmaterial.html" target="_blank" ><img src="../../../img/permlink.png" style="border: 0px" title="Link to this page" alt="Link to this page"/>&nbsp; Link to this page</a></p>

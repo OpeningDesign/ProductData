@@ -20,11 +20,11 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../toc-4.html#4.13.1");
+    parent.index.location.replace("../toc-4.html#4.11.1");
 //-->
 </script>
 
-<h3 class="std">4.13.1 Dictionaries</h3>
+<h3 class="std">4.11.1 Dictionaries</h3>
 <p>The EN ISO 23387 defines a standardized way to express construction data with the concept of data templates. Such data templates can be used to structure the information, based on external standards. Data templates include well defined properties according to EN ISO 23386.
 The definitions for propertiesc and data template can be stored in central dictionaries according to data structure, defined in ISO 12006-3, from where they can be retrieved and used in projects.</p>
 <figure>
@@ -34,242 +34,36 @@ The definitions for propertiesc and data template can be stored in central dicti
 <p>To use the properties and data templates from Dictionaries in the construction objects data view, the properties and data templates shall be mapped from the structure of the prEN ISO 23387 (Figure 3) to the structure of this standard.
 The following table defines, how the entities shall be mapped. The table shows a simplified mapping structure, based on the follwing remarks. The referenced classes in the second column (“WI 442018”) are based on the structures that are described in the other parts of the chapter “Fundamental concepts and assumptions”. The listed classes always reference to the top class in the class structure. All inherited classes from the top class are always allowed.</p>
 <figure>
-  <img src="../../figures/dict_illustration03.png" width="650" alt="Illustration 3: Mapping xtdBag to IfcProjectLibrary">
+  <img src="../../figures/illustration03.png" width="650" alt="Illustration 3: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 3: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration04.png" width="650" alt="Illustration 4: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <img src="../../figures/illustration04.png" width="650" alt="Illustration 4: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 4: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration05.png" width="650" alt="Illustration 5: Mapping xtdBag to IfcProjectLibrary">
+  <img src="../../figures/illustration05.png" width="650" alt="Illustration 5: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 5: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration06.png" width="650" alt="Illustration 6: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <img src="../../figures/illustration06.png" width="650" alt="Illustration 6: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 6: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration07.png" width="650" alt="Illustration 7: Mapping xtdBag to IfcProjectLibrary">
+  <img src="../../figures/illustration07.png" width="650" alt="Illustration 7: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 7: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration08.png" width="650" alt="Illustration 8: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <img src="../../figures/illustration08.png" width="650" alt="Illustration 8: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 8: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
   <img src="../../figures/dict_illustration09.png" width="650" alt="Illustration 9: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 9: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration10.png" width="650" alt="Illustration 10: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <img src="../../figures/illustration10.png" width="650" alt="Illustration 10: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 10: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration11.png" width="650" alt="Illustration 11: Mapping xtdBag to IfcProjectLibrary">
+  <img src="../../figures/illustration11.png" width="650" alt="Illustration 11: Mapping xtdBag to IfcProjectLibrary">
   <figcaption>Illustration 11: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure><figure>
-  <img src="../../figures/dict_illustration12.png" width="650" alt="Illustration 12: Mapping xtdExternalDocument to IfcDocumentInformation">
+  <img src="../../figures/illustration12.png" width="650" alt="Illustration 12: Mapping xtdExternalDocument to IfcDocumentInformation">
   <figcaption>Illustration 12: Mapping xtdBag to IfcProjectLibrary</figcaption>
 </figure>
-<p class="gridtable">
-Data template<br>
-xtdBag | Project Library<br>
-IfcProjectLibrary
-------------- | -------------
-Template name | IfcProjectLibrary.Name
-Template Guid | IfcProjectLibrary.GlobalId
-Template technical specification<br>
-xtdBag</p>
-<blockquote>
-<p>xtdRelDocuments<br>
-xtdExternalDocument (Reference document) | IfcProjectLibrary.HasAssociations<br>
-IfcRelAssociatesDocument.RelatedObjects<br>
-RelatingDocument<br>
-IfcDocumentInformation
-Template classification<br>
-xtdBag<br>
-xtdRelClassifies<br>
-xtdClass (Classification level) | IfcProjectLibrary.HasAssociations<br>
-IfcRelAssociatesClassification.RelatingClassification<br>
-IfcClassificationReference
-Construction objects assignment<br>
-xtdBag<br>
-xtdRealAssignsCollections<br>
-xtdSubject (Construction object) | IfcProjectLibrary.Declares<br>
-IfcRelDeclares.RelatedDefinitions<br>
-IfcTypeObject
-Collection of Group of Properties<br>
-xtdBag<br>
-xtdRelCollects<br>
-xtdNest (Group of properties) | IfcProjectLibrary.Declares<br>
-IfcRelDeclares.RelatedDefinitions<br>
-IfcPropertySetTemplate
-Composition of data templates<br>
-xtdBag<br>
-xtdRelComposes<br>
-xtdBag (Data template) | IfcProjectLibrary.HasAssignments<br>
-IfcRelAssigns. RelatedObjects<br>
-IfcProjectLibrary</p>
-</blockquote>
-<p class="gridtable">
-Reference document<br>
-xtdExternalDocument | Document Information<br>
-IfcDocumentInformation
-------------- | -------------
-Details according to EN ISO 12006-3 | Details according to EN ISO 16739-1:2018</p>
-<p class="gridtable">
-Classification level<br>
-xtdClass | Classification Reference<br>
-IfcClassificationReference
-------------- | -------------
-Details according to EN ISO 12006-3 | Details according to EN ISO 16739-1:2018</p>
-<p class="gridtable">
-Construction object<br>
-xtdSubject | Construction object type<br>
-IfcTypeObject
-------------- | -------------
-Construction object technical specification<br>
-xtdSubject</p>
-<blockquote>
-<p>xtdRelDocuments<br>
-xtdExternalDocument (Reference document) | IfcTypeObject.HasAssociations<br>
-IfcRelAssociatesDocument.RelatedObjects<br>
-RelatingDocument<br>
-IfcDocumentInformation
-Construction object classification<br>
-xtdSubject<br>
-xtdRelClassifies<br>
-xtdClass (Classification level) | IfcTypeObject.HasAssociations<br>
-IfcRelAssociatesClassification. RelatingClassification<br>
-IfcClassificationReference
-xtdSubject<br>
-xtdRelComposes<br>
-xtdSubject (Construction object) | IfcTypeObject.IsDecomposedBy<br>
-IfcRelAggregates.RelatedObjects<br>
-IfcTypeObject</p>
-</blockquote>
-<p class="gridtable">
-Group of properties<br>
-xtdNest | Property Set Template<br>
-IfcPropertySetTemplate
-------------- | -------------
-Name | IfcPropertySetTemplate.Name
-Definition | IfcPropertySetTemplate.Description
-GUID | IfcPropertySetTemplate.GlobalId
-Collection of Generic Properties<br>
-xtdNest</p>
-<blockquote>
-<p>xtdRelCollects<br>
-xtdProperty (Generic property) | IfcPropertySetTemplate.HasPropertyTemplates<br>
-IfcComplexPropertyTemplate
-Collection of Specific Properties<br>
-xtdNest<br>
-xtdRelCollects<br>
-xtdProperty (Specific property) | IfcPropertySetTemplate.HasPropertyTemplates<br>
-IfcSimplePropertyTemplate</p>
-</blockquote>
-<p class="gridtable">
-Generic Property<br>
-xtdProperty<br>
-“Essential Characteristic” | Complex data template<br>
-IfcComplexPropertyTemplate
-------------- | -------------
-Name | IfcComplexPropertyTemplate.Name
-Definition | IfcComplexPropertyTemplate.Description
-GUID | IfcComplexPropertyTemplate.GlobalId
-Specialize property<br>
-xtdProperty</p>
-<blockquote>
-<p>xtdRelSpecializesProperty<br>
-xtdProperty (Specific property) | IfcComplexPropertyTemplate.HasPropertyTemplates<br>
-IfcSimplePropertyTemplate
-Measure assignment<br>
-xtdProperty<br>
-xtdRelAssignsMeasures<br>
-xtdMeasureWithUnit (Quantity) | IfcComplexPropertyTemplate.PrimaryMeasureType<br>
-IfcValue</p>
-<blockquote>
-<p>IfcMeasureValue<br>
-IfcSimpleValue<br>
-IfcDerivedMeasureValue<br>
-IfcMeasureResource
-Unit assignment<br>
-xtdProperty<br>
-xtdRelAssignsMeasures<br>
-xtdMeasureWithUnit (Quantity)<br>
-xtdRelAssignsUnits<br>
-xdtUnit (Unit) | IfcSimplePropertyTemplate.PrimaryUnit<br>
-IfcUnit<br>
-IfcDerivedUnit<br>
-IfcNamedUnit<br>
-IfcMonetaryUnit
-Value assignment<br>
-xtdProperty<br>
-xtdRelAssignsPropertyWithValue<br>
-xdtValue (Value) | IfcSimplePropertyTemplate<br>
-[@TemplateType=&quot;p_enumeratedvalue&quot;]<br>
-.Enumerators<br>
-IfcPropertyEnumeration<br>
-EnumerationValues</p>
-</blockquote>
-</blockquote>
-<p class="gridtable">
-Specific Property<br>
-xtdProperty | Simple data template<br>
-IfcSimplePropertyTemplate
-------------- | -------------
-Name | IfcSimplePropertyTemplate.Name
-Definition | IfcSimplePropertyTemplate.Description
-GUID | IfcSimplePropertyTemplate.GlobalId
-Measure assignment<br>
-xtdProperty</p>
-<blockquote>
-<p>xtdRelAssignsMeasures<br>
-xtdMeasureWithUnit (Quantity) | IfcSimplePropertyTemplate.PrimaryMeasureType<br>
-IfcValue</p>
-<blockquote>
-<p>IfcMeasureValue<br>
-IfcSimpleValue<br>
-IfcDerivedMeasureValue<br>
-IfcMeasureResource
-Unit assignment<br>
-xtdProperty<br>
-xtdRelAssignsMeasures<br>
-xtdMeasureWithUnit (Quantity)<br>
-xtdRelAssignsUnits<br>
-xdtUnit (Unit) | IfcSimplePropertyTemplate.PrimaryUnit<br>
-IfcUnit<br>
-IfcDerivedUnit<br>
-IfcNamedUnit<br>
-IfcMonetaryUnit
-Value assignment<br>
-xtdProperty<br>
-xtdRelAssignsPropertyWithValue<br>
-xdtValue (Value) | IfcSimplePropertyTemplate<br>
-[@TemplateType=&quot;p_enumeratedvalue&quot;]<br>
-.Enumerators<br>
-IfcPropertyEnumeration<br>
-EnumerationValues</p>
-</blockquote>
-</blockquote>
-<p class="gridtable">
-Quantity<br>
-(xtdMeasureWithUnit) | Measure<br>
-(IfcMeasureResource)
-------------- | -------------
-Details according to EN ISO 12006-3 | Measures according to appendix A2<br>
-“Table of Measures and Units.xlsx</p>
-<p class="gridtable">
-Unit<br>
-(xtdUnit) | Measure<br>
-(IfcUnit)<br>
-Units according to appendix A2 “Table of Measures and Units.xlsx
-------------- | -------------
-Details according to EN ISO 12006-3 | Measures according to appendix A2<br>
-“Table of Measures and Units.xlsx</p>
-<p class="gridtable">
-Value<br>
-(xtdValue) | Enumeration values<br>
-(IfcSimplePropertyTemplate<br>
-TemplateType=&quot;p_enumeratedvalue&quot;)
-------------- | -------------
-Full name |
-Short name |
-Definition |
-GUID |</p>
 <hr/>
 <h4>Construction Objects Data View</h4>
 <p>This concept shall be applied as follows to the exchanges. All inherited classes from the classes shown in the figure can be instanciated.</p>

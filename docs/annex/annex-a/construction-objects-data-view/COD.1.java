@@ -3,11 +3,6 @@
 	}
 	
 
-	public interface IfcProductSelect
-	{
-	}
-	
-
 	public interface IfcPropertySetDefinitionSelect
 	{
 	}
@@ -136,12 +131,6 @@
 	}
 	
 
-	public class IfcRelAssignsToProduct extends IfcRelAssigns
-	{
-		private IfcProductSelect RelatingProduct;
-	}
-	
-
 	public class IfcRelAssociates extends IfcRelationship
 	{
 		private IfcDefinitionSelect[] RelatedObjects;
@@ -234,14 +223,6 @@
 		private string ApplicableOccurrence;
 		private IfcPropertySetDefinition[] HasPropertySets;
 		private IfcRelDefinesByType[] Types;
-	}
-	
-
-	public class IfcTypeProduct extends IfcTypeObject
-	{
-		private IfcRepresentationMap[] RepresentationMaps;
-		private string Tag;
-		private IfcRelAssignsToProduct[] ReferencedBy;
 	}
 	
 
@@ -647,6 +628,31 @@
 	}
 	
 
+	public class IfcRepresentationItem extends IfcBase
+	{
+		private IfcPresentationLayerAssignment[] LayerAssignment;
+		private IfcStyledItem[] StyledByItem;
+	}
+	
+
+	/* IfcCardinalPointReference : INTEGER (Java does not support structures, so usage of defined types are inline for efficiency.) */
+	
+
+	public enum IfcDirectionSenseEnum
+	{
+		POSITIVE,
+		NEGATIVE,
+	}
+	
+
+	public enum IfcLayerSetDirectionEnum
+	{
+		AXIS1,
+		AXIS2,
+		AXIS3,
+	}
+	
+
 	public interface IfcMaterialSelect
 	{
 	}
@@ -660,25 +666,6 @@
 		private IfcMaterialDefinitionRepresentation[] HasRepresentation;
 		private IfcMaterialRelationship[] IsRelatedWith;
 		private IfcMaterialRelationship[] RelatesTo;
-	}
-	
-
-	public class IfcMaterialConstituent extends IfcMaterialDefinition
-	{
-		private string Name;
-		private string Description;
-		private IfcMaterial Material;
-		private IfcRatioMeasure Fraction;
-		private string Category;
-		private IfcMaterialConstituentSet ToMaterialConstituentSet;
-	}
-	
-
-	public class IfcMaterialConstituentSet extends IfcMaterialDefinition
-	{
-		private string Name;
-		private string Description;
-		private IfcMaterialConstituent[] MaterialConstituents;
 	}
 	
 
@@ -712,6 +699,23 @@
 	}
 	
 
+	public class IfcMaterialLayerSetUsage extends IfcMaterialUsageDefinition
+	{
+		private IfcMaterialLayerSet ForLayerSet;
+		private IfcLayerSetDirectionEnum LayerSetDirection;
+		private IfcDirectionSenseEnum DirectionSense;
+		private double OffsetFromReferenceLine;
+		private IfcLengthMeasure ReferenceExtent;
+	}
+	
+
+	public class IfcMaterialLayerWithOffsets extends IfcMaterialLayer
+	{
+		private IfcLayerSetDirectionEnum OffsetDirection;
+		private double OffsetValues;
+	}
+	
+
 	public class IfcMaterialList extends IfcBase
 	{
 		private IfcMaterial[] Materials;
@@ -739,9 +743,24 @@
 	}
 	
 
-	public class IfcMaterialProperties extends IfcExtendedProperties
+	public class IfcMaterialProfileSetUsage extends IfcMaterialUsageDefinition
 	{
-		private IfcMaterialDefinition Material;
+		private IfcMaterialProfileSet ForProfileSet;
+		private int CardinalPoint;
+		private IfcLengthMeasure ReferenceExtent;
+	}
+	
+
+	public class IfcMaterialProfileSetUsageTapering extends IfcMaterialProfileSetUsage
+	{
+		private IfcMaterialProfileSet ForProfileEndSet;
+		private int CardinalEndPoint;
+	}
+	
+
+	public class IfcMaterialProfileWithOffsets extends IfcMaterialProfile
+	{
+		private double OffsetValues;
 	}
 	
 
@@ -760,7 +779,19 @@
 	/* IfcLengthMeasure : REAL (Java does not support structures, so usage of defined types are inline for efficiency.) */
 	
 
+	/* IfcLogical : LOGICAL (Java does not support structures, so usage of defined types are inline for efficiency.) */
+	
+
 	/* IfcNonNegativeLengthMeasure : IfcLengthMeasure (Java does not support structures, so usage of defined types are inline for efficiency.) */
+	
+
+	/* IfcNormalisedRatioMeasure : IfcRatioMeasure (Java does not support structures, so usage of defined types are inline for efficiency.) */
+	
+
+	/* IfcPositiveLengthMeasure : IfcLengthMeasure (Java does not support structures, so usage of defined types are inline for efficiency.) */
+	
+
+	/* IfcRatioMeasure : REAL (Java does not support structures, so usage of defined types are inline for efficiency.) */
 	
 
 	/* IfcReal : REAL (Java does not support structures, so usage of defined types are inline for efficiency.) */
@@ -918,6 +949,11 @@
 	}
 	
 
+	public interface IfcMeasureValue
+	{
+	}
+	
+
 	public interface IfcSimpleValue
 	{
 	}
@@ -1048,14 +1084,6 @@
 	}
 	
 
-	public class IfcExtendedProperties extends IfcPropertyAbstraction
-	{
-		private string Name;
-		private string Description;
-		private IfcProperty[] Properties;
-	}
-	
-
 	public class IfcProperty extends IfcPropertyAbstraction
 	{
 		private string Name;
@@ -1135,6 +1163,40 @@
 		private string Description;
 		private IfcExternalReferenceRelationship[] HasExternalReferences;
 		private IfcPhysicalComplexQuantity[] PartOfComplex;
+	}
+	
+
+	public class IfcMaterialDefinitionRepresentation extends IfcProductRepresentation
+	{
+		private IfcMaterial RepresentedMaterial;
+	}
+	
+
+	public class IfcProductRepresentation extends IfcBase
+	{
+		private string Name;
+		private string Description;
+		private IfcRepresentation[] Representations;
+	}
+	
+
+	public class IfcRepresentation extends IfcBase
+	{
+		private IfcRepresentationContext ContextOfItems;
+		private string RepresentationIdentifier;
+		private string RepresentationType;
+		private IfcRepresentationItem[] Items;
+		private IfcRepresentationMap[] RepresentationMap;
+		private IfcPresentationLayerAssignment[] LayerAssignments;
+		private IfcProductRepresentation[] OfProductRepresentation;
+	}
+	
+
+	public class IfcRepresentationContext extends IfcBase
+	{
+		private string ContextIdentifier;
+		private string ContextType;
+		private IfcRepresentation[] RepresentationsInContext;
 	}
 	
 

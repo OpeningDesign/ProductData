@@ -49,14 +49,17 @@
   <cnf:entity select="IfcMaterial">
     <cnf:inverse select="HasRepresentation" exp-attribute="attribute-tag" />
   </cnf:entity>
-  <cnf:entity select="IfcMaterialConstituent">
-    <cnf:attribute select="Material" exp-attribute="attribute-tag" />
-  </cnf:entity>
   <cnf:entity select="IfcMaterialDefinition">
     <cnf:inverse select="HasProperties" exp-attribute="double-tag" />
   </cnf:entity>
+  <cnf:entity select="IfcMaterialDefinitionRepresentation">
+    <cnf:attribute select="RepresentedMaterial" keep="false" />
+  </cnf:entity>
   <cnf:entity select="IfcMaterialLayer">
     <cnf:attribute select="Material" exp-attribute="attribute-tag" />
+  </cnf:entity>
+  <cnf:entity select="IfcMaterialLayerSetUsage">
+    <cnf:attribute select="ForLayerSet" exp-attribute="attribute-tag" />
   </cnf:entity>
   <cnf:entity select="IfcMaterialProfile">
     <cnf:attribute select="Material" exp-attribute="attribute-tag" />
@@ -65,8 +68,11 @@
   <cnf:entity select="IfcMaterialProfileSet">
     <cnf:attribute select="CompositeProfile" exp-attribute="attribute-tag" />
   </cnf:entity>
-  <cnf:entity select="IfcMaterialProperties">
-    <cnf:attribute select="Material" keep="false" />
+  <cnf:entity select="IfcMaterialProfileSetUsage">
+    <cnf:attribute select="ForProfileSet" exp-attribute="attribute-tag" />
+  </cnf:entity>
+  <cnf:entity select="IfcMaterialProfileSetUsageTapering">
+    <cnf:attribute select="ForProfileEndSet" exp-attribute="attribute-tag" />
   </cnf:entity>
   <cnf:entity select="IfcNamedUnit">
     <cnf:attribute select="Dimensions" exp-attribute="attribute-tag" />
@@ -127,6 +133,12 @@
   <cnf:entity select="IfcRelFillsElement">
     <cnf:attribute select="RelatingOpeningElement" keep="false" />
     <cnf:attribute select="RelatedBuildingElement" exp-attribute="attribute-tag" />
+  </cnf:entity>
+  <cnf:entity select="IfcRepresentation">
+    <cnf:attribute select="ContextOfItems" exp-attribute="attribute-tag" />
+  </cnf:entity>
+  <cnf:entity select="IfcRepresentationItem">
+    <cnf:inverse select="StyledByItem" exp-attribute="attribute-tag" />
   </cnf:entity>
   <cnf:entity select="IfcRoot">
     <cnf:attribute select="OwnerHistory" exp-attribute="attribute-tag" />

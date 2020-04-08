@@ -11,7 +11,7 @@
     <title>IfcMaterialUsageDefinition</title>
 
     <style type="text/css">
-      body { counter-reset: index1 8 index2 7 index3 3 index4 10 index5 0; }
+      body { counter-reset: index1 8 index2 8 index3 3 index4 12 index5 0; }
     </style>
   </head>
 
@@ -20,7 +20,7 @@
 
 <script type="text/javascript">
 <!--
-    parent.index.location.replace("../../toc-8.html#8.7.3.11");
+    parent.index.location.replace("../../toc-8.html#8.8.3.13");
 //-->
 </script>
 
@@ -64,6 +64,8 @@ Informal Propositions:</p>
 <h5 class="num">Inherited definitions from supertypes</h5>
 <details open="open"><summary>Entity inheritance</summary><img src="../../../diagrams/ifcmaterialusagedefinition.png" usemap="#f"/>
 <map name="f">
+<area shape="rect" coords="18,30,206,42" href="../../../schema/ifcmaterialresource/lexical/ifcmateriallayersetusage.html" alt="IfcMaterialLayerSetUsage" />
+<area shape="rect" coords="18,54,206,66" href="../../../schema/ifcmaterialresource/lexical/ifcmaterialprofilesetusage.html" alt="IfcMaterialProfileSetUsage" />
 </map>
 </details>
 <details><summary>Attribute inheritance</summary><table class="attributes">
@@ -85,6 +87,7 @@ Informal Propositions:</p>
 </code></div></details>
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcMaterialUsageDefinition<br/>
+&nbsp;<span class="keyword">ABSTRACT</span> <span class="keyword">SUPERTYPE OF</span>(<span class="keyword">ONEOF</span>(<a href="../../ifcmaterialresource/lexical/ifcmateriallayersetusage.html">IfcMaterialLayerSetUsage</a>, <a href="../../ifcmaterialresource/lexical/ifcmaterialprofilesetusage.html">IfcMaterialProfileSetUsage</a>))<b>;</b><br/>
 &nbsp;<span class="keyword">INVERSE</span><br/>
 &nbsp;&nbsp;AssociatedTo : <span class="keyword">SET</span> [1:?] <span class="keyword">OF</span> <a href="../../ifcproductextension/lexical/ifcrelassociatesmaterial.html">IfcRelAssociatesMaterial</a> <span class="keyword">FOR</span> RelatingMaterial;<br/>
 <span class="keyword">END_ENTITY;</span><br/>
