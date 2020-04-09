@@ -1,5 +1,5 @@
 [![Official repository by buildingSMART International](https://img.shields.io/badge/buildingSMART-Official%20Repository-orange.svg)](https://www.buildingsmart.org/)
-[![This repo is managed by the ProductRoom](https://img.shields.io/badge/-ProductRoom-blue.svg)](https://www.buildingsmart.org/standards/rooms-and-groups/product-room)
+[![This repo is managed by the ProductRoom](https://img.shields.io/badge/-ProductRoom-blue.svg)](https://www.buildingsmart.org/standards/rooms/product/)
 
 ## Product Data for Building Information Modeling (BIM)
 
