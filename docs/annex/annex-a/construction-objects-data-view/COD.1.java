@@ -64,6 +64,11 @@
 	}
 	
 
+	public class IfcProject extends IfcContext
+	{
+	}
+	
+
 	public class IfcProjectLibrary extends IfcContext
 	{
 	}
@@ -290,6 +295,82 @@
 	}
 	
 
+	public enum IfcBuildingSystemTypeEnum
+	{
+		FENESTRATION,
+		FOUNDATION,
+		LOADBEARING,
+		OUTERSHELL,
+		SHADING,
+		TRANSPORT,
+		USERDEFINED,
+		NOTDEFINED,
+	}
+	
+
+	public class IfcBuildingSystem extends IfcSystem
+	{
+		private IfcBuildingSystemTypeEnum PredefinedType;
+		private string LongName;
+	}
+	
+
+	public enum IfcDistributionSystemEnum
+	{
+		AIRCONDITIONING,
+		AUDIOVISUAL,
+		CHEMICAL,
+		CHILLEDWATER,
+		COMMUNICATION,
+		COMPRESSEDAIR,
+		CONDENSERWATER,
+		CONTROL,
+		CONVEYING,
+		DATA,
+		DISPOSAL,
+		DOMESTICCOLDWATER,
+		DOMESTICHOTWATER,
+		DRAINAGE,
+		EARTHING,
+		ELECTRICAL,
+		ELECTROACOUSTIC,
+		EXHAUST,
+		FIREPROTECTION,
+		FUEL,
+		GAS,
+		HAZARDOUS,
+		HEATING,
+		LIGHTING,
+		LIGHTNINGPROTECTION,
+		MUNICIPALSOLIDWASTE,
+		OIL,
+		OPERATIONAL,
+		POWERGENERATION,
+		RAINWATER,
+		REFRIGERATION,
+		SECURITY,
+		SEWAGE,
+		SIGNAL,
+		STORMWATER,
+		TELEPHONE,
+		TV,
+		VACUUM,
+		VENT,
+		VENTILATION,
+		WASTEWATER,
+		WATERSUPPLY,
+		USERDEFINED,
+		NOTDEFINED,
+	}
+	
+
+	public class IfcDistributionSystem extends IfcSystem
+	{
+		private string LongName;
+		private IfcDistributionSystemEnum PredefinedType;
+	}
+	
+
 	public enum IfcRoleEnum
 	{
 		SUPPLIER,
@@ -472,27 +553,6 @@
 	
 
 	/* IfcURIReference : STRING (Java does not support structures, so usage of defined types are inline for efficiency.) */
-	
-
-	public enum IfcDocumentConfidentialityEnum
-	{
-		PUBLIC,
-		RESTRICTED,
-		CONFIDENTIAL,
-		PERSONAL,
-		USERDEFINED,
-		NOTDEFINED,
-	}
-	
-
-	public enum IfcDocumentStatusEnum
-	{
-		DRAFT,
-		FINALDRAFT,
-		FINAL,
-		REVISION,
-		NOTDEFINED,
-	}
 	
 
 	public interface IfcClassificationReferenceSelect

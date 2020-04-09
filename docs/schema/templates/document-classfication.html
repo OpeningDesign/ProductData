@@ -25,10 +25,9 @@
 </script>
 
 <h3 class="std">4.5.1 Document classfication</h3>
-<p>In case of necessity of classification assignment to documents, the document defined in IfcDocumentInformation can be classified through the entity IfcRelAssociatesClassification and its attribute RelatingObjects (type of IfcDefinitionSelect).
-The IfcRelAssociatesClassification can be applied to the entire classification system or just to one item in the classification system through RelatingClassification (type of IfcClassificationSelect).</p>
-<p class="fig-ref">Figure 20 illustrates an instance diagram.</p>
-<table><tr><td><img alt="Document classfication" src="./diagrams/document-classfication.png" usemap="#f20"><map name="f20"><area shape="rect" coords="8,8,176,272" href="../ifcexternalreferenceresource/lexical/ifcdocumentinformation.html" alt="IfcDocumentInformation" /><area shape="rect" coords="208,8,376,20" href="../ifcexternalreferenceresource/lexical/ifcurireference.html" alt="IfcURIReference" /><area shape="rect" coords="208,40,376,52" href="../ifcmeasureresource/lexical/ifctext.html" alt="IfcText" /><area shape="rect" coords="208,72,376,168" href="../ifcexternalreferenceresource/lexical/ifcdocumentreference.html" alt="IfcDocumentReference" /><area shape="rect" coords="408,8,576,68" href="../ifcexternalreferenceresource/lexical/ifcexternalreferencerelationship.html" alt="IfcExternalReferenceRelationship" /><area shape="rect" coords="608,8,776,128" href="../ifcexternalreferenceresource/lexical/ifcclassificationreference.html" alt="IfcClassificationReference" /></map></td></tr><tr><td><p class="figure">Figure 20 &mdash; Document classfication</p></td></tr></table>
+<p>In case of necessity of classification assignment to documents, the document defined in Document Information (IfcDocumentInformation) can be classified through the entity Document Reference (IfcDocumentReference).</p>
+<p class="fig-ref">Figure 19 illustrates an instance diagram.</p>
+<table><tr><td><img alt="Document classfication" src="./diagrams/document-classfication.png" usemap="#f19"><map name="f19"><area shape="rect" coords="8,8,176,272" href="../ifcexternalreferenceresource/lexical/ifcdocumentinformation.html" alt="IfcDocumentInformation" /><area shape="rect" coords="208,8,376,20" href="../ifcmeasureresource/lexical/ifcidentifier.html" alt="IfcIdentifier" /><area shape="rect" coords="208,40,376,52" href="../ifcmeasureresource/lexical/ifcidentifier.html" alt="IfcIdentifier" /><area shape="rect" coords="208,72,376,84" href="../ifcmeasureresource/lexical/ifclabel.html" alt="IfcLabel" /><area shape="rect" coords="208,104,376,116" href="../ifcexternalreferenceresource/lexical/ifcurireference.html" alt="IfcURIReference" /><area shape="rect" coords="208,136,376,232" href="../ifcexternalreferenceresource/lexical/ifcdocumentreference.html" alt="IfcDocumentReference" /><area shape="rect" coords="408,8,576,68" href="../ifcexternalreferenceresource/lexical/ifcexternalreferencerelationship.html" alt="IfcExternalReferenceRelationship" /><area shape="rect" coords="608,8,776,128" href="../ifcexternalreferenceresource/lexical/ifcclassificationreference.html" alt="IfcClassificationReference" /></map></td></tr><tr><td><p class="figure">Figure 19 &mdash; Document classfication</p></td></tr></table>
 
 <hr/>
 <h4>Construction Objects Data View</h4>
@@ -46,16 +45,6 @@ The IfcRelAssociatesClassification can be applied to the entire classification s
 &lt;?xml version=&quot;1.0&quot;?&gt;<br/>
 &lt;ConceptTemplate xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; uuid=&quot;b3ca6650-0d9e-4679-8b31-080c3b82f9a1&quot; name=&quot;Document classfication&quot; status=&quot;draft&quot; applicableSchema=&quot;IFC4&quot; applicableEntity=&quot;<a href="../ifcexternalreferenceresource/lexical/ifcdocumentinformation.html">IfcDocumentInformation</a>&quot;&gt;<br/>
 &nbsp;&nbsp;&lt;Rules&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;AttributeRule RuleID=&quot;Location&quot; Description=&quot;*&quot; AttributeName=&quot;Location&quot;&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRules&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcexternalreferenceresource/lexical/ifcurireference.html">IfcURIReference</a>&quot; /&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRules&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;AttributeRule AttributeName=&quot;Purpose&quot;&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRules&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcmeasureresource/lexical/ifctext.html">IfcText</a>&quot; /&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRules&gt;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;AttributeRule AttributeName=&quot;HasDocumentReferences&quot;&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRules&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcexternalreferenceresource/lexical/ifcdocumentreference.html">IfcDocumentReference</a>&quot;&gt;<br/>
@@ -75,6 +64,22 @@ The IfcRelAssociatesClassification can be applied to the entire classification s
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRules&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRule&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRules&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;AttributeRule AttributeName=&quot;Name&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRules&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcmeasureresource/lexical/ifclabel.html">IfcLabel</a>&quot; /&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRules&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;AttributeRule AttributeName=&quot;Location&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRules&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcexternalreferenceresource/lexical/ifcurireference.html">IfcURIReference</a>&quot; /&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRules&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;AttributeRule AttributeName=&quot;Identification&quot;&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRules&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcmeasureresource/lexical/ifcidentifier.html">IfcIdentifier</a>&quot; /&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;EntityRule EntityName=&quot;<a href="../ifcmeasureresource/lexical/ifcidentifier.html">IfcIdentifier</a>&quot; /&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/EntityRules&gt;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&lt;/AttributeRule&gt;<br/>
 &nbsp;&nbsp;&lt;/Rules&gt;<br/>

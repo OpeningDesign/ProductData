@@ -46,9 +46,9 @@
 <h5 class="num">Semantic definitions at the entity</h5>
 <details open="open"><summary>Entity definition</summary><p><span class="self-ref">IfcProject</span> indicates the undertaking of some design, engineering, construction, or maintenance activities leading towards a product. The project establishes the context for information to be exchanged or shared, and it may represent a construction project but does not have to. The <span class="self-ref">IfcProject</span>'s main purpose in an exchange structure is to provide the root instance and the context for all other information items included.</p>
 <p>The context provided by the <span class="self-ref">IfcProject</span> includes:</p>
-<p>\X\X\\\\\* the geometric representation context for exchange structures including shape representations
-\X\X\\\\\* the coordinate space dimension
-\X\X\\\\\* optionally the indication of the true north
+<p>\X\X\\\\\\* the geometric representation context for exchange structures including shape representations
+\X\X\\\\\\* the coordinate space dimension
+\X\X\\\\\\* optionally the indication of the true north
 \X\X\X\XØ\X\X\X\X\X\X\X\X\X\X\X</p>
 </details>
 <details open="open"><summary>Formal Propositions</summary><table class="propositions">
@@ -97,6 +97,12 @@ Optional description, provided for exchanging informative comments.
 <tr><td></td><td><i>HasContext</i></td><td><a href="../../ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a><br/>@RelatedDefinitions</td><td>S[0:1]</td><td>References to the context providing context information such as project unit or representation context. It should only be asserted for the uppermost non-spatial object.
 
 </td><td></td></tr>
+<tr><td></td><td><i>IsDecomposedBy</i></td><td><a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a><br/>@RelatingObject</td><td>S[0:?]</td><td>References to the decomposition relationship being an aggregation. It determines that this object definition is whole within an unordered whole/part decomposition relationship. An object definitions can be aggregated by several other objects (occurrences or parts).
+
+</td><td>X</td></tr>
+<tr><td></td><td><i>Decomposes</i></td><td><a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a><br/>@RelatedObjects</td><td>S[0:1]</td><td>References to the decomposition relationship being an aggregation. It determines that this object definition is a part within an unordered whole/part decomposition relationship. An object definitions can only be part of a single decomposition (to allow hierarchical strutures only).
+
+</td><td></td></tr>
 <tr><td></td><td><i>HasAssociations</i></td><td><a href="../../ifckernel/lexical/ifcrelassociates.html">IfcRelAssociates</a><br/>@RelatedObjects</td><td>S[0:?]</td><td>Reference to the relationship objects, that associates external references or other resource definitions to the object.. Examples are the association to library, documentation or classification.
 </td><td>X</td></tr>
 <tr><td colspan="6"><i><a href="../../ifckernel/lexical/ifccontext.html">IfcContext</a></i></td></tr>
@@ -122,10 +128,10 @@ Units globally assigned to measure types used within the context.
 <tr><td></td><td><i>IsDefinedBy</i></td><td><a href="../../ifckernel/lexical/ifcreldefinesbyproperties.html">IfcRelDefinesByProperties</a><br/>@RelatedObjects</td><td>S[0:?]</td><td>Set of relationships to property set definitions attached to this context. Those statically or dynamically defined properties contain alphanumeric information content that further defines the context.
 
 
-</td><td>X</td></tr>
+</td><td></td></tr>
 <tr><td></td><td><i>Declares</i></td><td><a href="../../ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a><br/>@RelatingContext</td><td>S[0:?]</td><td>Reference to the <a href="../../ifckernel/lexical/ifcreldeclares.html">IfcRelDeclares</a> relationship that assigns the uppermost entities of includes hierarchies to this context instance.
 <blockquote class="note">
-NOTE  The spatial hiearchy is assigned to <a href="../../ifckernel/lexical/ifcproject.html">IfcProject</a> using the <i>IfcRelAggregates</i> relationship. This is a single exception due to compatibility reasons with earlier releases.
+NOTE  The spatial hiearchy is assigned to <a href="../../ifckernel/lexical/ifcproject.html">IfcProject</a> using the <a href="../../ifckernel/lexical/ifcrelaggregates.html">IfcRelAggregates</a> relationship. This is a single exception due to compatibility reasons with earlier releases.
 </blockquote>
 </td><td>X</td></tr>
 <tr><td colspan="6"><a href="../../ifckernel/lexical/ifcproject.html">IfcProject</a></td></tr>

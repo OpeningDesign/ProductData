@@ -83,6 +83,11 @@
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
+&nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcproject.html">IfcProject</a> extends <a href="../../../schema/ifckernel/lexical/ifccontext.html">IfcContext</a><br/>
+&nbsp;{<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
 &nbsp;public class <a href="../../../schema/ifckernel/lexical/ifcprojectlibrary.html">IfcProjectLibrary</a> extends <a href="../../../schema/ifckernel/lexical/ifccontext.html">IfcContext</a><br/>
 &nbsp;{<br/>
 &nbsp;}<br/>
@@ -309,6 +314,82 @@
 &nbsp;}<br/>
 &nbsp;<br/>
 <br/>
+&nbsp;public enum <a href="../../../schema/ifcsharedbldgelements/lexical/ifcbuildingsystemtypeenum.html">IfcBuildingSystemTypeEnum</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;FENESTRATION,<br/>
+&nbsp;&nbsp;FOUNDATION,<br/>
+&nbsp;&nbsp;LOADBEARING,<br/>
+&nbsp;&nbsp;OUTERSHELL,<br/>
+&nbsp;&nbsp;SHADING,<br/>
+&nbsp;&nbsp;TRANSPORT,<br/>
+&nbsp;&nbsp;USERDEFINED,<br/>
+&nbsp;&nbsp;NOTDEFINED,<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifcsharedbldgelements/lexical/ifcbuildingsystem.html">IfcBuildingSystem</a> extends <a href="../../../schema/ifcproductextension/lexical/ifcsystem.html">IfcSystem</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcsharedbldgelements/lexical/ifcbuildingsystemtypeenum.html">IfcBuildingSystemTypeEnum</a> PredefinedType;<br/>
+&nbsp;&nbsp;private string LongName;<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public enum <a href="../../../schema/ifcsharedbldgserviceelements/lexical/ifcdistributionsystemenum.html">IfcDistributionSystemEnum</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;AIRCONDITIONING,<br/>
+&nbsp;&nbsp;AUDIOVISUAL,<br/>
+&nbsp;&nbsp;CHEMICAL,<br/>
+&nbsp;&nbsp;CHILLEDWATER,<br/>
+&nbsp;&nbsp;COMMUNICATION,<br/>
+&nbsp;&nbsp;COMPRESSEDAIR,<br/>
+&nbsp;&nbsp;CONDENSERWATER,<br/>
+&nbsp;&nbsp;CONTROL,<br/>
+&nbsp;&nbsp;CONVEYING,<br/>
+&nbsp;&nbsp;DATA,<br/>
+&nbsp;&nbsp;DISPOSAL,<br/>
+&nbsp;&nbsp;DOMESTICCOLDWATER,<br/>
+&nbsp;&nbsp;DOMESTICHOTWATER,<br/>
+&nbsp;&nbsp;DRAINAGE,<br/>
+&nbsp;&nbsp;EARTHING,<br/>
+&nbsp;&nbsp;ELECTRICAL,<br/>
+&nbsp;&nbsp;ELECTROACOUSTIC,<br/>
+&nbsp;&nbsp;EXHAUST,<br/>
+&nbsp;&nbsp;FIREPROTECTION,<br/>
+&nbsp;&nbsp;FUEL,<br/>
+&nbsp;&nbsp;GAS,<br/>
+&nbsp;&nbsp;HAZARDOUS,<br/>
+&nbsp;&nbsp;HEATING,<br/>
+&nbsp;&nbsp;LIGHTING,<br/>
+&nbsp;&nbsp;LIGHTNINGPROTECTION,<br/>
+&nbsp;&nbsp;MUNICIPALSOLIDWASTE,<br/>
+&nbsp;&nbsp;OIL,<br/>
+&nbsp;&nbsp;OPERATIONAL,<br/>
+&nbsp;&nbsp;POWERGENERATION,<br/>
+&nbsp;&nbsp;RAINWATER,<br/>
+&nbsp;&nbsp;REFRIGERATION,<br/>
+&nbsp;&nbsp;SECURITY,<br/>
+&nbsp;&nbsp;SEWAGE,<br/>
+&nbsp;&nbsp;SIGNAL,<br/>
+&nbsp;&nbsp;STORMWATER,<br/>
+&nbsp;&nbsp;TELEPHONE,<br/>
+&nbsp;&nbsp;TV,<br/>
+&nbsp;&nbsp;VACUUM,<br/>
+&nbsp;&nbsp;VENT,<br/>
+&nbsp;&nbsp;VENTILATION,<br/>
+&nbsp;&nbsp;WASTEWATER,<br/>
+&nbsp;&nbsp;WATERSUPPLY,<br/>
+&nbsp;&nbsp;USERDEFINED,<br/>
+&nbsp;&nbsp;NOTDEFINED,<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
+&nbsp;public class <a href="../../../schema/ifcsharedbldgserviceelements/lexical/ifcdistributionsystem.html">IfcDistributionSystem</a> extends <a href="../../../schema/ifcproductextension/lexical/ifcsystem.html">IfcSystem</a><br/>
+&nbsp;{<br/>
+&nbsp;&nbsp;private string LongName;<br/>
+&nbsp;&nbsp;private <a href="../../../schema/ifcsharedbldgserviceelements/lexical/ifcdistributionsystemenum.html">IfcDistributionSystemEnum</a> PredefinedType;<br/>
+&nbsp;}<br/>
+&nbsp;<br/>
+<br/>
 &nbsp;public enum <a href="../../../schema/ifcactorresource/lexical/ifcroleenum.html">IfcRoleEnum</a><br/>
 &nbsp;{<br/>
 &nbsp;&nbsp;SUPPLIER,<br/>
@@ -493,27 +574,6 @@
 &nbsp;/* <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcurireference.html">IfcURIReference</a> : STRING (Java does not support structures, so usage of defined types are inline for efficiency.) */<br/>
 &nbsp;<br/>
 <br/>
-&nbsp;public enum <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcdocumentconfidentialityenum.html">IfcDocumentConfidentialityEnum</a><br/>
-&nbsp;{<br/>
-&nbsp;&nbsp;PUBLIC,<br/>
-&nbsp;&nbsp;RESTRICTED,<br/>
-&nbsp;&nbsp;CONFIDENTIAL,<br/>
-&nbsp;&nbsp;PERSONAL,<br/>
-&nbsp;&nbsp;USERDEFINED,<br/>
-&nbsp;&nbsp;NOTDEFINED,<br/>
-&nbsp;}<br/>
-&nbsp;<br/>
-<br/>
-&nbsp;public enum <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcdocumentstatusenum.html">IfcDocumentStatusEnum</a><br/>
-&nbsp;{<br/>
-&nbsp;&nbsp;DRAFT,<br/>
-&nbsp;&nbsp;FINALDRAFT,<br/>
-&nbsp;&nbsp;FINAL,<br/>
-&nbsp;&nbsp;REVISION,<br/>
-&nbsp;&nbsp;NOTDEFINED,<br/>
-&nbsp;}<br/>
-&nbsp;<br/>
-<br/>
 &nbsp;public interface <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcclassificationreferenceselect.html">IfcClassificationReferenceSelect</a><br/>
 &nbsp;{<br/>
 &nbsp;}<br/>
@@ -580,8 +640,8 @@
 &nbsp;&nbsp;private string ElectronicFormat;<br/>
 &nbsp;&nbsp;private string ValidFrom;<br/>
 &nbsp;&nbsp;private string ValidUntil;<br/>
-&nbsp;&nbsp;private <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcdocumentconfidentialityenum.html">IfcDocumentConfidentialityEnum</a> Confidentiality;<br/>
-&nbsp;&nbsp;private <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcdocumentstatusenum.html">IfcDocumentStatusEnum</a> Status;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span> Confidentiality;<br/>
+&nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span> Status;<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifckernel/lexical/ifcrelassociatesdocument.html">IfcRelAssociatesDocument</a>[] DocumentInfoForObjects;<br/>
 &nbsp;&nbsp;private <a href="../../../schema/ifcexternalreferenceresource/lexical/ifcdocumentreference.html">IfcDocumentReference</a>[] HasDocumentReferences;<br/>
 &nbsp;&nbsp;private <span class="self-ref">IfcStrippedOptional</span>[] IsPointedTo;<br/>

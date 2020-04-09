@@ -58,10 +58,12 @@
 <h5 class="num">Inherited definitions from supertypes</h5>
 <details open="open"><summary>Entity inheritance</summary><img src="../../../diagrams/ifcsystem.png" usemap="#f"/>
 <map name="f">
-<area shape="rect" coords="42,78,254,90" href="../../../schema/ifckernel/lexical/ifcgroup.html" alt="IfcGroup" />
-<area shape="rect" coords="30,54,266,66" href="../../../schema/ifckernel/lexical/ifcobject.html" alt="IfcObject" />
-<area shape="rect" coords="18,30,278,42" href="../../../schema/ifckernel/lexical/ifcobjectdefinition.html" alt="IfcObjectDefinition" />
-<area shape="rect" coords="6,6,290,18" href="../../../schema/ifckernel/lexical/ifcroot.html" alt="IfcRoot" />
+<area shape="rect" coords="66,126,254,138" href="../../../schema/ifcsharedbldgelements/lexical/ifcbuildingsystem.html" alt="IfcBuildingSystem" />
+<area shape="rect" coords="66,150,254,162" href="../../../schema/ifcsharedbldgserviceelements/lexical/ifcdistributionsystem.html" alt="IfcDistributionSystem" />
+<area shape="rect" coords="42,78,278,90" href="../../../schema/ifckernel/lexical/ifcgroup.html" alt="IfcGroup" />
+<area shape="rect" coords="30,54,290,66" href="../../../schema/ifckernel/lexical/ifcobject.html" alt="IfcObject" />
+<area shape="rect" coords="18,30,302,42" href="../../../schema/ifckernel/lexical/ifcobjectdefinition.html" alt="IfcObjectDefinition" />
+<area shape="rect" coords="6,6,314,18" href="../../../schema/ifckernel/lexical/ifcroot.html" alt="IfcRoot" />
 </map>
 </details>
 <details><summary>Attribute inheritance</summary><table class="attributes">
@@ -128,6 +130,7 @@ Optional description, provided for exchanging informative comments.
 </code></div></details>
 <details><summary>EXPRESS Specification</summary><div class="express"><code class="express">
 <span class="keyword">ENTITY</span> IfcSystem<br/>
+&nbsp;<span class="keyword">SUPERTYPE OF</span>(<span class="keyword">ONEOF</span>(<a href="../../ifcsharedbldgelements/lexical/ifcbuildingsystem.html">IfcBuildingSystem</a>, <a href="../../ifcsharedbldgserviceelements/lexical/ifcdistributionsystem.html">IfcDistributionSystem</a>))<br/>
 &nbsp;<span class="keyword">SUBTYPE OF</span> (<a href="../../ifckernel/lexical/ifcgroup.html">IfcGroup</a>)<b>;</b><br/>
 &nbsp;<span class="keyword">INVERSE</span><br/>
 <span class="keyword">END_ENTITY;</span><br/>

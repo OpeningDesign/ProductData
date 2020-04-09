@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ifc="https://technical.buildingsmart.org/ifc/review/IFC4/cod.1" targetNamespace="https://technical.buildingsmart.org/ifc/review/IFC4/cod.1" elementFormDefault="qualified" attributeFormDefault="unqualified" >
-<!-- created with IFCDOC 11.8 at buildingsmart-tech.org -->
+<!-- created with IFCDOC -->
 
 <!--
-Copyright by:
-buildingSMART International Limited, 1996-2017
+Copyright by: buildingSMART International Limited, 1996-2020
 
 Any technical documentation made available by buildingSMART International Limited
 is the copyrighted work of buildingSMART International Limited and is owned by the 
@@ -91,6 +90,14 @@ of the material. The information contained in this document is subject to change
 	<xs:complexType name="IfcApproval">
 		<xs:complexContent>
 			<xs:extension base="ifc:Entity"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="IfcBuildingSystem" type="ifc:IfcBuildingSystem" substitutionGroup="ifc:IfcSystem" nillable="true"/>
+	<xs:complexType name="IfcBuildingSystem">
+		<xs:complexContent>
+			<xs:extension base="ifc:IfcSystem">
+				<xs:attribute name="PredefinedType" type="ifc:IfcBuildingSystemTypeEnum" use="optional"/>
+			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:element name="IfcClassification" type="ifc:IfcClassification" substitutionGroup="ifc:IfcExternalInformation" nillable="true"/>
@@ -191,16 +198,6 @@ of the material. The information contained in this document is subject to change
 			<xs:extension base="ifc:IfcObjectDefinition">
 				<xs:sequence>
 					<xs:element name="UnitsInContext" type="ifc:IfcUnitAssignment" nillable="true" minOccurs="0"/>
-					<xs:element name="IsDefinedBy" nillable="true" minOccurs="0">
-						<xs:complexType>
-							<xs:sequence>
-								<xs:element ref="ifc:IfcRelDefinesByProperties" minOccurs="0" maxOccurs="unbounded"/>
-							</xs:sequence>
-							<xs:attribute ref="ifc:itemType" fixed="ifc:IfcRelDefinesByProperties"/>
-							<xs:attribute ref="ifc:cType" fixed="set"/>
-							<xs:attribute ref="ifc:arraySize" use="optional"/>
-						</xs:complexType>
-					</xs:element>
 					<xs:element name="Declares" nillable="true" minOccurs="0">
 						<xs:complexType>
 							<xs:sequence>
@@ -291,40 +288,23 @@ of the material. The information contained in this document is subject to change
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:element name="IfcDistributionSystem" type="ifc:IfcDistributionSystem" substitutionGroup="ifc:IfcSystem" nillable="true"/>
+	<xs:complexType name="IfcDistributionSystem">
+		<xs:complexContent>
+			<xs:extension base="ifc:IfcSystem">
+				<xs:attribute name="PredefinedType" type="ifc:IfcDistributionSystemEnum" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
 	<xs:element name="IfcDocumentInformation" type="ifc:IfcDocumentInformation" substitutionGroup="ifc:IfcExternalInformation" nillable="true"/>
 	<xs:complexType name="IfcDocumentInformation">
 		<xs:complexContent>
 			<xs:extension base="ifc:IfcExternalInformation">
-				<xs:sequence>
-					<xs:element name="DocumentOwner" nillable="true" minOccurs="0">
-						<xs:complexType>
-							<xs:group ref="ifc:IfcActorSelect"/>
-						</xs:complexType>
-					</xs:element>
-					<xs:element name="Editors" nillable="true" minOccurs="0">
-						<xs:complexType>
-							<xs:group ref="ifc:IfcActorSelect" maxOccurs="unbounded"/>
-							<xs:attribute ref="ifc:itemType" fixed="ifc:IfcActorSelect"/>
-							<xs:attribute ref="ifc:cType" fixed="set"/>
-							<xs:attribute ref="ifc:arraySize" use="optional"/>
-						</xs:complexType>
-					</xs:element>
-				</xs:sequence>
 				<xs:attribute name="Identification" type="ifc:IfcIdentifier" use="optional"/>
 				<xs:attribute name="Name" type="ifc:IfcLabel" use="optional"/>
 				<xs:attribute name="Description" type="ifc:IfcText" use="optional"/>
 				<xs:attribute name="Location" type="ifc:IfcURIReference" use="optional"/>
-				<xs:attribute name="Purpose" type="ifc:IfcText" use="optional"/>
-				<xs:attribute name="IntendedUse" type="ifc:IfcText" use="optional"/>
-				<xs:attribute name="Scope" type="ifc:IfcText" use="optional"/>
-				<xs:attribute name="Revision" type="ifc:IfcLabel" use="optional"/>
-				<xs:attribute name="CreationTime" type="ifc:IfcDateTime" use="optional"/>
-				<xs:attribute name="LastRevisionTime" type="ifc:IfcDateTime" use="optional"/>
 				<xs:attribute name="ElectronicFormat" type="ifc:IfcIdentifier" use="optional"/>
-				<xs:attribute name="ValidFrom" type="ifc:IfcDate" use="optional"/>
-				<xs:attribute name="ValidUntil" type="ifc:IfcDate" use="optional"/>
-				<xs:attribute name="Confidentiality" type="ifc:IfcDocumentConfidentialityEnum" use="optional"/>
-				<xs:attribute name="Status" type="ifc:IfcDocumentStatusEnum" use="optional"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
@@ -776,6 +756,12 @@ of the material. The information contained in this document is subject to change
 				<xs:attribute name="ProfileType" type="ifc:IfcProfileTypeEnum" use="optional"/>
 				<xs:attribute name="ProfileName" type="ifc:IfcLabel" use="optional"/>
 			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="IfcProject" type="ifc:IfcProject" substitutionGroup="ifc:IfcContext" nillable="true"/>
+	<xs:complexType name="IfcProject">
+		<xs:complexContent>
+			<xs:extension base="ifc:IfcContext"/>
 		</xs:complexContent>
 	</xs:complexType>
 	<xs:element name="IfcProjectLibrary" type="ifc:IfcProjectLibrary" substitutionGroup="ifc:IfcContext" nillable="true"/>
@@ -1467,6 +1453,18 @@ of the material. The information contained in this document is subject to change
 		</xs:choice>
 	</xs:group>
 	<!-- enumeration type declarations (for ENUMERATION data type definitions) -->
+	<xs:simpleType name="IfcBuildingSystemTypeEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="fenestration"/>
+			<xs:enumeration value="foundation"/>
+			<xs:enumeration value="loadbearing"/>
+			<xs:enumeration value="outershell"/>
+			<xs:enumeration value="shading"/>
+			<xs:enumeration value="transport"/>
+			<xs:enumeration value="userdefined"/>
+			<xs:enumeration value="notdefined"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="IfcConstraintEnum">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="hard"/>
@@ -1556,22 +1554,51 @@ of the material. The information contained in this document is subject to change
 			<xs:enumeration value="negative"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="IfcDocumentConfidentialityEnum">
+	<xs:simpleType name="IfcDistributionSystemEnum">
 		<xs:restriction base="xs:string">
-			<xs:enumeration value="public"/>
-			<xs:enumeration value="restricted"/>
-			<xs:enumeration value="confidential"/>
-			<xs:enumeration value="personal"/>
+			<xs:enumeration value="airconditioning"/>
+			<xs:enumeration value="audiovisual"/>
+			<xs:enumeration value="chemical"/>
+			<xs:enumeration value="chilledwater"/>
+			<xs:enumeration value="communication"/>
+			<xs:enumeration value="compressedair"/>
+			<xs:enumeration value="condenserwater"/>
+			<xs:enumeration value="control"/>
+			<xs:enumeration value="conveying"/>
+			<xs:enumeration value="data"/>
+			<xs:enumeration value="disposal"/>
+			<xs:enumeration value="domesticcoldwater"/>
+			<xs:enumeration value="domestichotwater"/>
+			<xs:enumeration value="drainage"/>
+			<xs:enumeration value="earthing"/>
+			<xs:enumeration value="electrical"/>
+			<xs:enumeration value="electroacoustic"/>
+			<xs:enumeration value="exhaust"/>
+			<xs:enumeration value="fireprotection"/>
+			<xs:enumeration value="fuel"/>
+			<xs:enumeration value="gas"/>
+			<xs:enumeration value="hazardous"/>
+			<xs:enumeration value="heating"/>
+			<xs:enumeration value="lighting"/>
+			<xs:enumeration value="lightningprotection"/>
+			<xs:enumeration value="municipalsolidwaste"/>
+			<xs:enumeration value="oil"/>
+			<xs:enumeration value="operational"/>
+			<xs:enumeration value="powergeneration"/>
+			<xs:enumeration value="rainwater"/>
+			<xs:enumeration value="refrigeration"/>
+			<xs:enumeration value="security"/>
+			<xs:enumeration value="sewage"/>
+			<xs:enumeration value="signal"/>
+			<xs:enumeration value="stormwater"/>
+			<xs:enumeration value="telephone"/>
+			<xs:enumeration value="tv"/>
+			<xs:enumeration value="vacuum"/>
+			<xs:enumeration value="vent"/>
+			<xs:enumeration value="ventilation"/>
+			<xs:enumeration value="wastewater"/>
+			<xs:enumeration value="watersupply"/>
 			<xs:enumeration value="userdefined"/>
-			<xs:enumeration value="notdefined"/>
-		</xs:restriction>
-	</xs:simpleType>
-	<xs:simpleType name="IfcDocumentStatusEnum">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="draft"/>
-			<xs:enumeration value="finaldraft"/>
-			<xs:enumeration value="final"/>
-			<xs:enumeration value="revision"/>
 			<xs:enumeration value="notdefined"/>
 		</xs:restriction>
 	</xs:simpleType>
