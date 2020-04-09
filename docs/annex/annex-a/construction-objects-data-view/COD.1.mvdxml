@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="3070d0e3-4c8b-4d44-a05f-6fe2cb6b30d8" name="" xsi:schemaLocation="https://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="https://standards.buildingsmart.org/mvd/XML/1.1">
+<mvdXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" uuid="810e16ae-c1b4-41c2-a1c8-d843ec8de805" name="" xsi:schemaLocation="https://standards.buildingsmart.org/MVD/RELEASE/mvdXML/v1-1/mvdXML_V1.1.xsd" xmlns="https://standards.buildingsmart.org/mvd/XML/1.1">
   <Templates>
     <ConceptTemplate uuid="555514b1-b5c2-4680-8710-8da57df52f76" name="Construction object types data" status="draft" applicableSchema="IFC4" applicableEntity="IfcTypeObject">
       <SubTemplates>
@@ -695,8 +695,8 @@ Data sheets | [1:?] | [1:1]
             <Definition>
               <Body><![CDATA[The concept _Classification Association_ describes how objects and object types can be further described by associating references to external sources of information. The source of information can be:
 
-\X\X\\\\\\\\\\\\* a dictionary server;
-\X\X\\\\\\\\\\\\* any service that combine the above features.
+\X\X\\\\\\\\\\\\\* a dictionary server;
+\X\X\\\\\\\\\\\\\* any service that combine the above features.
 
 An individual item within the external source of information can be selected. It then applies the inherent meaning of the item to the _IfcObject_ or _IfcTypeObject_.
 
@@ -704,7 +704,7 @@ An individual item within the external source of information can be selected. It
 
 The main attributes to be provided for a _Classification Association_ are:
 
-\X\X\\\\\\\\\\\\* _Name_: allows for a human interpretable designation of a classification notation]]></Body>
+\X\X\\\\\\\\\\\\\* _Name_: allows for a human interpretable designation of a classification notation]]></Body>
             </Definition>
           </Definitions>
           <Rules>
@@ -875,8 +875,8 @@ Typical document meta data, such as issue date, editor, and similar, can be capt
             <Definition>
               <Body><![CDATA[Any product or product type can have associated materials indicating the physical composition of an object.
 
-> EXAMPLE&nbsp; An object can be comprised of a single material or a set of materials with a particular layout. Several examples include: > \X\X\\\\\\\\\\\\* a beam may have an associated I-Shape profile of steel;
-> \X\X\\\\\\\\\\\\* a port may have an associated profile and/or material flowing through it such as hot water.
+> EXAMPLE&nbsp; An object can be comprised of a single material or a set of materials with a particular layout. Several examples include: > \X\X\\\\\\\\\\\\\* a beam may have an associated I-Shape profile of steel;
+> \X\X\\\\\\\\\\\\\* a port may have an associated profile and/or material flowing through it such as hot water.
 
 Materials can have representations for surface styles indicating colors, textures, and light reflectance for 3D rendering. Materials can have representations for fill styles indicating colors, tiles, and hatch patterns for 2D rendering. Materials can have properties such as density, elasticity, thermal resistance, and others as defined in this specification. Materials can also be classified according to a referenced industry standard.
 
@@ -1318,10 +1318,10 @@ The material of those standard case elements is defined by _IfcMaterialProfileSe
 
 On instance level, an object occurrence instance may have:
 
-\X\X\\\\\\\\\\\\* overridden state for particular characteristics;
-\X\X\X\X\X\X\X\X\\\\\\\\\\\\* common naming and predefined type;
-\X\X\\\\\\\\\\\\* common geometry representations, applied as mapped representation to each occurences;
-\X\X\\\\\\\\\\\\* common definition of a decomposition structure.
+\X\X\\\\\\\\\\\\\* overridden state for particular characteristics;
+\X\X\X\X\X\X\X\X\\\\\\\\\\\\\* common naming and predefined type;
+\X\X\\\\\\\\\\\\\* common geometry representations, applied as mapped representation to each occurences;
+\X\X\\\\\\\\\\\\\* common definition of a decomposition structure.
 
 Many object occurrence and object type entities have an attribute named _PredefinedType_ consisting of a specific enumeration. Such predefined type essentially provides another level of inheritance to further differentiate objects without the need for additional entities. Predefined types are not just informational; various rules apply such as applicable property sets, part composition, and distribution ports. If the object is typed by an _IfcTypeObject_, then the _PredefinedType_ at the _IfcObject_ occurrence shall only be used if the _PredefinedType_ at _IfcTypeObject_ is set to _NOTDEFINED_.
 
@@ -1733,8 +1733,8 @@ The property values assigned to an object type apply equally to all occurrences 
         <Definition>
           <Body><![CDATA[All project data sets shall contain a single _IfcProject_ instance indicating overall context and a directory of objects contained within. The context definition may include:
 
-\X\X\\\\\\\\\\\\* the geometric representation context for the shape representations
-\X\X\\\\\\\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
+\X\X\\\\\\\\\\\\\* the geometric representation context for the shape representations
+\X\X\\\\\\\\\\\\\* the reference to classification systems, or other external information sources, used]]></Body>
         </Definition>
       </Definitions>
       <Rules>
@@ -1771,9 +1771,9 @@ The definition of the units of values can be stored in Unit Assignment (IfcUnitA
 
 
 
-Every property template for a numeric value has to define its underlying measure and unit. The definition of measures and units shall follow the codes in the table according to the appendes table „Table of measures and units.xlsx” of this standard. This table provides a guide for systems and data, maintaning semistructured or no-structured data, to create structured IFC-definitions of units and measures. The content of the table is not exhaustive. In the cases, where a unit that is needed, cannot be found in the table, this unit has to be documented according to the table before using it in construction objects data.
+Every property template for a numeric value has to define its underlying measure and unit. The definition of measures and units shall follow the codes (TypicalUnitCod)  in the table according to the appended table „Table of measures and units” of this standard. This table provides a guide for systems and data, maintaning semistructured or no-structured data, to create structured IFC-definitions of units and measures. The content of the table is not exhaustive. In the cases, where a unit that is needed, cannot be found in the table, this unit has to be documented according to the table before using it in construction objects data.
 
-[Table of measures and units](../../figures/Table of measures and units.xlsx)
+<a href="../../figures/Table of measures and units.xlsx">Table of measures and units</a>
 
 
 
