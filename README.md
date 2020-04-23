@@ -18,7 +18,7 @@ One folder per sample file as a subfolder in "SampleFiles" e.g. like this
 ```
 SampleFiles/MyExample
 ```
-All other related files are store alongside in the this folder.
+All other related files are stored alongside in the this folder.
 
 ### Serialization formats 
 The sample should be one of the following serialization formats
