@@ -35,3 +35,7 @@ The file can be also in the compressed form as an ".ifcZIP". (Look [here](https:
 
 ### Description
 Please add a readme.md in the folder and describe your sample. Please describe the use case and the specialities of your sample, so that everybody can easily understand your sample.
+
+### Construction Objects Data View
+
+https://buildingsmart.github.io/ProductData/
